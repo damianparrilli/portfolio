@@ -1,0 +1,74 @@
+---
+import Experiencia1 from './Experiencia/Experiencia1.astro';
+import Experiencia2 from './Experiencia/Experiencia2.astro';
+---
+
+<section
+  class="arriba w-full flex min-h-[102dvh] bg-[#E0E0E0] dark:bg-[#1F1F1F]"
+>
+  <div
+    class="contenedor py-32 sm:py-0 px-4 sm:px-7 flex flex-col gap-6 h-full sm:min-h-screen w-full sm:justify-center"
+  >
+    <h2
+      class="font-bold text-[#272727] dark:text-[#F9F9F9] text-3xl sm:text-4xl"
+    >
+      Mi experiencia
+    </h2>
+    <div class="flex relative flex-col w-full gap-8">
+      <Experiencia1 />
+      <Experiencia2 />
+      <div class="absolute h-full w-1 -z-10 top-4 left-[8.5px] bg-gradient-to-b from-[#055A97] from-85% to-[#E0E0E0] to-100% dark:from-[#3D7AFF] dark:to-[#1F1F1F]"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .arriba {
+    animation: mover-arriba linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+
+
+  @keyframes mover-arriba {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+
+  
+</style>
+
+<style is:global>
+  .lista-item::before {
+    left: 0;
+    margin-top: 5px;
+    content: "";
+    position: absolute;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: #E0E0E0;
+    border: 6px solid #055A97;
+  }
+
+  html.dark .lista-item::before{
+    background-color: #1f1f1f;
+    border: 6px solid #3d7aff;
+  }
+
+  .lista-item:hover::before {
+    cursor: pointer;
+    border: 6px solid #055A97;
+  }
+
+  html.dark .lista-item:hover::before {
+    cursor: pointer;
+    border: 6px solid #135af3;
+  }
+</style>
+
+<script></script>
