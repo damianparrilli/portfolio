@@ -1,11 +1,12 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Banner from '../components/Banner.astro';
+import About from '../components/About.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Damián Parrilli - Portfolio Web"
+description='Licenciado en Diseño Multimedial, un diseñador y desarrollador web entusiasta en el desarrollo de interfaces enfocado en la resolución de problemas con respecto a la experiencia de usuario.'
+keywords='Diseñador Web, Web Designer, Desarrollador Frontend, Frontend Developer, Multimedia Design'>
+    <Banner />
+    <About />
 </Layout>
