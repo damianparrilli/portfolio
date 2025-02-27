@@ -4,10 +4,10 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
 ---
 
 <section
-  class="arriba w-full flex min-h-[102dvh] bg-[#E0E0E0] dark:bg-[#1F1F1F]"
+  class="arriba absolute w-full flex min-h-[142dvh] sm:h-full bg-[#E0E0E0] dark:bg-[#1F1F1F] z-20"
 >
   <div
-    class="contenedor py-32 sm:py-0 px-4 sm:px-7 flex flex-col gap-6 h-full sm:min-h-screen w-full sm:justify-center"
+    class="contenedor py-52 sm:py-0 px-4 sm:px-7 flex flex-col gap-6 h-full w-full sm:justify-center"
   >
     <h2
       class="font-bold text-[#272727] dark:text-[#F9F9F9] text-3xl sm:text-4xl"
@@ -27,6 +27,7 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
     animation: mover-arriba linear forwards;
     animation-timeline: view();
     animation-range: entry 0% entry 60%;
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%);
   }
 
 
@@ -34,8 +35,11 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
     0% {
       transform: translateY(0);
     }
+    60%{
+      transform: translateY(-50%);
+    }
     100% {
-      transform: translateY(-100vh);
+      transform: translateY(-98%);
     }
   }
 

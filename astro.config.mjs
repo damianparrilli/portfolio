@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['vpn-antique-shock-soa.trycloudflare.com'],
+      allowedHosts: ['palace-disease-duo-moisture.trycloudflare.com'],
     }
   }
 });
