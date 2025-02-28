@@ -1,7 +1,6 @@
 <section
-  class="banner w-full h-[200dvh] flex flex-col bg-gradient-to-b from-[#FBFBFB] from-0% to-[#CECECE] to-10% sm:to-25% dark:from-[#040404] dark:to-[#313131] relative"
+  class="banner w-full h-[200dvh] flex flex-col bg-gradient-to-b from-[#FBFBFB] from-0% to-[#CECECE] to-10% sm:to-25% dark:from-[#040404] dark:to-[#313131]"
 >
-<div id="sobre-mi" class="pointer-events-none absolute invisible bottom-0 left-0 z-100 w-full h-[100dvh]"></div>
   <div
     class="logo w-full h-[55dvh] min-[430px]:h-[70dvh] max-h-[650px]:h-[60dvh] py-3"
   >
@@ -46,7 +45,8 @@
             Contactame</a
           >
           <a
-            href="https://wa.me/541160518730" target="_blank"
+            href="https://wa.me/541160518730"
+            target="_blank"
             class="group px-3 sm:px-[18px] text-sm sm:text-base py-2 text-[#09830D] bg-[#e4f3e4] hover:text-[#f9f9f9] hover:bg-[#09830D] dark:bg-[#253126] dark:text-[#5FD663] dark:hover:bg-[#5fd66f] dark:hover:text-[#353535] rounded-4xl border-whatsapp font-medium flex items-center gap-2 transition-all duration-300 ease-in-out"
             ><svg
               class="w-5 h-auto"
@@ -113,8 +113,8 @@
           class="w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full imagen-banner-img z-20"
           style="--move-distance: 0px;"
         />
-        <div 
-          class="absolute justify-start w-full flex flex-col gap-4 texto-2 opacity-0"
+        <div
+          class="absolute justify-start w-full flex flex-col gap-4 texto-2 opacity-0 transition-opacity duration-500 ease-in-out"
         >
           <div class="flex gap-4 items-center w-full">
             <img
@@ -123,7 +123,8 @@
               class="invisible w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full"
             />
             <a
-              href="https://drive.google.com/file/d/1zmaLM61esZ7PXP0E0kmiO99Xc3q8hsTI/view?usp=sharing" target="_blank"
+              href="https://drive.google.com/file/d/1zmaLM61esZ7PXP0E0kmiO99Xc3q8hsTI/view?usp=sharing"
+              target="_blank"
               class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
             >
               <svg
@@ -277,27 +278,17 @@
     margin-top: clamp(1.25rem, -2.756rem + 12.821vh, 10.625rem);
   }
 
-  .texto-2 {
+  /* .texto-2 {
     animation: opacidad-texto-2 linear forwards;
     animation-timeline: --move;
     animation-range: contain 20% contain 50%;
-  }
+  } */
 
   @media (width < 430px) {
     .texto-2 {
       animation: opacidad-texto-2-sm linear forwards;
       animation-timeline: --move;
       animation-range: contain 25% contain 45%;
-    }
-  }
-
-  @media (width >= 900px) {
-   
-    .texto-2{
-      padding-right: clamp(0rem, -28.125rem + 50vw, 9.375rem);
-    }
-    .imagen-banner {
-      margin-left: clamp(0rem, -28.125rem + 50vw, 9.375rem);
     }
   }
 
@@ -367,48 +358,47 @@
     const parent = document.querySelector(".imagen-banner");
     const img = document.querySelector(".imagen-banner-img");
 
-    function updateMoveDistance() {
-      if (parent && img) {
-        requestAnimationFrame(() => {
-          const parentWidth = parent.offsetWidth;
-          const imgWidth = img.offsetWidth;
-          
-            const totalDistance = parentWidth - imgWidth;
-            setupAnimations(totalDistance);
-        
-          
+    const triggerPoint = window.innerHeight * 0.7; 
+    const parentWidth = parent.offsetWidth;
+    const imgWidth = img.offsetWidth;
+    const totalDistance = parentWidth - imgWidth;
 
+    let animationPlayed = false; 
 
-          img.style.animationPlayState = "running";
-          
-        });
-      }
-    }
-
-    window.addEventListener("load", updateMoveDistance);
-    window.addEventListener("resize", updateMoveDistance);
-
-    updateMoveDistance();
-  });
-
-  function setupAnimations(total) {
+  function setupAnimations(direction) {
     if (window.innerWidth >= 430) {
-      document.querySelectorAll(".imagen-banner-img").forEach((element) => {
-        const keyframes = [
+      const element = document.querySelector(".imagen-banner-img");
+
+     
+        const keyframes = direction === 'forwards' ? [
           { transform: "translateX(0)" },
-          { transform: `translateX(-${total}px)` },
+          { transform: `translateX(-${totalDistance}px)` } 
+        ] : [
+          { transform: `translateX(-${totalDistance}px)` },
+          { transform: "translateX(0)" }
         ];
+
         element.animate(keyframes, {
-          duration: 1,
+          duration: 500,
           fill: "forwards",
-          timeline: new ViewTimeline({
-            subject: document.querySelector(".imagen-banner"),
-          }),
-          rangeStart: { rangeName: "contain", offset: CSS.percent(20) },
-          rangeEnd: { rangeName: "contain", offset: CSS.percent(50) },
         });
-      });
+
+        
+        
     }
   }
-  setupAnimations();
+
+  function onScroll() {
+    if (window.scrollY >= triggerPoint && !animationPlayed) {
+      setupAnimations('forwards');
+      animationPlayed = true;
+
+    } else if (window.scrollY < triggerPoint && animationPlayed) {
+      setupAnimations('backwards');
+      animationPlayed = false;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll);
+  });
 </script>

@@ -1,16 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Banner from '../components/Banner.astro';
-import Experiencia from '../components/Experiencia.astro';
-import Proyectos from '../components/Proyectos.astro';
-import Habilidades from '../components/Habilidades.astro';
+import Layout from "../layouts/Layout.astro";
+import Banner from "../components/Banner.astro";
+import Experiencia from "../components/Experiencia.astro";
+import Proyectos from "../components/Proyectos.astro";
+import Habilidades from "../components/Habilidades.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Damián Parrilli - Portfolio Web"
-description='Licenciado en Diseño Multimedial, un diseñador y desarrollador web entusiasta en el desarrollo de interfaces enfocado en la resolución de problemas con respecto a la experiencia de usuario.'
-keywords='Diseñador Web, Web Designer, Desarrollador Frontend, Frontend Developer, Multimedia Design'>
+<Layout
+  title="Damián Parrilli - Portfolio Web"
+  description="Licenciado en Diseño Multimedial, un diseñador y desarrollador web entusiasta en el desarrollo de interfaces enfocado en la resolución de problemas con respecto a la experiencia de usuario."
+  keywords="Diseñador Web, Web Designer, Desarrollador Frontend, Frontend Developer, Multimedia Design"
+>
+  <div class="overlay">
+</div>
     <Banner />
     <Experiencia />
     <Proyectos />
     <Habilidades />
+    <Footer />
+  
 </Layout>

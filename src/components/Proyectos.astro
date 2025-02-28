@@ -7,13 +7,13 @@ import FreneticComics from './Proyectos/FreneticComics.astro';
 
 
 ---
-<section class="w-full bg-[#BFBFBF] dark:bg-[#303030] relative -z-20">
-    <div class="contenedor min-h-[20dvh] flex items-center px-4 sm:px-7">
+<section id="proyectos" class="w-full bg-[#BFBFBF] dark:bg-[#303030] relative -z-20">
+    <div class="contenedor min-h-[20dvh] flex items-center justify-center px-4 sm:px-7">
       <h2 class="font-bold text-[#272727] dark:text-[#F9F9F9] text-3xl sm:text-4xl">Mis proyectos</h2>
     </div>
   
     <section id="sectionPin">
-      <div class="pin-wrap-sticky contenedor">
+      <div class="pin-wrap-sticky contenedor overflow-x-hidden">
         <div class="pin-wrap flex">
           <BonteDeco />
           <BBRacingParts />
@@ -88,38 +88,38 @@ import FreneticComics from './Proyectos/FreneticComics.astro';
   </style>
 
   <script is:inline>
-    // Obtener las imágenes y los indicadores
 const pins = document.querySelectorAll('.pin-item');
 const indicators = document.querySelectorAll('.indicator');
 
-// Crear el IntersectionObserver
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      // Determinar cuál imagen está visible
       const index = Array.from(pins).indexOf(entry.target);
 
       if (entry.isIntersecting) {
-        // Marcar el indicador correspondiente
         indicators.forEach((indicator, i) => {
           if (i === index) {
             indicator.classList.add('active');
           } else {
             indicator.classList.remove('active');
           }
+          
         });
       }
+      
+      
     });
   },
   {
-    root: null, // Usar el viewport
-    threshold: 0.5, // Se activa cuando la imagen está al menos un 50% visible
+    root: null, 
+    threshold: 0.5, 
   }
 );
 
-// Observar todas las imágenes
+
 pins.forEach((pin) => {
   observer.observe(pin);
 });
+
 
   </script>
