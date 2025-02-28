@@ -1,12 +1,16 @@
 ---
-import Experiencia1 from './Experiencia/Experiencia1.astro';
-import Experiencia2 from './Experiencia/Experiencia2.astro';
+import Experiencia1 from "./Experiencia/Experiencia1.astro";
+import Experiencia2 from "./Experiencia/Experiencia2.astro";
 ---
-<button id="btn-ir-experiencia" class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded">
+
+<button
+  id="btn-ir-experiencia"
+  class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded"
+>
   Ir a Experiencia
 </button>
 <section
-  class="arriba absolute w-full flex min-h-[142dvh] sm:h-full bg-[#E0E0E0] dark:bg-[#1F1F1F] z-20"
+  class="arriba w-full flex min-h-[142dvh] sm:h-full bg-[#E0E0E0] dark:bg-[#1F1F1F] z-20"
 >
   <div
     class="contenedor otros py-52 sm:py-0 px-4 sm:px-7 flex flex-col gap-6 h-full w-full sm:justify-center"
@@ -19,33 +23,54 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
     <div class="flex relative flex-col w-full gap-8">
       <Experiencia1 />
       <Experiencia2 />
-      <div class="absolute h-full w-1 -z-10 top-4 left-[8.5px] bg-gradient-to-b from-[#055A97] from-85% to-[#E0E0E0] to-100% dark:from-[#3D7AFF] dark:to-[#1F1F1F]"></div>
+      <div
+        class="absolute h-full w-1 -z-10 top-4 left-[8.5px] bg-gradient-to-b from-[#055A97] from-85% to-[#E0E0E0] to-100% dark:from-[#3D7AFF] dark:to-[#1F1F1F]"
+      >
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .arriba {
-    animation: mover-arriba linear forwards;
-    animation-timeline: view();
-    animation-range: entry 0% entry 60%;
-    clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%);
+  @supports (animation-timeline: view()) {
+    .arriba {
+      animation: mover-arriba linear forwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+      clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%);
+      position: absolute;
+    }
+    @keyframes mover-arriba {
+      0% {
+        transform: translateY(0);
+      }
+      60% {
+        transform: translateY(-50%);
+      }
+      100% {
+        transform: translateY(-98%);
+      }
+    }
   }
 
+  @supports not (animation-timeline: view()) {
+    .arriba {
+      position: relative;
+      min-height: 100dvh;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      height: max-content;
+      justify-content: center;
+      align-items: center;
+    }
 
-  @keyframes mover-arriba {
-    0% {
-      transform: translateY(0);
+    .contenedor {
+      padding-top: 0;
+      padding-bottom: 0;
     }
-    60%{
-      transform: translateY(-50%);
-    }
-    100% {
-      transform: translateY(-98%);
-    }
+
+
   }
-
-  
 </style>
 
 <style is:global>
@@ -57,18 +82,18 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    background-color: #E0E0E0;
-    border: 6px solid #055A97;
+    background-color: #e0e0e0;
+    border: 6px solid #055a97;
   }
 
-  html.dark .lista-item::before{
+  html.dark .lista-item::before {
     background-color: #1f1f1f;
     border: 6px solid #3d7aff;
   }
 
   .lista-item:hover::before {
     cursor: pointer;
-    border: 6px solid #055A97;
+    border: 6px solid #055a97;
   }
 
   html.dark .lista-item:hover::before {
@@ -78,15 +103,16 @@ import Experiencia2 from './Experiencia/Experiencia2.astro';
 </style>
 
 <script is:inline>
-document.getElementById("btn-ir-experiencia").addEventListener("click", () => {
-  const target = document.querySelector(".arriba");
-  if (!target) return;
+  document
+    .getElementById("btn-ir-experiencia")
+    .addEventListener("click", () => {
+      const target = document.querySelector(".arriba");
+      if (!target) return;
 
-  const alturaDiv = target.offsetHeight;
+      const alturaDiv = target.offsetHeight;
 
-  const posicionFinal = target.offsetTop - (alturaDiv * 0.45); 
+      const posicionFinal = target.offsetTop - alturaDiv * 0.45;
 
-  window.scrollTo({ top: posicionFinal, behavior: "smooth" });
-});
-
+      window.scrollTo({ top: posicionFinal, behavior: "smooth" });
+    });
 </script>

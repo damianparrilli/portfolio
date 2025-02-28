@@ -1,5 +1,5 @@
 <section
-  class="banner w-full h-[170dvh] min-[430px]:h-[200dvh] flex flex-col bg-gradient-to-b from-[#FBFBFB] from-0% to-[#CECECE] to-10% sm:to-25% dark:from-[#040404] dark:to-[#313131] relative"
+  class="banner w-full h-[200dvh] flex flex-col bg-gradient-to-b from-[#FBFBFB] from-0% to-[#CECECE] to-10% sm:to-25% dark:from-[#040404] dark:to-[#313131] relative"
 >
   <div
     id="sobre-mi"
@@ -12,7 +12,7 @@
     <div id="animacion" class="w-full h-full px-1 sm:px-0"></div>
   </div>
   <div
-    class="text-banner w-full flex h-[115dvh] min-[430px]:h-[130dvh] bg-[#E0E0E0] dark:bg-[#1f1f1f]"
+    class="text-banner w-full flex h-[185vh] sm:h-[130vh] bg-[#E0E0E0] dark:bg-[#1f1f1f]"
   >
     <div
       class="contenedor relative px-4 sm:px-7 w-full flex gap-2 flex-col min-[430px]:flex-row justify-start"
@@ -211,18 +211,19 @@
       top: 5%;
       transition: transform 0.5s ease-in-out;
       z-index: 90;
-      margin-bottom: 50dvh;
     }
+
+    .cambiado{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+    }
+
     .imagen-banner-img {
       transform: translateX(0);
       transition: transform 0.5s ease-in-out;
+      
     }
 
-    .cambiado {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-
-    
     .texto-2 {
       transition: opacity 0.5s ease-in-out;
     }
@@ -247,7 +248,6 @@
       animation: opacidad-texto linear forwards;
       animation-timeline: view();
       animation-range: contain;
-      view-timeline-name: --texto-banner;
     }
 
     @keyframes opacidad-texto {
@@ -276,13 +276,25 @@
       }
     }
 
+    @keyframes opacidad-texto-2 {
+      95% {
+        opacity: 0;
+        pointer-events: none;
+      }
+      100% {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
 
     @keyframes opacidad-texto-2-sm {
-      60% {
+      70% {
         opacity: 0;
+        pointer-events: none;
       }
-      90%, 100% {
+      100% {
         opacity: 1;
+        pointer-events: all;
       }
     }
 
@@ -307,36 +319,36 @@
     }
 
     .imagen-banner {
-      pointer-events: none;
+      view-timeline-name: --move;
+      view-timeline-axis: block;
       margin-top: clamp(1.25rem, -2.756rem + 12.821vh, 10.625rem);
-      top: 5%;
-      transition: transform 0.5s ease-in-out;
-      z-index: 90;
-    }
-
-    @media (width < 430px){
-      .imagen-banner {
       top: 30%;
-    }
-    }
-    .imagen-banner-img {
-      transform: translateX(0);
-      transition: transform 0.5s ease-in-out;
     }
 
     .texto-2 {
-      transition: opacity 0.5s ease-in-out;
+      animation: opacidad-texto-2 linear forwards;
+      animation-timeline: --move;
+      animation-range: contain 20% contain 50%;
     }
 
     @media (width < 430px) {
       .texto-2 {
         animation: opacidad-texto-2-sm linear forwards;
-        animation-timeline: view();
+        animation-timeline: --move;
         animation-range: contain 25% contain 45%;
-        opacity: 0;
       }
     }
-   
+    @media (width >= 430px) {
+      .imagen-banner {
+      }
+
+      .imagen-banner-img {
+        animation: mover-imagen linear forwards;
+        animation-timeline: --move;
+        animation-range: contain 20% contain 60%;
+        animation-play-state: paused;
+      }
+    }
   }
 
   @media (width >= 900px) {
@@ -421,64 +433,48 @@
   });
 
   document.addEventListener("DOMContentLoaded", () => {
+    const parent = document.querySelector(".imagen-banner");
+    const img = document.querySelector(".imagen-banner-img");
     if (CSS.supports("animation-timeline", "view()")) {
-      const parent = document.querySelector(".imagen-banner");
-      const img = document.querySelector(".imagen-banner-img");
-      
-      const textoBanner = document.querySelector(".texto-banner");
+      function updateMoveDistance() {
+        if (parent && img) {
+          requestAnimationFrame(() => {
+            const parentWidth = parent.offsetWidth;
+            const imgWidth = img.offsetWidth;
 
-     
+            const totalDistance = parentWidth - imgWidth;
+            setupAnimations(totalDistance);
 
-      const animatedDiv = document.querySelector(".texto-2");
-
-      let hasPassed100 = false;
-
-      function handleScroll() {
-        if (window.innerWidth >= 430) {
-        const parentWidth = parent.offsetWidth;
-      const imgWidth = img.offsetWidth;
-
-      const totalDistance = parentWidth - imgWidth;
-
-        const progress =
-          textoBanner.getBoundingClientRect().top / window.innerHeight;
-
-        if (progress <= 0) {
-          if (!hasPassed100) {
-            ejecutarAccion(totalDistance);
-            hasPassed100 = true;
-          }
-        } else {
-          if (hasPassed100) {
-            restaurarEstado();
-            hasPassed100 = false;
-          }
+            img.style.animationPlayState = "running";
+          });
         }
       }
+
+      window.addEventListener("load", updateMoveDistance);
+      window.addEventListener("resize", updateMoveDistance);
+
+      function setupAnimations(total) {
+        if (window.innerWidth >= 430) {
+          document.querySelectorAll(".imagen-banner-img").forEach((element) => {
+            const keyframes = [
+              { transform: "translateX(0)" },
+              { transform: `translateX(-${total}px)` },
+            ];
+            element.animate(keyframes, {
+              duration: 1,
+              fill: "forwards",
+              timeline: new ViewTimeline({
+                subject: document.querySelector(".imagen-banner"),
+              }),
+              rangeStart: { rangeName: "contain", offset: CSS.percent(20) },
+              rangeEnd: { rangeName: "contain", offset: CSS.percent(50) },
+            });
+          });
+        }
       }
 
-      function ejecutarAccion(total) {
-          img.style.transform = `translateX(-${total}px)`;
-        parent.style.transform = `translateY(25dvh)`;
-
-        parent.style.pointerEvents = "auto";
-        animatedDiv.classList.add("opacity-100");
-      }
-
-      function restaurarEstado() {
-        img.style.transform = `translateX(0px)`;
-        parent.style.transform = `translateY(0)`;
-        parent.style.pointerEvents = "none";
-        animatedDiv.classList.remove("opacity-100");
-      }
-
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", handleScroll);
-
+      updateMoveDistance();
     } else {
-      const parent = document.querySelector(".imagen-banner");
-      const img = document.querySelector(".imagen-banner-img");
-
       const animatedDiv = document.querySelector(".texto-2");
       const triggerPosition = window.innerHeight * 0.5;
 
@@ -491,10 +487,10 @@
         if (scrollY >= triggerPosition) {
           animatedDiv.classList.add("opacity-100");
           if (window.innerWidth >= 430) {
-            img.style.transform = `translateX(-${totalDistance}px)`;
-          }
+          img.style.transform = `translateX(-${totalDistance}px)`;
+        }
           parent.style.transform = `translateY(25dvh)`;
-
+     
           parent.style.pointerEvents = "auto";
           if (document.documentElement.classList.contains("dark")) {
             document.querySelector(".text-banner").style.backgroundColor =
@@ -503,8 +499,9 @@
             document.querySelector(".text-banner").style.backgroundColor =
               "#d0d0d0";
           }
-          document.querySelector(".texto-banner").style.opacity = "0";
-          document.querySelector(".text-banner").classList.add("cambiado");
+         document.querySelector(".texto-banner").style.opacity = "0";
+         document.querySelector(".text-banner").classList.add("cambiado");
+
         } else {
           animatedDiv.classList.remove("opacity-100");
           img.style.transform = `translateX(0px)`;
@@ -523,7 +520,6 @@
       }
 
       window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", handleScroll);
     }
   });
 

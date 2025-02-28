@@ -98,14 +98,7 @@
 </section>
 
 <style is:global>
-  @keyframes mover-hacia-arriba {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-55dvh);
-    }
-  }
+ 
 
   @keyframes overlay-opacity {
     from {
@@ -129,7 +122,15 @@
   transition: opacity 0.3s ease-in-out; /* Transición suave de 0.5s */
 }
 
-
+@supports (animation-timeline: view()){
+@keyframes mover-hacia-arriba {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-55dvh);
+    }
+  }
   .hola {
     view-timeline-name: --hola;
     animation: mover-hacia-arriba linear forwards;
@@ -138,6 +139,7 @@
     animation-range: entry 30% entry 100%;
     clip-path: polygon(0 20px, 100% 0, 100% 100%, 0% 100%);
   }
+}
 </style>
 
 <script is:inline>
@@ -153,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.opacity = "0";
       }
     },
-    { threshold: 0.3 } // Se activa cuando el 30% del elemento es visible
+    { threshold: 0.5 } // Se activa cuando el 30% del elemento es visible
   );
 
   observer.observe(target);

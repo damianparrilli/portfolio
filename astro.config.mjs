@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['trying-instructions-discovery-errors.trycloudflare.com'],
+      allowedHosts: ['paper-chains-forget-referrals.trycloudflare.com'],
     }
   }
 });
