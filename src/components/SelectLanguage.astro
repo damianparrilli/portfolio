@@ -1,0 +1,19 @@
+<select id="languageSwitcher">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+  </select>
+  
+  <script is:inline>
+    const select = document.getElementById("languageSwitcher");
+  
+    select.addEventListener("change", (event) => {
+      const lang = event.target.value;
+      localStorage.setItem("lang", lang);
+      document.documentElement.setAttribute("lang", lang);
+      updateText(lang);
+    });
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      select.value = localStorage.getItem("lang") || "es";
+    });
+  </script>

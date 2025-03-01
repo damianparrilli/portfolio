@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import SelectLanguage from "../components/SelectLanguage.astro";
+
 interface Props {
   title: string;
   description: string;
@@ -41,25 +43,99 @@ const { title, description, keywords } = Astro.props;
     />
 
     <meta name="viewport" content="width=device-width" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Italiana&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        as="style" onload="this.rel='stylesheet'">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Italiana&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    
   </head>
   
+
   <body class="bg-[#E0E0E0] dark:bg-[#1f1f1f]">
-    
+    <SelectLanguage />
     <slot />
-    
   </body>
 </html>
 
 <script is:inline>
+  const supportsScrollDrivenAnimation = CSS.supports(
+    "animation-timeline: view()"
+  );
+
+  if (!supportsScrollDrivenAnimation) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+    document.head.appendChild(link);
+
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+    script.onload = () => {
+      AOS.init();
+    };
+    document.body.appendChild(script);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const defaultLang = navigator.language.startsWith("es") ? "es" : "en";
+  const savedLang = localStorage.getItem("lang") || defaultLang;
+  localStorage.setItem("lang", savedLang);
+  document.documentElement.setAttribute("lang", savedLang);
+  updateText(savedLang);
+});
+
+function updateText(lang) {
+  fetch("/data/translations.json")
+    .then(response => response.json())
+    .then(data => {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+
+        if (el.querySelector("svg")) {
+          const svgElement = el.querySelector("svg");
+          const text = data[lang][key];
+          
+          const textNode = el.lastChild;
+
+          if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+            textNode.textContent = text;
+          } else {
+            el.innerHTML = svgElement.outerHTML + text;
+          }
+        } else {
+          el.textContent = data[lang][key];
+        }
+      });
+
+      const roleElement = document.querySelector("[data-i18n='role']");
+      if (roleElement) {
+        roleElement.innerHTML = data[lang]["role"];
+        initializeTxtRotate();
+      }
+    });
+}
+
+function initializeTxtRotate() {
+  var elements = document.getElementsByClassName("txt-rotate");
+  for (var i = 0; i < elements.length; i++) {
+    var toRotate = elements[i].getAttribute("data-rotate");
+    var period = elements[i].getAttribute("data-period");
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+}
+
+window.onload = initializeTxtRotate;
+
+
+
   function markImage(clickedImage) {
     const parentContainer = clickedImage.closest(".image-container");
 

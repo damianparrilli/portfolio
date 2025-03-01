@@ -27,7 +27,7 @@
           class="invisible w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full min-[430px]:hidden"
         />
         <h1
-          class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl"
+          class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl" data-i18n="role"
         >
           Soy <span
             class="txt-rotate"
@@ -39,7 +39,7 @@
         <div class="botones w-max flex gap-1 sm:gap-3">
           <a
             href="mailto:damiparrilli@gmail.com"
-            class="group px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
+            class="group px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out" data-i18n="contactMe"
           >
             <svg
               class="w-5 h-auto"
@@ -57,7 +57,7 @@
           <a
             href="https://wa.me/541160518730"
             target="_blank"
-            class="group px-3 sm:px-[18px] text-sm sm:text-base py-2 text-[#09830D] bg-[#e4f3e4] hover:text-[#f9f9f9] hover:bg-[#09830D] dark:bg-[#253126] dark:text-[#5FD663] dark:hover:bg-[#5fd66f] dark:hover:text-[#353535] rounded-4xl border-whatsapp font-medium flex items-center gap-2 transition-all duration-300 ease-in-out"
+            class="group px-3 sm:px-[18px] text-sm sm:text-base py-2 text-[#09830D] bg-[#e4f3e4] hover:text-[#f9f9f9] hover:bg-[#09830D] dark:bg-[#253126] dark:text-[#5FD663] dark:hover:bg-[#5fd66f] dark:hover:text-[#353535] rounded-4xl border-whatsapp font-medium flex items-center gap-2 transition-all duration-300 ease-in-out" data-i18n="writeMe"
             ><svg
               class="w-5 h-auto"
               viewBox="0 0 15 15"
@@ -135,7 +135,7 @@
             <a
               href="https://drive.google.com/file/d/1zmaLM61esZ7PXP0E0kmiO99Xc3q8hsTI/view?usp=sharing"
               target="_blank"
-              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
+              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out" data-i18n="myCv"
             >
               <svg
                 class="w-5 h-auto"
@@ -175,14 +175,14 @@
             >
           </div>
           <h2
-            class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl"
+            class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl" data-i18n="aboutMeTitle"
           >
             Un poco sobre mi
           </h2>
           <p
-            class="text-[#272727] dark:text-[#F9F9F9] w-full text-sm sm:text-lg"
+            class="text-[#272727] dark:text-[#F9F9F9] w-full text-sm sm:text-lg" data-i18n="aboutMe"
           >
-            Soy licenciado en Diseño Multimedial, recibido en la Universidad
+            Tengo 25 años. Soy licenciado en Diseño Multimedial, recibido en la Universidad
             Nacional de La Plata. Resido en Quilmes, Buenos Aires, Argentina. Me
             especializo en el área web, utilizando herramientas de diseño como
             también de lenguajes de programación para el desarrollo de páginas.
@@ -547,7 +547,6 @@
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    // Si es la última palabra, aplicar clase especial
     let spanClass = i === this.toRotate.length - 1 ? "final-word" : "";
 
     this.el.innerHTML = `<span class="wrap ${spanClass}">${this.txt}</span>`;
@@ -561,7 +560,7 @@
 
     if (!this.isDeleting && this.txt === fullTxt) {
       if (i === this.toRotate.length - 1) {
-        return; // 🚀 Se detiene en la última palabra
+        return;
       }
       delta = this.period;
       this.isDeleting = true;
