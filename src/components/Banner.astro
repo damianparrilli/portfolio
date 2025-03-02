@@ -405,33 +405,39 @@
 <script is:inline>
   function loadLottieScript(callback) {
     if (window.bodymovin) {
-      callback();
+        callback();
     } else {
-      let script = document.createElement("script");
-      script.src = "/assets/logoAnim/lottie.js";
-      script.onload = callback;
-      script.onerror = () => console.error("Error al cargar Lottie.js");
-      document.body.appendChild(script);
+        let script = document.createElement("script");
+        script.src = "/assets/logoAnim/lottie.js";
+        script.onload = callback;
+        script.onerror = () => console.error("Error al cargar Lottie.js");
+        document.body.appendChild(script);
     }
-  }
+}
 
-  loadLottieScript(() => {
+loadLottieScript(() => {
     let animContainer = document.getElementById("animacion");
+    let overlay = document.querySelector(".overlayTotal"); 
     if (!animContainer) {
-      console.error("No se encontró el div con ID 'animacion'");
-      return;
+        console.error("No se encontró el div con ID 'animacion'");
+        return;
     }
 
     let animation = window.bodymovin.loadAnimation({
-      container: animContainer,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      path: "/assets/logoAnim/animacion.json",
+        container: animContainer,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "/assets/logoAnim/animacion.json",
     });
 
-    animation.play();
-  });
+    animation.addEventListener("DOMLoaded", () => {
+        if (overlay) {
+            overlay.classList.add("completado"); 
+        }
+    });
+});
+
 
   document.addEventListener("DOMContentLoaded", () => {
     if (CSS.supports("animation-timeline", "view()")) {
