@@ -21,7 +21,35 @@ const { title, description, keywords } = Astro.props;
     <meta name="description" content={description} />
     <meta name="kewords" content={keywords} />
 
-  
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://damianparrilli.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Diseñador y desarrollador web Front-end. Dedicado al diseño y prototipado de paginas web, como también su implementación en diferentes tecnologías."
+    />
+    <meta
+      property="og:image"
+      content="https://opengraph.b-cdn.net/production/images/52772978-5ccd-4d5d-b6a9-3dbd8af4c560.png?token=zeXtrr6TmqSc417bmcj2vS1Ko4oie_1IyJMK-OSmoBE&height=630&width=1200&expires=33276952106"
+    />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="damianparrilli.netlify.app" />
+    <meta
+      property="twitter:url"
+      content="https://damianparrilli.netlify.app/"
+    />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Diseñador y desarrollador web Front-end. Dedicado al diseño y prototipado de paginas web, como también su implementación en diferentes tecnologías."
+    />
+    <meta
+      name="twitter:image"
+      content="https://opengraph.b-cdn.net/production/images/52772978-5ccd-4d5d-b6a9-3dbd8af4c560.png?token=zeXtrr6TmqSc417bmcj2vS1Ko4oie_1IyJMK-OSmoBE&height=630&width=1200&expires=33276952106"
+    />
 
     <meta name="viewport" content="width=device-width" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,9 +60,23 @@ const { title, description, keywords } = Astro.props;
       as="style"
       onload="this.rel='stylesheet'"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_dark/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_dark//favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_dark//favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_dark/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_dark//favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_dark//favicon-16x16.png"
+    />
     <link rel="manifest" href="/favicon_dark/site.webmanifest" />
 
     <meta name="generator" content={Astro.generator} />
@@ -44,15 +86,24 @@ const { title, description, keywords } = Astro.props;
       const savedLang = localStorage.getItem("lang") || defaultLang;
       localStorage.setItem("lang", savedLang);
       document.documentElement.setAttribute("lang", savedLang);
-      
     </script>
   </head>
 
   <body class="bg-[#E0E0E0] dark:bg-[#1f1f1f]">
     <div class="overlayTotal bg-[#F9F9F9] dark:bg-[#272727]">
-      <svg class="w-24 sm:w-36 h-auto svg-animation" viewBox="0 0 88 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="fill-[#272727] dark:fill-[#F9F9F9]" fill-rule="evenodd" clip-rule="evenodd" d="M53.0491 0.15089C51.0342 0.496958 49.3027 1.85761 48.4061 3.7994C47.9325 4.82499 47.9222 5.07519 48.0041 13.5904V22.2456V22.2456C48.0041 23.152 47.2694 23.8867 46.363 23.8867H46.0965L36.8928 24.0252C28.0368 24.1502 26.8976 24.2096 25.1402 24.6392C20.8146 25.6962 17.4986 27.1139 14.0365 29.3866C6.60657 34.2637 1.6978 41.7479 0.286133 50.3502C-0.182056 53.2036 -0.0563664 59.3716 0.522174 61.9338C3.05818 73.1625 10.9897 81.9252 21.7084 85.3398C25.9962 86.706 25.5613 86.6759 42.4674 86.7745L58.0774 86.8654L59.2459 86.3617C60.6271 85.7666 62.0335 84.2693 62.4177 82.985C62.8115 81.6688 62.7616 77.5082 62.3371 76.2606C61.8795 74.9153 60.8504 73.6891 59.522 72.907L58.4515 72.2766L43.5702 72.147C27.4876 72.0071 27.9899 72.0452 24.6945 70.7118C20.5192 69.0226 16.918 65.1362 15.4085 60.6905C11.9874 50.6149 18.8656 40.0558 29.7395 38.6899C30.8375 38.5521 36.4374 38.4484 42.8774 38.447C55.0281 38.4443 55.086 38.4392 57.4348 37.1588C58.856 36.3839 60.8552 34.3022 61.6027 32.8184C62.6853 30.6702 62.7165 30.1246 62.6421 14.5986L62.5725 0.0357633L58.337 0.00296824C56.0075 -0.0151493 53.6279 0.0515875 53.0491 0.15089ZM29.1467 48.2869C27.1652 48.7903 25.9115 49.8489 25.0816 51.7201C24.6997 52.5808 24.6498 53.1264 24.724 55.6188C24.8176 58.7611 24.9786 59.2845 26.3259 60.8215C26.7213 61.2726 27.5693 61.9191 28.2104 62.2578L29.3757 62.8738L44.4859 62.9965C59.5422 63.1188 59.6015 63.1211 61.0768 63.649C64.0446 64.711 65.755 65.7508 67.777 67.7218C71.1862 71.0448 72.8275 74.953 72.8202 79.73C72.8081 87.6137 67.1278 94.3846 59.1383 96.0388C57.2891 96.4218 55.8805 96.466 45.4017 96.4713C32.6036 96.4775 32.5376 96.4835 29.9558 97.8618C27.6087 99.1151 25.5393 101.856 24.925 104.525C24.7822 105.145 24.6915 111.172 24.6878 120.265L24.6823 135H29.334C35.1059 135 35.8825 134.819 37.6364 133.062C39.6062 131.088 39.6532 130.779 39.4664 121.022C39.3143 113.093 39.3228 112.849 39.7731 112.13C40.028 111.723 40.4712 111.34 40.7585 111.278C41.0458 111.216 45.3502 111.122 50.324 111.068C58.5236 110.98 59.5809 110.925 61.6567 110.474C68.3993 109.009 73.5778 106.207 78.4012 101.414C84.4643 95.3882 87.4433 88.2063 87.4433 79.6154C87.4433 71.2047 84.5034 63.8737 78.6008 57.5661C77.6594 56.5602 75.3434 54.6466 73.7873 53.5892C70.4486 51.3206 66.6415 49.7164 62.2556 48.7302C60.1393 48.2543 59.4701 48.233 44.9438 48.1738C36.6332 48.1401 29.5245 48.191 29.1467 48.2869Z"/>
-        </svg>
+      <svg
+        class="w-24 sm:w-36 h-auto svg-animation"
+        viewBox="0 0 88 135"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="fill-[#272727] dark:fill-[#F9F9F9]"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M53.0491 0.15089C51.0342 0.496958 49.3027 1.85761 48.4061 3.7994C47.9325 4.82499 47.9222 5.07519 48.0041 13.5904V22.2456V22.2456C48.0041 23.152 47.2694 23.8867 46.363 23.8867H46.0965L36.8928 24.0252C28.0368 24.1502 26.8976 24.2096 25.1402 24.6392C20.8146 25.6962 17.4986 27.1139 14.0365 29.3866C6.60657 34.2637 1.6978 41.7479 0.286133 50.3502C-0.182056 53.2036 -0.0563664 59.3716 0.522174 61.9338C3.05818 73.1625 10.9897 81.9252 21.7084 85.3398C25.9962 86.706 25.5613 86.6759 42.4674 86.7745L58.0774 86.8654L59.2459 86.3617C60.6271 85.7666 62.0335 84.2693 62.4177 82.985C62.8115 81.6688 62.7616 77.5082 62.3371 76.2606C61.8795 74.9153 60.8504 73.6891 59.522 72.907L58.4515 72.2766L43.5702 72.147C27.4876 72.0071 27.9899 72.0452 24.6945 70.7118C20.5192 69.0226 16.918 65.1362 15.4085 60.6905C11.9874 50.6149 18.8656 40.0558 29.7395 38.6899C30.8375 38.5521 36.4374 38.4484 42.8774 38.447C55.0281 38.4443 55.086 38.4392 57.4348 37.1588C58.856 36.3839 60.8552 34.3022 61.6027 32.8184C62.6853 30.6702 62.7165 30.1246 62.6421 14.5986L62.5725 0.0357633L58.337 0.00296824C56.0075 -0.0151493 53.6279 0.0515875 53.0491 0.15089ZM29.1467 48.2869C27.1652 48.7903 25.9115 49.8489 25.0816 51.7201C24.6997 52.5808 24.6498 53.1264 24.724 55.6188C24.8176 58.7611 24.9786 59.2845 26.3259 60.8215C26.7213 61.2726 27.5693 61.9191 28.2104 62.2578L29.3757 62.8738L44.4859 62.9965C59.5422 63.1188 59.6015 63.1211 61.0768 63.649C64.0446 64.711 65.755 65.7508 67.777 67.7218C71.1862 71.0448 72.8275 74.953 72.8202 79.73C72.8081 87.6137 67.1278 94.3846 59.1383 96.0388C57.2891 96.4218 55.8805 96.466 45.4017 96.4713C32.6036 96.4775 32.5376 96.4835 29.9558 97.8618C27.6087 99.1151 25.5393 101.856 24.925 104.525C24.7822 105.145 24.6915 111.172 24.6878 120.265L24.6823 135H29.334C35.1059 135 35.8825 134.819 37.6364 133.062C39.6062 131.088 39.6532 130.779 39.4664 121.022C39.3143 113.093 39.3228 112.849 39.7731 112.13C40.028 111.723 40.4712 111.34 40.7585 111.278C41.0458 111.216 45.3502 111.122 50.324 111.068C58.5236 110.98 59.5809 110.925 61.6567 110.474C68.3993 109.009 73.5778 106.207 78.4012 101.414C84.4643 95.3882 87.4433 88.2063 87.4433 79.6154C87.4433 71.2047 84.5034 63.8737 78.6008 57.5661C77.6594 56.5602 75.3434 54.6466 73.7873 53.5892C70.4486 51.3206 66.6415 49.7164 62.2556 48.7302C60.1393 48.2543 59.4701 48.233 44.9438 48.1738C36.6332 48.1401 29.5245 48.191 29.1467 48.2869Z"
+        ></path>
+      </svg>
     </div>
     <SelectLanguage />
     <NavMenu />
@@ -63,20 +114,19 @@ const { title, description, keywords } = Astro.props;
 <style>
   @keyframes rotacionInfinita {
     0% {
-    transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
   }
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg); 
-  }
-}
 
-.svg-animation {
-  animation: rotacionInfinita 1.5s infinite; /* 2s para el ciclo completo */
-}
-
+  .svg-animation {
+    animation: rotacionInfinita 1.5s infinite; /* 2s para el ciclo completo */
+  }
 </style>
 
 <script is:inline>
