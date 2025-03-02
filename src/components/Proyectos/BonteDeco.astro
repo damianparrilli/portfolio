@@ -5,7 +5,7 @@
   <div class="bg-[#4D5143] rounded-3xl w-full h-full flex py-4 md:p-4 flex-col gap-2 md:gap-7">
     <div class="w-full h-full flex flex-col md:flex-row px-4 md:px-0 image-container">
       <div
-        class="backgroundDiv flex w-full shrink-0 md:shrink grow-0 md:grow md:h-full flex-auto bg-[url(/bonte-deco.png)] rounded-2xl bg-cover bg-top bg-no-repeat aspect-video md:aspect-auto"
+        class="backgroundDiv flex w-full shrink-0 md:shrink grow-0 md:grow md:h-full flex-auto bg-[url(/bonte-deco.webp)] rounded-2xl bg-cover bg-top bg-no-repeat aspect-video md:aspect-auto"
       >
       </div>
       <div class="flex flex-col py-2 w-full md:px-4 gap-4 div-principal">
@@ -89,7 +89,7 @@
             funcional con Netlify Forms.
           </p>
         </div>
-        <div class="gap-2 items-center flex order-3 md:order-2">
+        <div class="gap-2 items-center flex order-3 md:order-2 div-principal-botones">
           <a
             href="https://github.com/damianparrilli/bonte-deco-landingpage" target="_blank"
             class="group w-max h-full px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base  text-[#F9F9F9] hover:bg-[#f9f9f9] rounded-4xl bg-[#F9F9F910] hover:text-[#353535] border-1 border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out"
@@ -146,7 +146,7 @@
             class="flex gap-4 md:flex-wrap overflow-auto"
           >
             <img
-              src="/bonte-deco.png"
+              src="/bonte-deco.webp"
               alt=""
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 border-[#3D7AFF] border-2 cursor-pointer"
             />
@@ -180,7 +180,7 @@
       </div>
     </div>
     <div class="flex w-full h-max p-4 justify-between gap-12 div-adicional">
-      <div class="h-full flex flex-col gap-4">
+      <div class="h-full flex flex-col gap-4 div-adicional-fonts">
         <h4 class="font-semibold text-[#F9F9F9] text-xl sm:text-2xl" data-i18n="fonts"> 
           Tipografías
         </h4>
@@ -210,7 +210,7 @@
         <h4 class="font-semibold text-[#F9F9F9] text-xl sm:text-2xl" data-i18n="colors">
           Colores
         </h4>
-        <div class="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap">
+        <div class="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap div-adicional-color">
           <div class="flex flex-col gap-2 items-center">
             <div
               class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#F9F9F9]"
@@ -264,13 +264,59 @@
     }
   }
 
-  @media (width < 768px) and (height < 880px) {
-    .div-adicional{
+  @media (width < 768px) and (height < 880px) and (height > 820px){
+     .div-adicional-color > * > :nth-child(1){
+      width: 45px;
+      height: 45px;
+    }
+
+    .div-adicional-color > * > :nth-child(2){
       display: none;
     }
-    .div-principal{
-      height: 100%;
-      justify-content: space-evenly;
+    .div-adicional{
+      gap: 40px;
     }
   }
+
+  @media (width < 768px) and (height >= 800px) and (height <= 820px) {
+    .div-adicional-color{
+      gap: 8px;
+    }
+
+    .div-adicional-fonts{
+      gap: 8px;
+    }
+    .div-adicional-color > * > :nth-child(1){
+      width: 45px;
+      height: 45px;
+    }
+
+    .div-adicional-color > * > :nth-child(2){
+      display: none;
+    }
+    .div-adicional{
+      padding: 0 16px;
+      gap: 40px;
+    }
+  }
+
+  @media (width < 768px) and (height < 800px) {
+  .div-adicional{
+    display: none;
+  }
+  .div-principal{
+    height: 100%;
+    justify-content: flex-start;
+  }
+
+  .div-principal-botones{
+    margin-top: auto;
+  }
+
+  .backgroundDiv {
+    height: clamp(11.5rem, -9.083rem + 50.667vh, 16.25rem);
+  }
+ }
 </style>
+
+

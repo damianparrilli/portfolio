@@ -3,13 +3,7 @@ import Experiencia1 from "./Experiencia/Experiencia1.astro";
 import Experiencia2 from "./Experiencia/Experiencia2.astro";
 ---
 
-<button
-  id="btn-ir-experiencia"
-  class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded"
->
-  Ir a Experiencia
-</button>
-<section
+<section id="experiencia"
   class="arriba w-full flex min-h-[142dvh] sm:h-full bg-[#E0E0E0] dark:bg-[#1F1F1F] z-20" 
 >
   <div
@@ -103,17 +97,3 @@ import Experiencia2 from "./Experiencia/Experiencia2.astro";
   }
 </style>
 
-<script is:inline>
-  document
-    .getElementById("btn-ir-experiencia")
-    .addEventListener("click", () => {
-      const target = document.querySelector(".arriba");
-      if (!target) return;
-
-      const alturaDiv = target.offsetHeight;
-
-      const posicionFinal = target.offsetTop - alturaDiv * 0.45;
-
-      window.scrollTo({ top: posicionFinal, behavior: "smooth" });
-    });
-</script>

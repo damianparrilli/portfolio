@@ -8,10 +8,10 @@ import FreneticComics from "./Proyectos/FreneticComics.astro";
 
 <section
   id="proyectos"
-  class="w-full bg-[#BFBFBF] dark:bg-[#303030] relative -z-20"
+  class="w-full bg-[#cccccc] dark:bg-[#303030] relative -z-20"
 >
   <div
-    class="contenedor min-h-[20dvh] bg-[#BFBFBF] dark:bg-[#303030] flex items-center justify-center px-4 sm:px-7"
+    class="contenedor min-h-[20dvh] bg-[#cccccc] dark:bg-[#303030] flex items-center justify-center px-4 sm:px-7"
   >
     <h2
       class="font-bold text-[#272727] dark:text-[#F9F9F9] text-3xl sm:text-4xl" data-i18n="myProjects"
@@ -33,7 +33,7 @@ import FreneticComics from "./Proyectos/FreneticComics.astro";
   </section>
 
   <div
-    class="carousel-indicator flex justify-center items-center sticky bottom-0 h-[7dvh] -z-10"
+    class="carousel-indicator flex justify-center items-center sticky bottom-0 h-[9dvh] md:h-[7dvh] -z-10"
   >
     <div
       class="indicator w-3 h-3 rounded-full bg-[#4e4e4e] dark:bg-[#F9F9F9]"
@@ -166,6 +166,15 @@ import FreneticComics from "./Proyectos/FreneticComics.astro";
         display: none;
       }
     }
+
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (width < 768px){
+    .pin-item {
+      height: 91dvh;
+    }
+  }
 
   }
 </style>

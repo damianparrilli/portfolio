@@ -4,7 +4,7 @@
         "contactMe": "Contactame",
         "writeMe": "Escribime",
         "myCv": "Mi CV",
-        "aboutMeTitle": "Un poco sobre mi",
+        "aboutMeTitle": "Un poco <span class='text-[#055a97] dark:text-[#3D7AFF]'>sobre mi</span>",
         "aboutMe": "Tengo 25 años. Soy licenciado en Diseño Multimedial, recibido en la Universidad Nacional de La Plata. Resido en Quilmes, Buenos Aires, Argentina. Meespecializo en el área web, utilizando herramientas de diseño como también de lenguajes de programación para el desarrollo de páginas.",
         "myExperienceTitle": "Mi experiencia",
         "devsignerFreelo": "Diseñador Web y Desarrollador Front-end",
@@ -35,14 +35,19 @@
         "myCertificates": "Mis certificados",
         "certName1": "Licenciatura en Diseño Multimedial",
         "certName2": "Curso Full-Stack Node.js",
-        "viewCert": "Ver certificado"
+        "viewCert": "Ver certificado",
+        "navMenu1": "Sobre mi",
+        "navMenu2": "Experiencia",
+        "navMenu3": "Proyectos",
+        "navMenu4": "Habilidades",
+        "navMenu5": "Contacto"
     },
     "en": {
         "role": "I am <span class='txt-rotate' data-period='2000' data-rotate='[\"designer\", \"developer\", \"devsigner\"]'></span>",
         "contactMe": "Contact me",
         "writeMe": "Write me",
         "myCv": "My CV",
-        "aboutMeTitle": "A little about me",
+        "aboutMeTitle": "A little <span class='text-[#055a97] dark:text-[#3D7AFF]'>about me</span>",
         "aboutMe": "I am 25. I have a degree in Multimedia Design, graduated from Universidad Nacional de La Plata. I live in Quilmes, Buenos Aires, Argentina. I am a specialist in the web area, where I use design tools as well as programming languages for the development of web pages.",
         "myExperienceTitle": "My experience",
         "devsignerFreelo": "Web Designer and Frontend Developer",
@@ -73,6 +78,11 @@
         "myCertificates": "My certificates",
         "certName1": "Multimedia Design Bachelor's Degree",
         "certName2": "Full-Stack Node.js Course",
-        "viewCert": "View certificate"
+        "viewCert": "View certificate",
+        "navMenu1": "About me",
+        "navMenu2": "Experience",
+        "navMenu3": "Projects",
+        "navMenu4": "Skills",
+        "navMenu5": "Contact"
     }
 }

@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['paper-chains-forget-referrals.trycloudflare.com'],
+      allowedHosts: ['task-tend-beef-contribute.trycloudflare.com'],
     }
   }
 });

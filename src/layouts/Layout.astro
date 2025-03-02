@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SelectLanguage from "../components/SelectLanguage.astro";
+import NavMenu from "../components/NavMenu.astro";
 
 interface Props {
   title: string;
@@ -28,7 +29,7 @@ const { title, description, keywords } = Astro.props;
     <meta property="og:description" content={description} />
     <meta
       property="og:image"
-      content="https://opengraph.b-cdn.net/production/images/870324c4-b71e-4a6e-8541-183c509b1f2c.png?token=koboDCOpKOrDZWKk2_o3netnSJVerLFeG1q17I4YiKQ&height=655&width=1200&expires=33265650320"
+      content="https://opengraph.b-cdn.net/production/images/870324c4-b71e-4a6e-8541-183c509b1f2c.webp?token=koboDCOpKOrDZWKk2_o3netnSJVerLFeG1q17I4YiKQ&height=655&width=1200&expires=33265650320"
     />
 
     <!-- Twitter Meta Tags -->
@@ -39,7 +40,7 @@ const { title, description, keywords } = Astro.props;
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://opengraph.b-cdn.net/production/images/870324c4-b71e-4a6e-8541-183c509b1f2c.png?token=koboDCOpKOrDZWKk2_o3netnSJVerLFeG1q17I4YiKQ&height=655&width=1200&expires=33265650320"
+      content="https://opengraph.b-cdn.net/production/images/870324c4-b71e-4a6e-8541-183c509b1f2c.webp?token=koboDCOpKOrDZWKk2_o3netnSJVerLFeG1q17I4YiKQ&height=655&width=1200&expires=33265650320"
     />
 
     <meta name="viewport" content="width=device-width" />
@@ -51,14 +52,25 @@ const { title, description, keywords } = Astro.props;
       as="style"
       onload="this.rel='stylesheet'"
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_dark/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_dark//favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_dark//favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_dark/site.webmanifest" />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      const defaultLang = navigator.language.startsWith("es") ? "es" : "en";
+      const savedLang = localStorage.getItem("lang") || defaultLang;
+      localStorage.setItem("lang", savedLang);
+      document.documentElement.setAttribute("lang", savedLang);
+      updateText(savedLang);
+    </script>
   </head>
-  
 
   <body class="bg-[#E0E0E0] dark:bg-[#1f1f1f]">
     <SelectLanguage />
+    <NavMenu />
     <slot />
   </body>
 </html>
@@ -82,59 +94,46 @@ const { title, description, keywords } = Astro.props;
     document.body.appendChild(script);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const defaultLang = navigator.language.startsWith("es") ? "es" : "en";
-  const savedLang = localStorage.getItem("lang") || defaultLang;
-  localStorage.setItem("lang", savedLang);
-  document.documentElement.setAttribute("lang", savedLang);
-  updateText(savedLang);
-});
+  document.addEventListener("DOMContentLoaded", () => {});
 
-function updateText(lang) {
-  fetch("/data/translations.json")
-    .then(response => response.json())
-    .then(data => {
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
+  function updateText(lang) {
+    fetch("/data/translations.json")
+      .then((response) => response.json())
+      .then((data) => {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          const translation = data[lang][key];
 
-        if (el.querySelector("svg")) {
-          const svgElement = el.querySelector("svg");
-          const text = data[lang][key];
-          
-          const textNode = el.lastChild;
+          if (el.querySelector("svg")) {
+            const svgElement = el.querySelector("svg");
 
-          if (textNode && textNode.nodeType === Node.TEXT_NODE) {
-            textNode.textContent = text;
+            // Si el JSON tiene etiquetas <span>, usamos innerHTML
+            el.innerHTML = svgElement.outerHTML + translation;
           } else {
-            el.innerHTML = svgElement.outerHTML + text;
+            // Si el JSON tiene etiquetas <span>, usamos innerHTML
+            el.innerHTML = translation;
           }
-        } else {
-          el.textContent = data[lang][key];
+        });
+
+        // Si el texto animado (role) debe actualizarse
+        const roleElement = document.querySelector("[data-i18n='role']");
+        if (roleElement) {
+          roleElement.innerHTML = data[lang]["role"];
         }
-      });
-
-      const roleElement = document.querySelector("[data-i18n='role']");
-      if (roleElement) {
-        roleElement.innerHTML = data[lang]["role"];
         initializeTxtRotate();
-      }
-    });
-}
+      });
+  }
 
-function initializeTxtRotate() {
-  var elements = document.getElementsByClassName("txt-rotate");
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute("data-rotate");
-    var period = elements[i].getAttribute("data-period");
-    if (toRotate) {
-      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+  function initializeTxtRotate() {
+    var elements = document.getElementsByClassName("txt-rotate");
+    for (var i = 0; i < elements.length; i++) {
+      var toRotate = elements[i].getAttribute("data-rotate");
+      var period = elements[i].getAttribute("data-period");
+      if (toRotate) {
+        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+      }
     }
   }
-}
-
-window.onload = initializeTxtRotate;
-
-
 
   function markImage(clickedImage) {
     const parentContainer = clickedImage.closest(".image-container");
