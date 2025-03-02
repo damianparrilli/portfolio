@@ -135,15 +135,12 @@
       if (window.innerWidth > 640) {
         selectorButton.innerHTML = event.target.innerHTML;
       } else {
-        // Obtienes el div que contiene el SVG y el texto
-        const svg = event.target.querySelector("svg"); // Encuentra el SVG dentro del objetivo del evento
+        const svg = event.target.querySelector("svg"); 
 
-        // Clonas el SVG con sus elementos hijos
         const clonedSvg = svg.cloneNode(true);
 
-        // Limpiar el contenido actual del selectorButton y añadir solo el SVG
-        selectorButton.innerHTML = ""; // Limpiar contenido actual (si es necesario)
-        selectorButton.appendChild(clonedSvg); // Añadir solo el SVG clonado
+        selectorButton.innerHTML = ""; 
+        selectorButton.appendChild(clonedSvg);
       }
 
       optionsDiv.classList.add("hidden");
@@ -218,5 +215,26 @@ English`;
 </svg>`;
     }
     updateText(storedLang);
+
+    window.addEventListener("resize", () => {
+  const storedLang = localStorage.getItem("lang") || "en";
+  const selectedButton = [...selectButtons].find(
+    (btn) => btn.getAttribute("data-lang") === storedLang
+  );
+
+  if (selectedButton) {
+    if (window.innerWidth > 640) {
+      selectorButton.innerHTML = selectedButton.innerHTML;
+    } else {
+      const svg = selectedButton.querySelector("svg");
+      if (svg) {
+        const clonedSvg = svg.cloneNode(true);
+        selectorButton.innerHTML = "";
+        selectorButton.appendChild(clonedSvg);
+      }
+    }
+  }
+});
+
   });
 </script>

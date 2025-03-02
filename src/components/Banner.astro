@@ -464,6 +464,8 @@ loadLottieScript(() => {
             if (!hasPassed100) {
               ejecutarAccion(totalDistance);
               hasPassed100 = true;
+            } else {
+              ejecutarAccion(totalDistance);
             }
           } else {
             if (hasPassed100) {
@@ -471,6 +473,9 @@ loadLottieScript(() => {
               hasPassed100 = false;
             }
           }
+        } else{
+          img.style.transform = `translateX(0)`;
+          parent.style.transform = `translateY(0)`
         }
       }
 

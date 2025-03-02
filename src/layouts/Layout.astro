@@ -125,7 +125,7 @@ const { title, description, keywords } = Astro.props;
   }
 
   .svg-animation {
-    animation: rotacionInfinita 1.5s infinite; /* 2s para el ciclo completo */
+    animation: rotacionInfinita 1.5s infinite;
   }
 </style>
 
@@ -161,15 +161,12 @@ const { title, description, keywords } = Astro.props;
           if (el.querySelector("svg")) {
             const svgElement = el.querySelector("svg");
 
-            // Si el JSON tiene etiquetas <span>, usamos innerHTML
             el.innerHTML = svgElement.outerHTML + translation;
           } else {
-            // Si el JSON tiene etiquetas <span>, usamos innerHTML
             el.innerHTML = translation;
           }
         });
 
-        // Si el texto animado (role) debe actualizarse
         const roleElement = document.querySelector("[data-i18n='role']");
         if (roleElement) {
           roleElement.innerHTML = data[lang]["role"];
@@ -188,6 +185,26 @@ const { title, description, keywords } = Astro.props;
       }
     }
   }
+
+  function ajustarViewport() {
+   
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      document
+        .querySelector("meta[name=viewport]")
+        .setAttribute("content", "width=1280, initial-scale=0.6");
+    } else {
+      document
+        .querySelector("meta[name=viewport]")
+        .setAttribute("content", "width=device-width, initial-scale=1");
+    }
+    
+  }
+
+  ajustarViewport();
+
+  window
+    .matchMedia("(orientation: landscape)")
+    .addEventListener("change", ajustarViewport);
 
   function markImage(clickedImage) {
     const parentContainer = clickedImage.closest(".image-container");
