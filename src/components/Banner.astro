@@ -118,7 +118,7 @@
         </div>
       </div>
       <div
-        class="min-[430px]:my-0 min-[430px]:h-[40%] sm:h-[25%] flex min-[430px]:justify-end order-1 min-[430px]:order-2 sticky imagen-banner w-full"
+        class="min-[430px]:my-0 min-[430px]:h-[40%] sm:h-[25%] flex min-[430px]:justify-end order-1 min-[430px]:order-2 sticky imagen-banner pointer-events-none w-full"
       >
         <img
           src="/foto-mia.webp"
@@ -261,11 +261,9 @@
     @keyframes opacidad-texto {
       20% {
         opacity: 1;
-        pointer-events: all;
       }
       100% {
         opacity: 0;
-        pointer-events: none;
       }
     }
 
@@ -285,10 +283,10 @@
     }
 
     @keyframes opacidad-texto-2-sm {
-      60% {
+      50% {
         opacity: 0;
       }
-      90%,
+      60%,
       100% {
         opacity: 1;
       }
@@ -315,7 +313,6 @@
     }
 
     .imagen-banner {
-      pointer-events: none;
       margin-top: clamp(1.25rem, -2.756rem + 12.821vh, 10.625rem);
       top: 5%;
       transition: transform 0.5s ease-in-out;
@@ -335,7 +332,7 @@
       .texto-2 {
         animation: opacidad-texto-2-sm linear forwards;
         animation-timeline: view();
-        animation-range: contain 25% contain 45%;
+        animation-range: contain 0% contain 60%;
         opacity: 0;
       }
 
@@ -344,11 +341,11 @@
       }
 
       .texto-banner {
-      animation: opacidad-texto linear forwards;
-      animation-timeline: view();
-      animation-range: contain 0% contain 70%;
-      view-timeline-name: --texto-banner;
-    }
+        animation: opacidad-texto linear forwards;
+        animation-timeline: view();
+        animation-range: contain 0% contain 70%;
+        view-timeline-name: --texto-banner;
+      }
     }
   }
 
@@ -405,39 +402,38 @@
 <script is:inline>
   function loadLottieScript(callback) {
     if (window.bodymovin) {
-        callback();
+      callback();
     } else {
-        let script = document.createElement("script");
-        script.src = "/assets/logoAnim/lottie.js";
-        script.onload = callback;
-        script.onerror = () => console.error("Error al cargar Lottie.js");
-        document.body.appendChild(script);
+      let script = document.createElement("script");
+      script.src = "/assets/logoAnim/lottie.js";
+      script.onload = callback;
+      script.onerror = () => console.error("Error al cargar Lottie.js");
+      document.body.appendChild(script);
     }
-}
+  }
 
-loadLottieScript(() => {
+  loadLottieScript(() => {
     let animContainer = document.getElementById("animacion");
-    let overlay = document.querySelector(".overlayTotal"); 
+    let overlay = document.querySelector(".overlayTotal");
     if (!animContainer) {
-        console.error("No se encontró el div con ID 'animacion'");
-        return;
+      console.error("No se encontró el div con ID 'animacion'");
+      return;
     }
 
     let animation = window.bodymovin.loadAnimation({
-        container: animContainer,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "/assets/logoAnim/animacion.json",
+      container: animContainer,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "/assets/logoAnim/animacion.json",
     });
 
     animation.addEventListener("DOMLoaded", () => {
-        if (overlay) {
-            overlay.classList.add("completado"); 
-        }
+      if (overlay) {
+        overlay.classList.add("completado");
+      }
     });
-});
-
+  });
 
   document.addEventListener("DOMContentLoaded", () => {
     if (CSS.supports("animation-timeline", "view()")) {
@@ -459,7 +455,6 @@ loadLottieScript(() => {
 
           const progress =
             textoBanner.getBoundingClientRect().top / window.innerHeight;
-
           if (progress <= 0) {
             if (!hasPassed100) {
               ejecutarAccion(totalDistance);
@@ -473,25 +468,41 @@ loadLottieScript(() => {
               hasPassed100 = false;
             }
           }
-        } else{
+        } else {
           img.style.transform = `translateX(0)`;
-          parent.style.transform = `translateY(0)`
+          parent.style.transform = `translateY(0)`;
+
+          const progress =
+            (textoBanner.getBoundingClientRect().top / window.innerHeight) - 0.1;
+
+          if (progress <= 0) {
+            parent.classList.remove(`pointer-events-none`);
+            textoBanner.classList.add(`pointer-events-none`);
+          } else {
+            parent.classList.add(`pointer-events-none`);
+            textoBanner.classList.remove(`pointer-events-none`);
+
+
+          }
         }
       }
 
       function ejecutarAccion(total) {
         img.style.transform = `translateX(-${total}px)`;
         parent.style.transform = `translateY(25dvh)`;
+        textoBanner.classList.add(`pointer-events-none`);
 
-        parent.style.pointerEvents = "auto";
+        parent.classList.remove(`pointer-events-none`);
         animatedDiv.classList.add("opacity-100");
       }
 
       function restaurarEstado() {
         img.style.transform = `translateX(0px)`;
         parent.style.transform = `translateY(0)`;
-        parent.style.pointerEvents = "none";
+        parent.classList.add(`pointer-events-none`);
         animatedDiv.classList.remove("opacity-100");
+        textoBanner.classList.remove(`pointer-events-none`);
+
       }
 
       window.addEventListener("scroll", handleScroll);
@@ -510,6 +521,8 @@ loadLottieScript(() => {
         const scrollY = window.scrollY;
 
         if (scrollY >= triggerPosition) {
+          document.querySelector(".texto-banner").style.pointerEvents = "none";
+
           animatedDiv.classList.add("opacity-100");
           if (window.innerWidth >= 430) {
             img.style.transform = `translateX(-${totalDistance}px)`;
@@ -539,6 +552,7 @@ loadLottieScript(() => {
           }
           parent.style.pointerEvents = "none";
           document.querySelector(".texto-banner").style.opacity = "1";
+          document.querySelector(".texto-banner").style.pointerEvents = "auto";
           document.querySelector(".text-banner").classList.remove("cambiado");
         }
       }
