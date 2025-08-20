@@ -1,0 +1,10 @@
+export { default as HTML } from './HTML.astro';
+export { default as CSS } from './CSS.astro';
+export { default as JavaScript } from './JavaScript.astro';
+export { default as Figma } from './Figma.astro';
+export { default as AdobePhotoshop } from './AdobePhotoshop.astro';
+export { default as AstroComponent } from './AstroComponent.astro';
+export { default as TailwindCSS } from './TailwindCSS.astro';
+export { default as PrelineUI } from './PrelineUI.astro';
+export { default as SASS } from './SASS.astro';
+export { default as TechStackContainer } from './TechStackContainer.astro';

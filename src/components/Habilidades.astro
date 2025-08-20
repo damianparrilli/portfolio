@@ -1,4 +1,8 @@
-<section id="habilidades" class="min-h-[100dvh] flex  bg-[#e6e6e6] dark:bg-[#2A2A2A]  minicontainer">
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+---
+
+<section id="habilidades" class="min-h-[100dvh] flex  bg-[#f3f3f3] dark:bg-[#2A2A2A]  minicontainer">
   <div
     class="max-w-[750px] mx-auto flex flex-col justify-evenly items-center gap-24 py-28  px-4 sm:px-7"  
   >
@@ -540,8 +544,8 @@
         <div
           class="rounded-3xl flex flex-col justify-start items-center gap-2 p-4 max-h-[400px] max-w-[300px] h-full bg-[#2c2c2c10] dark:bg-[#F9F9F910] w-full"
         >
-          <img
-            src="/diploma-unlp.webp"
+          <ResponsiveImage
+            name="diploma-unlp"
             alt=""
             class="aspect-video object-cover w-full rounded-2xl"
           />
@@ -583,8 +587,8 @@
         <div
           class="rounded-3xl flex flex-col justify-start items-center gap-2 p-4 max-h-[400px] max-w-[300px] h-full bg-[#2c2c2c10] dark:bg-[#F9F9F910] w-full"
         >
-          <img
-            src="/diploma-cac.webp"
+          <ResponsiveImage
+            name="diploma-cac"
             alt=""
             class="aspect-video object-cover w-full rounded-2xl"
           />

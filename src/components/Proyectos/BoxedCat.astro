@@ -1,10 +1,16 @@
+---
+import ResponsiveImage from '../ResponsiveImage.astro';
+import { TechStackContainer, HTML, CSS, JavaScript } from '../TechStack/index.ts';
+---
+
 <div
   class="pin-item max-w-[1200px] w-screen min-[1200px]:w-full flex shrink-0 grow-0 px-2 pt-2 overflow-hidden" data-aos="fade-left"
      data-aos-duration="500" data-aos-anchor-placement="center-bottom"
 >
-  <div class="bg-[#2C353E] rounded-3xl w-full h-full flex py-4 md:p-4 flex-col gap-2 md:gap-7">
+  <div class="bg-[#2C353E] rounded-3xl w-full h-full flex py-4 md:p-4 flex-col gap-2 md:gap-7" data-component="boxedcat">
     <div class="w-full h-full flex flex-col md:flex-row px-4 md:px-0 image-container">
       <div
+        id="backgroundDiv"
         class="backgroundDiv flex w-full shrink-0 md:shrink grow-0 md:grow md:h-full flex-auto bg-[url(/boxedcat1.webp)] rounded-2xl bg-cover bg-top bg-no-repeat aspect-video md:aspect-auto"
       >
       </div>
@@ -13,51 +19,13 @@
           <h3
             class="font-bold text-[#F9F9F9] text-2xl sm:text-3xl"
           >
-          BoxedCat
+          Boxed Cat
           </h3>
-          <div class="flex gap-1.5 flex-wrap">
-            <span
-              class="text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#F1662A20] px-3 py-1"
-              >
-              <svg class="w-4 h-auto" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.39771 11.0504L1.48486 0.8125H11.5152L10.6011 11.0488L6.49393 12.1875L2.39771 11.0504Z" fill="#E44F26"/>
-                <path d="M6.5 11.3172L9.81906 10.397L10.5999 1.64966H6.5V11.3172Z" fill="#F1662A"/>
-                <path d="M6.5 5.44653H4.83844L4.72388 4.16075H6.5V2.90503H3.35156L3.38163 3.24222L3.68997 6.70225H6.5V5.44653ZM6.5 8.7075L6.49431 8.70912L5.096 8.33172L5.00663 7.33031H3.74603L3.92194 9.30144L6.49431 10.0156L6.5 10.014V8.7075Z" fill="#EBEBEB"/>
-                <path d="M6.49548 5.44653V6.70225H8.04167L7.89623 8.3309L6.49548 8.70872V10.0152L9.06989 9.30143L9.08858 9.08937L9.38351 5.78372L9.41439 5.44653H6.49548ZM6.49548 2.90503V4.16075H9.52855L9.55373 3.87881L9.61102 3.24222L9.64108 2.90503H6.49548Z" fill="white"/>
-                </svg>
-                
-              HTML</span
-            >
-            <span
-              class="text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#1572B620] px-3 py-1"
-              ><svg class="w-4 h-auto" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_105_402)">
-                <path d="M1.61682 9.80747L0.752808 0.116211H10.2472L9.38231 9.80601L5.49424 10.8839L1.61682 9.80747Z" fill="#1572B6"/>
-                <path d="M5.50012 10.0599L8.64191 9.18887L9.38106 0.908447H5.50012V10.0599Z" fill="#33A9DC"/>
-                <path d="M5.50012 4.41965H7.07295L7.18158 3.20252H5.50012V2.01392H8.48061L8.45208 2.33283L8.15989 5.60825H5.50012V4.41965Z" fill="white"/>
-                <path d="M5.50708 7.50672L5.50184 7.50827L4.17815 7.15086L4.0935 6.20288H2.90051L3.06697 8.06919L5.50167 8.74491L5.50708 8.74337V7.50672Z" fill="#EBEBEB"/>
-                <path d="M6.9719 5.55811L6.82872 7.14984L5.50305 7.50768V8.74432L7.93972 8.06903L7.9576 7.86819L8.16436 5.55811H6.9719Z" fill="white"/>
-                <path d="M5.50412 2.01392V3.20252H2.63312L2.60932 2.93542L2.55518 2.33283L2.52673 2.01392H5.50412ZM5.50008 4.41982V5.60842H4.19306L4.16926 5.34133L4.11503 4.73874L4.08667 4.41982H5.50008Z" fill="#EBEBEB"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_105_402">
-                <rect width="11" height="11" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-
-              CSS</span
-            >
-            <span
-              class="text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#F0DB4F20] px-3 py-1"
-              ><svg class="w-4 h-auto" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.65625 0H2.34375C1.04933 0 0 1.04933 0 2.34375V7.65625C0 8.95067 1.04933 10 2.34375 10H7.65625C8.95067 10 10 8.95067 10 7.65625V2.34375C10 1.04933 8.95067 0 7.65625 0Z" fill="#F0DB4F"/>
-                <path d="M2.62943 8.3566L3.39467 7.89348C3.54232 8.15523 3.67662 8.37672 3.99877 8.37672C4.30756 8.37672 4.50225 8.25594 4.50225 7.78609V4.59086H5.44201V7.79938C5.44201 8.7727 4.87146 9.21574 4.03904 9.21574C3.28729 9.21574 2.85092 8.82641 2.62939 8.35652M5.95244 8.2559L6.7176 7.81289C6.91904 8.14184 7.18084 8.38348 7.64397 8.38348C8.03338 8.38348 8.28166 8.18879 8.28166 7.92027C8.28166 7.59809 8.02658 7.48395 7.59697 7.29605L7.36209 7.19531C6.68408 6.90672 6.23432 6.54422 6.23432 5.77898C6.23432 5.07414 6.77135 4.53711 7.61045 4.53711C8.20787 4.53711 8.63748 4.74523 8.94623 5.28895L8.21455 5.75883C8.05342 5.4702 7.87896 5.35609 7.61045 5.35609C7.33522 5.35609 7.16068 5.53063 7.16068 5.75883C7.16068 6.04074 7.33521 6.15488 7.73795 6.32945L7.97287 6.43012C8.77166 6.7725 9.22143 7.12148 9.22143 7.90684C9.22143 8.7527 8.55689 9.21582 7.66412 9.21582C6.7915 9.21582 6.22764 8.79965 5.95244 8.2559Z" fill="#323330"/>
-                </svg>
-                
-              Javascript</span
-            >
-          </div>
+          <TechStackContainer>
+            <HTML />
+            <CSS />
+            <JavaScript />
+          </TechStackContainer>
 
           <p
             class="text-[#F9F9F9] w-full text-sm sm:text-base mt-4" data-i18n="boxedDesc"
@@ -67,13 +35,15 @@
         </div>
         <div class="gap-2 items-center flex order-3 md:order-2 div-principal-botones">
           <a
-            href="https://github.com/damianparrilli/boxedcat" target="_blank"
+            href="https://github.com/damianparrilli/old-portfolio-web" target="_blank"
             class="group w-max h-full px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base  text-[#F9F9F9] hover:bg-[#f9f9f9] rounded-4xl bg-[#F9F9F910] hover:text-[#353535] border-1 border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out"
+            aria-label="Código Portfolio v1"
             ><svg
               class="group w-7 h-auto"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 class="fill-[#F9F9F9] group-hover:fill-[#272727] transition-all duration-300 ease-in-out"
@@ -84,13 +54,15 @@
             Source Code</a
           >
           <a
-            href="https://boxedcat.netlify.app/" target="_blank"
+            href="https://old-damianparrilli.netlify.app/" target="_blank"
             class="group w-max h-full px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#F9F9F9] hover:bg-[#f9f9f9] rounded-4xl bg-[#F9F9F910] hover:text-[#353535] border-1 border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out"
+            aria-label="Sitio web Portfolio v1"
             ><svg
               class="w-5"
               viewBox="0 0 17 17"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 class="fill-[#F9F9F9] group-hover:fill-[#272727] transition-all duration-300 ease-in-out"
@@ -103,26 +75,29 @@
 
             Preview</a
           >
-          
         </div>
         <div class="order-1 md:order-3 md:mt-auto w-full overflow-hidden">
           <div
             class="flex gap-4 md:flex-wrap overflow-auto"
           >
-            <img
-              src="/boxedcat1.webp"
-              alt=""
+
+            <ResponsiveImage
+              name="boxedcat1"
+              alt="Vista principal del proyecto Boxed Cat mostrando la interfaz de la aplicación móvil"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 border-[#3D7AFF] border-2 cursor-pointer"
+              data-image-src="/boxedcat1.webp"
             />
-            <img
-              src="/boxedcat2.webp"
-              alt=""
+            <ResponsiveImage
+              name="boxedcat2"
+              alt="Imagen de la funcionalidad de guardar notas en Boxed Cat"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/boxedcat2.webp"
             />
-            <img
-              src="/boxedcat3.webp"
-              alt=""
+            <ResponsiveImage
+              name="boxedcat3"
+              alt="Vista del sistema de valoración y comentarios de Boxed Cat"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/boxedcat3.webp"
             />
           </div>
         </div>
@@ -136,11 +111,11 @@
         <div class="flex gap-4 md:gap-4">
           <div class="flex flex-col">
             <span
-              class="text-[#F9F9F9] font-[Roboto] font-medium text-5xl md:text-7xl lg:text-8xl"
+              class="text-[#F9F9F9] font-[Plus_Jakarta_Sans] font-medium text-5xl md:text-7xl lg:text-8xl"
               >Aa</span
             >
-            <span class="text-[#F9F9F9] font-[Roboto] text-xs sm:text-base font-medium"
-              >Roboto</span
+            <span class="text-[#F9F9F9] font-[Plus_Jakarta_Sans] text-xs sm:text-base font-medium"
+              >Plus Jakarta Sans</span
             >
           </div>
         </div>
@@ -152,38 +127,38 @@
         <div class="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap div-adicional-color">
           <div class="flex flex-col gap-2 items-center">
             <div
-              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#69B9E7]"
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#171717]"
             >
             </div>
-            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#69B9E7</span>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#171717</span>
           </div>
           <div class="flex flex-col gap-2 items-center">
             <div
-              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#14273C]"
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#2D2D2D]"
             >
             </div>
-            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#14273C</span>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#2D2D2D</span>
           </div>
           <div class="flex flex-col gap-2 items-center">
             <div
-              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#F05E4C]"
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#3A3A3A]"
             >
             </div>
-            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#F05E4C</span>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#3A3A3A</span>
           </div>
           <div class="flex flex-col gap-2 items-center">
             <div
-              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#000000]"
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#EDEDED]"
             >
             </div>
-            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#000000</span>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#EDEDED</span>
           </div>
           <div class="flex flex-col gap-2 items-center">
             <div
-              class="w-14 sm:w-18 md:w-20 lg:w-24  border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#FFFFFF]"
+              class="w-14 sm:w-18 md:w-20 lg:w-24  border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#DB2C2C]"
             >
             </div>
-            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#FFFFFF</span>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]">#DB2C2C</span>
           </div>
         </div>
       </div>
@@ -192,9 +167,58 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentComponent = document.querySelector('[data-component="boxedcat"]');
+    if (!currentComponent) return;
+    
+    const backgroundDiv = currentComponent.querySelector('#backgroundDiv');
+    if (!backgroundDiv) return;
+
+    const allImages = currentComponent.querySelectorAll('.image-container img, .image-container picture');
+    
+    allImages.forEach((element) => {
+      element.addEventListener('click', () => {
+        let imageSrc;
+        
+        if (element.tagName === 'PICTURE') {
+          imageSrc = element.getAttribute('data-image-src');
+        } else {
+          imageSrc = element.getAttribute('data-image-src') || element.getAttribute('src');
+        }
+        
+        if (!imageSrc) {
+          console.warn('No se pudo obtener la URL de la imagen:', element);
+          return;
+        }
+        
+        allImages.forEach(img => {
+          if (img.classList.contains('border-[#3D7AFF]')) {
+            img.classList.remove('border-[#3D7AFF]', 'border-2');
+          }
+        });
+        
+        if (element.tagName === 'PICTURE') {
+          const imgInside = element.querySelector('img');
+          if (imgInside) {
+            imgInside.classList.add('border-[#3D7AFF]', 'border-2');
+          }
+        } else {
+          element.classList.add('border-[#3D7AFF]', 'border-2');
+        }
+        
+        (backgroundDiv as HTMLElement).style.backgroundImage = `url(${imageSrc})`;
+      });
+    });
+  });
+</script>
+
 <style>
   .italiana-stroke {
     -webkit-text-stroke: 0.5px #f9f9f9;
+  }
+  #backgroundDiv {
+    transition: opacity 0.3s ease-in-out;
   }
 
   @media (width >= 768px) and (height < 850px) {
@@ -220,14 +244,15 @@
   }
   .div-principal{
     height: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
+
   .div-principal-botones{
     margin-top: auto;
   }
 
   .backgroundDiv {
-    height: clamp(11.5rem, -9.083rem + 50.667vh, 16.25rem);
+    height: clamp(11.5rem, -19.917rem + 77.333vh, 18.75rem);
   }
  }
 </style>

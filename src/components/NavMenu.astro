@@ -40,55 +40,59 @@
         data-i18n="navMenu5">Contacto</a
       >
     </li>
-    <li class="w-6 h-6 min-[1450px]:mr-4 relative">
-      <a class="group cursor-pointer">
-        <svg
-          class="w-6 h-6 absolute right-0 transition-all duration-300 ease-in-out"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <li class="relative min-[1450px]:mr-4">
+      <button
+        id="toggle-dark"
+        class="p-2 transition-all duration-300 ease-in-out group cursor-pointer"
+        aria-label="Cambiar tema"
+      >
+        <span
+          id="icon-sun"
+          class="block dark:hidden transition-all duration-300 ease-in-out"
         >
-          <path
-            class="stroke-[#C7C7C7] group-hover:stroke-[#F9F9F9] fill-[#F9F9F900] group-hover:fill-[#F9F9F9] transition-all duration-300 ease-in-out"
-            d="M12 21C13.2031 21.0001 14.3941 20.7589 15.5024 20.2907C16.6108 19.8226 17.614 19.137 18.4528 18.2744C19.2916 17.4118 19.9489 16.3899 20.3859 15.2689C20.8229 14.1479 21.0307 12.9507 20.997 11.748C19.7383 12.6241 18.2268 13.0626 16.6947 12.9961C15.1626 12.9296 13.6947 12.3619 12.5166 11.3801C11.3386 10.3983 10.5155 9.05682 10.1739 7.5618C9.83235 6.06678 9.99118 4.50096 10.626 3.10498C8.38422 3.45045 6.35556 4.62964 4.94589 6.40665C3.53622 8.18365 2.84952 10.4274 3.02316 12.689C3.19681 14.9506 4.218 17.0632 5.88243 18.6042C7.54686 20.1451 9.73176 21.0008 12 21Z"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="stroke-[#4e4e4e] group-hover:stroke-[#272727] fill-[#27272700] group-hover:fill-[#272727] w-6 h-6 absolute right-0 transition-all duration-300 ease-in-out opacity-0"
+          <svg
+            class="w-6 h-6 text-[#4e4e4e] dark:text-[#C7C7C7] group-hover:text-[#272727] dark:group-hover:text-[#F9F9F9]"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 
+             12.728L16.95 16.95M5 12H3m18 0h-2M7.05 
+             16.95l-1.414 1.414M18.364 5.636 16.95 
+             7.05M16 12a4 4 0 1 1-8 0 4 4 
+             0 0 1 8 0Z"
+            ></path>
+          </svg>
+        </span>
+
+        <span
+          id="icon-moon"
+          class="hidden dark:block transition-all duration-300 ease-in-out"
         >
-          <g clip-path="url(#clip0_258_21)">
-            <mask
-              id="mask0_258_21"
-              style="mask-type:luminance"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="24"
-              height="24"
-            >
-              <path d="M0 0H24V24H0V0Z" fill="white"></path>
-            </mask>
-            <g mask="url(#mask0_258_21)">
-              <path
-                d="M5 12H1M23 12H19M7.05 7.05L4.222 4.222M19.778 19.778L16.95 16.95M7.05 16.95L4.222 19.778M19.778 4.222L16.95 7.05M12 19V23M12 1V5M16 12C16 13.0609 15.5786 14.0783 14.8284 14.8284C14.0783 15.5786 13.0609 16 12 16C10.9391 16 9.92172 15.5786 9.17157 14.8284C8.42143 14.0783 8 13.0609 8 12C8 10.9391 8.42143 9.92172 9.17157 9.17157C9.92172 8.42143 10.9391 8 12 8C13.0609 8 14.0783 8.42143 14.8284 9.17157C15.5786 9.92172 16 10.9391 16 12Z"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </g>
-          </g>
-          <defs>
-            <clipPath id="clip0_258_21">
-              <rect width="24" height="24" fill="white"></rect>
-            </clipPath>
-          </defs>
-        </svg>
-      </a>
+          <svg
+            class="w-6 h-6 text-[#4e4e4e] dark:text-[#C7C7C7] group-hover:text-[#272727] dark:group-hover:text-[#F9F9F9]"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 
+             1.911-.5 3a9 9 0 0 0 9 9c.239 0 
+             .254.018.488 0A9.004 9.004 0 0 1 
+             12 21Z"
+            ></path>
+          </svg>
+        </span>
+      </button>
     </li>
   </ul>
   <a
@@ -133,6 +137,15 @@
   </a>
 </div>
 
+<style is:global>
+  
+   html.disable-transitions *,
+  html.disable-transitions *::before,
+  html.disable-transitions *::after {
+    transition: none !important;
+  }
+</style>
+
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     if (!supportsScrollDrivenAnimation) {
@@ -140,97 +153,54 @@
       if (contactLink) {
         contactLink.addEventListener("click", (e) => {
           e.preventDefault();
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-          });
+          window.scrollTo({ top: document.documentElement.scrollHeight });
         });
       }
     } else {
-      document
-        .querySelector("a[href='#experiencia']")
-        .addEventListener("click", (e) => {
-          e.preventDefault();
-          const target = document.querySelector(".arriba");
-          if (!target) return;
-
-          const alturaDiv = target.offsetHeight;
-
-          const posicionFinal = target.offsetTop - alturaDiv * 0.45;
-
-          window.scrollTo({ top: posicionFinal });
-        });
+      const expLink = document.querySelector("a[href='#experiencia']");
+      expLink?.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.querySelector(".arriba");
+        if (!target) return;
+        const alturaDiv = target.offsetHeight;
+        const posicionFinal = target.offsetTop - alturaDiv * 0.45;
+        window.scrollTo({ top: posicionFinal });
+      });
     }
-  });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const htmlElement = document.documentElement;
-const darkModeToggle = document.querySelector("li:last-child a");
-const moonIcon = darkModeToggle.querySelector("svg:nth-child(1)");
-const sunIcon = darkModeToggle.querySelector("svg:nth-child(2)");
+    const html = document.documentElement;
+    const button = document.getElementById("toggle-dark");
 
-const updateIcons = (isDark) => {
-  if (isDark) {
-    moonIcon.classList.remove("opacity-0");
-    sunIcon.classList.add("opacity-0");
-  } else {
-    moonIcon.classList.add("opacity-0");
-    sunIcon.classList.remove("opacity-0");
-  }
-};
+    const changeFavicon = (theme) => {
+      const faviconLinks = document.querySelectorAll(
+        'link[rel="icon"], link[rel="apple-touch-icon"], link[rel="manifest"]'
+      );
+      faviconLinks.forEach((link) => {
+        link.href = link.href.replace(/favicon_(dark|light)/, `favicon_${theme}`);
+      });
+    };
 
-const changeFavicon = (theme) => {
-  const faviconLinks = document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"], link[rel="manifest"]');
-  
-  faviconLinks.forEach(link => {
-    link.href = link.href.replace(/favicon_(dark|light)/, `favicon_${theme}`);
-  });
-};
+    const savedTheme = localStorage.getItem("theme");
+    const isDarkMode = savedTheme === "dark" || !savedTheme;
 
-const isDarkMode =
-  localStorage.getItem("theme") === "dark" ||
-  !localStorage.getItem("theme");
+    if (isDarkMode) {
+      html.classList.add("dark");
+      changeFavicon("dark");
+    } else {
+      html.classList.remove("dark");
+      changeFavicon("light");
+    }
 
-if (isDarkMode) {
-  htmlElement.classList.add("dark");
-  changeFavicon('dark'); 
-} else {
-  htmlElement.classList.remove("dark");
-  changeFavicon('light');
-}
+    button.addEventListener("click", () => {
+      html.classList.add("disable-transitions");
 
-updateIcons(isDarkMode);
+      const isDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      changeFavicon(isDark ? "dark" : "light");
 
-darkModeToggle.addEventListener("click", () => {
-  const isNowDark = !htmlElement.classList.contains("dark");
-  htmlElement.classList.toggle("dark");
-  
-  changeFavicon(isNowDark ? 'dark' : 'light');
-
-  localStorage.setItem("theme", isNowDark ? "dark" : "light");
-
-  updateIcons(isNowDark);
-
-
-      if (!supportsScrollDrivenAnimation) {
-        const triggerPosition = window.innerHeight * 0.5;
-        if (scrollY >= triggerPosition) {
-          if (document.documentElement.classList.contains("dark")) {
-            document.querySelector(".text-banner").style.backgroundColor =
-              "#2f2f2f";
-          } else {
-            document.querySelector(".text-banner").style.backgroundColor =
-              "#d0d0d0";
-          }
-        } else {
-          if (document.documentElement.classList.contains("dark")) {
-            document.querySelector(".text-banner").style.backgroundColor =
-              "#1f1f1f";
-          } else {
-            document.querySelector(".text-banner").style.backgroundColor =
-              "#e0e0e0";
-          }
-        }
-      }
+      setTimeout(() => {
+        html.classList.remove("disable-transitions");
+      }, 100);
     });
 
     const menuButton = document.getElementById("menu");
@@ -239,12 +209,8 @@ darkModeToggle.addEventListener("click", () => {
     const closeMobile = document.querySelector(".closesvg");
 
     menuButton.addEventListener("click", () => {
-      menuButton
-        .querySelector("svg")
-        .classList.toggle("min-[1450px]:rotate-90");
-      menuButton
-        .querySelector("svg")
-        .classList.toggle("min-[1450px]:rotate-270");
+      menuButton.querySelector("svg").classList.toggle("min-[1450px]:rotate-90");
+      menuButton.querySelector("svg").classList.toggle("min-[1450px]:rotate-270");
       menuButton.querySelector("svg").classList.toggle("min-[1450px]:ml-3");
       menuList.classList.toggle("max-[1450px]:pointer-events-auto");
       menuList.classList.toggle("max-[1450px]:opacity-100");
@@ -255,10 +221,8 @@ darkModeToggle.addEventListener("click", () => {
     });
 
     if (window.innerWidth < 1450) {
-      const anchors = menuList.querySelectorAll("a"); // Obtiene todos los <a>
-      const anchorsExceptLast = Array.from(anchors).slice(0, -1); // Excluye el último
-
-      anchorsExceptLast.forEach((a) => {
+      const anchors = menuList.querySelectorAll("a");
+      anchors.forEach((a) => {
         a.addEventListener("click", () => {
           menuMobile.classList.toggle("opacity-0");
           closeMobile.classList.toggle("opacity-0");

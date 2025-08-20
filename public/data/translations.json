@@ -1,10 +1,10 @@
 {
     "es": {
-        "role": "Soy <span class='txt-rotate' data-period='2000' data-rotate='[\"diseñador\", \"desarrollador\", \"devsigner\"]'></span>",
+        "role": "Soy diseñador, desarrollador, devsigner",
         "contactMe": "Contactame",
         "writeMe": "Escribime",
         "myCv": "Mi CV",
-        "aboutMeTitle": "Un poco <span class='text-[#055a97] dark:text-[#3D7AFF]'>sobre mi</span>",
+        "aboutMeTitle": "Un poco sobre mi",
         "aboutMe": "Tengo 25 años. Soy licenciado en Diseño Multimedial, recibido en la Universidad Nacional de La Plata. Resido en Quilmes, Buenos Aires, Argentina. Me especializo en el área web, utilizando herramientas de diseño como también de lenguajes de programación para el desarrollo de páginas.",
         "myExperienceTitle": "Mi experiencia",
         "devsignerFreelo": "Diseñador Web y Desarrollador Front-end",
@@ -43,11 +43,11 @@
         "navMenu5": "Contacto"
     },
     "en": {
-        "role": "I am <span class='txt-rotate' data-period='2000' data-rotate='[\"designer\", \"developer\", \"devsigner\"]'></span>",
+        "role": "I am designer, developer, devsigner",
         "contactMe": "Contact me",
         "writeMe": "Write me",
         "myCv": "My CV",
-        "aboutMeTitle": "A little <span class='text-[#055a97] dark:text-[#3D7AFF]'>about me</span>",
+        "aboutMeTitle": "A little about me",
         "aboutMe": "I am 25. I have a degree in Multimedia Design, graduated from Universidad Nacional de La Plata. I live in Quilmes, Buenos Aires, Argentina. I am a specialist in the web area, where I use design tools as well as programming languages for the development of web pages.",
         "myExperienceTitle": "My experience",
         "devsignerFreelo": "Web Designer and Frontend Developer",

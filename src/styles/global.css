@@ -65,14 +65,20 @@ a, button{
   height: 100dvh;
   opacity: 1;
   z-index: 200;
-  transition: transform 0.5s ease-in-out;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #F9F9F9;
 }
 
-.completado{
+html.dark .overlayTotal {
+  background-color: #272727;
+}
+
+.completado {
   transform: translateY(-101dvh);
   pointer-events: none;
+  opacity: 0;
 }
 

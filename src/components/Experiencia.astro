@@ -4,10 +4,10 @@ import Experiencia2 from "./Experiencia/Experiencia2.astro";
 ---
 
 <section id="experiencia"
-  class="arriba w-full flex min-h-[142dvh] sm:h-full bg-[#E0E0E0] dark:bg-[#1F1F1F] z-20" 
+  class="arriba w-full flex bg-[#f0f0f0] dark:bg-[#1F1F1F] z-20" 
 >
   <div
-    class="contenedor otros py-52 sm:py-0 px-4 sm:px-7 flex flex-col gap-6 h-full w-full sm:justify-center" data-aos="fade-up"
+    class="contenedor otros py-52 px-5 flex flex-col gap-6 h-full w-full sm:justify-center relative" data-aos="fade-up"
      data-aos-duration="500" data-aos-anchor-placement="center-bottom"
   >
     <h2
@@ -15,57 +15,23 @@ import Experiencia2 from "./Experiencia/Experiencia2.astro";
     >
       Mi experiencia
     </h2>
-    <div class="flex relative flex-col w-full gap-8">
+    <ul class="flex relative flex-col w-full gap-8">
       <Experiencia1 />
       <Experiencia2 />
-      <div
-        class="absolute h-full w-1 -z-10 top-4 left-[8.5px] bg-gradient-to-b from-[#055A97] from-85% to-[#E0E0E0] to-100% dark:from-[#3D7AFF] dark:to-[#1F1F1F]"
-      >
-      </div>
+    </ul>
+    <div
+      class="absolute h-3/5 w-1 -z-10 top-72 left-7 bg-gradient-to-b from-[#055A97] from-85% to-[#E0E0E0] to-100% dark:from-[#3D7AFF] dark:to-[#1F1F1F]"
+    >
     </div>
   </div>
 </section>
 
 <style>
-  @supports (animation-timeline: view()) {
     .arriba {
-      animation: mover-arriba linear forwards;
-      animation-timeline: view();
-      animation-range: entry 0% entry 60%;
       clip-path: polygon(0 0, 100% 0, 100% 98%, 0% 100%);
-      position: absolute;
     }
-    @keyframes mover-arriba {
-      0% {
-        transform: translateY(0);
-      }
-      60% {
-        transform: translateY(-50%);
-      }
-      100% {
-        transform: translateY(-98%);
-      }
-    }
-  }
+   
 
-  @supports not (animation-timeline: view()) {
-    .arriba {
-      position: relative;
-      min-height: 100dvh;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      height: max-content;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .contenedor {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-
-  }
 </style>
 
 <style is:global>
