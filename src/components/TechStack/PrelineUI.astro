@@ -1,32 +1,120 @@
 ---
 interface Props {
   class?: string;
+  variant?: "project" | "skill";
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#8A12FD20]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#8A12FD20] hover:bg-[#8A12FD50] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
 ---
 
-<span
-  class={`text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#2563EB30] px-3 py-1 ${className}`}
->
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>
+
+<span class={finalClasses}>
   <svg
-    width="10"
-    height="11"
-    viewBox="0 0 10 11"
+    class="w-4 h-auto"
+    viewBox="0 0 10 10"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M0.34375 9.96143V5.49268C0.34375 3.2145 2.19057 1.36768 4.46875 1.36768C6.74692 1.36768 8.59375 3.2145 8.59375 5.49268C8.59375 7.77085 6.74692 9.61768 4.46875 9.61768H4.125"
-      stroke="#2563EB"
-      stroke-width="0.6875"></path>
-    <path
-      d="M1.71881 9.96143V5.54768C1.71881 3.9985 2.95003 2.74268 4.46881 2.74268C5.9876 2.74268 7.21881 3.9985 7.21881 5.54768C7.21881 7.09683 5.9876 8.35268 4.46881 8.35268H4.12506"
-      stroke="#2563EB"
-      stroke-width="0.6875"></path>
-    <path
-      d="M4.46899 7.21875C5.41823 7.21875 6.18774 6.44924 6.18774 5.5C6.18774 4.55076 5.41823 3.78125 4.46899 3.78125C3.51975 3.78125 2.75024 4.55076 2.75024 5.5C2.75024 6.44924 3.51975 7.21875 4.46899 7.21875Z"
-      fill="#2563EB"></path>
+      d="M1.1707 2.16496C1.15219 1.63254 1.56695 1.1416 2.12765 1.1416H7.87297C8.43367 1.1416 8.84844 1.63254 8.82992 2.16496C8.81211 2.67637 8.83523 3.33887 9.00195 3.87902C9.16922 4.4209 9.45125 4.76332 9.9132 4.80738V5.30637C9.45125 5.35043 9.16922 5.69285 9.00195 6.23473C8.83523 6.77488 8.81211 7.43738 8.82992 7.94879C8.84844 8.48121 8.43367 8.97207 7.87297 8.97207H2.12765C1.56695 8.97207 1.15219 8.48113 1.1707 7.94879C1.18851 7.43738 1.16539 6.77488 0.998592 6.23473C0.831405 5.69293 0.548592 5.35043 0.0866394 5.30637V4.80738C0.548592 4.7634 0.831405 4.4209 0.998592 3.87902C1.16539 3.33887 1.18844 2.67637 1.1707 2.16496Z"
+      fill="url(#paint0_linear_191_53)"
+    ></path>
+    <g filter="url(#filter0_d_191_53)">
+      <path
+        d="M5.24294 7.1669C6.15067 7.1669 6.69767 6.72245 6.69767 5.98937C6.69767 5.43523 6.30738 5.03405 5.72785 4.97055V4.94746C6.15363 4.8782 6.48775 4.4828 6.48775 4.04122C6.48775 3.41205 5.99101 3.0022 5.23408 3.0022H3.53096V7.1669H5.24294ZM4.19328 3.53037H5.07442C5.55341 3.53037 5.82542 3.74394 5.82542 4.13068C5.82542 4.54341 5.50906 4.77429 4.93544 4.77429H4.19328V3.53037ZM4.19328 6.63873V5.26782H5.06849C5.69532 5.26782 6.02057 5.4987 6.02057 5.94895C6.02057 6.39918 5.70421 6.63873 5.10693 6.63873H4.19328Z"
+        fill="url(#paint1_linear_191_53)"
+      ></path>
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_191_53"
+        x="3.22389"
+        y="2.77189"
+        width="3.78087"
+        height="4.77894"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        ></feColorMatrix>
+        <feOffset dy="0.0767688"></feOffset>
+        <feGaussianBlur stdDeviation="0.153538"></feGaussianBlur>
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"
+        ></feColorMatrix>
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_191_53"
+        ></feBlend>
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_191_53"
+          result="shape"
+        ></feBlend>
+      </filter>
+      <linearGradient
+        id="paint0_linear_191_53"
+        x1="1.54684"
+        y1="1.34884"
+        x2="10.1334"
+        y2="8.16498"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#9013FE"></stop>
+        <stop offset="1" stop-color="#6610F2"></stop>
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear_191_53"
+        x1="3.83059"
+        y1="3.27626"
+        x2="5.74981"
+        y2="6.52224"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="white"></stop>
+        <stop offset="1" stop-color="#F1E5FC"></stop>
+      </linearGradient>
+    </defs>
   </svg>
-  Preline UI
+
+  Bootstrap
 </span>

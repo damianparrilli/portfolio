@@ -200,6 +200,12 @@
 
   // Función mejorada de updateText con cache y control de estado
   async function updateText(lang) {
+    // Verificar que el idioma sea válido
+    if (!lang || (lang !== "es" && lang !== "en")) {
+      console.warn("Idioma no válido:", lang);
+      return;
+    }
+    
     // Si ya tenemos las traducciones en cache y es el mismo idioma, no hacer fetch
     if (translationsCache && translationsCache.lang === lang) {
       applyTranslations(translationsCache.data, lang);
@@ -208,7 +214,16 @@
     
     try {
       const response = await fetch("/data/translations.json");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
+      
+      // Verificar que data y data[lang] existan
+      if (!data || !data[lang]) {
+        console.error("Datos de traducción no encontrados para:", lang);
+        return;
+      }
       
       // Guardar en cache
       translationsCache = { lang, data };
@@ -221,45 +236,83 @@
   
   // Función separada para aplicar traducciones
   function applyTranslations(data, lang) {
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (key === "role" || key === "aboutMeTitle") return;
-      const translation = data[lang][key];
+    // Verificar que data y data[lang] existan
+    if (!data || !data[lang]) {
+      console.error("Datos de traducción no encontrados para:", lang);
+      return;
+    }
+    
+    // Verificar que haya elementos con data-i18n antes de procesar
+    const elements = document.querySelectorAll("[data-i18n]");
+    if (elements.length === 0) {
+      console.warn("No se encontraron elementos con data-i18n");
+      return;
+    }
+    
+    elements.forEach((el) => {
+      try {
+        const key = el.getAttribute("data-i18n");
+        if (!key || key === "role" || key === "aboutMeTitle") return;
+        
+        const translation = data[lang][key];
+        if (!translation) {
+          console.warn(`Traducción no encontrada para la clave: ${key}`);
+          return;
+        }
 
-      if (el.querySelector("svg")) {
-        const svgElement = el.querySelector("svg");
-        el.innerHTML = svgElement.outerHTML + translation;
-      } else {
-        el.textContent = translation;
+        if (el.querySelector("svg")) {
+          const svgElement = el.querySelector("svg");
+          if (svgElement) {
+            el.innerHTML = svgElement.outerHTML + translation;
+          }
+        } else {
+          el.textContent = translation;
+        }
+      } catch (error) {
+        console.error(`Error procesando elemento con clave ${el.getAttribute("data-i18n")}:`, error);
       }
     });
 
     const roleElement = document.querySelector("[data-i18n='role']");
-    if (roleElement) {
-      const translation = data[lang]["role"];
-      const parts = translation.split(",");
-      const firstPartWords = parts[0].trim().split(" ");
-      const prefix = firstPartWords.slice(0, -1).join(" ");
-      const rotateWords = [
-        firstPartWords[firstPartWords.length - 1],
-        ...parts.slice(1).map((p) => p.trim()),
-      ];
-      roleElement.innerHTML = `${prefix} <span class="txt-rotate" data-period="2000" data-rotate='${JSON.stringify(
-        rotateWords
-      )}'></span>`;
+    if (roleElement && data[lang]["role"]) {
+      try {
+        const translation = data[lang]["role"];
+        const parts = translation.split(",");
+        const firstPartWords = parts[0].trim().split(" ");
+        const prefix = firstPartWords.slice(0, -1).join(" ");
+        const rotateWords = [
+          firstPartWords[firstPartWords.length - 1],
+          ...parts.slice(1).map((p) => p.trim()),
+        ];
+        roleElement.innerHTML = `${prefix} <span class="txt-rotate" data-period="2000" data-rotate='${JSON.stringify(
+          rotateWords
+        )}'></span>`;
+      } catch (error) {
+        console.error("Error procesando role element:", error);
+      }
     }
 
     const aboutMeTitle = document.querySelector("[data-i18n='aboutMeTitle']");
-    if (aboutMeTitle) {
-      const translation = data[lang]["aboutMeTitle"];
-      const words = translation.split(" ");
-      const highlighted = words.splice(-2).join(" ");
-      aboutMeTitle.innerHTML = `${words.join(" ")} <span class='text-[#055a97] dark:text-[#3D7AFF]'>${highlighted}</span>`;
+    if (aboutMeTitle && data[lang]["aboutMeTitle"]) {
+      try {
+        const translation = data[lang]["aboutMeTitle"];
+        const words = translation.split(" ");
+        const highlighted = words.splice(-2).join(" ");
+        aboutMeTitle.innerHTML = `${words.join(" ")} <span class='text-[#055a97] dark:text-[#3D7AFF]'>${highlighted}</span>`;
+      } catch (error) {
+        console.error("Error procesando aboutMeTitle element:", error);
+      }
     }
 
     // Solo inicializar txt-rotate si la función existe
     if (typeof initializeTxtRotate === 'function') {
-      initializeTxtRotate();
+      try {
+        initializeTxtRotate();
+      } catch (error) {
+        console.error("Error inicializando txt-rotate:", error);
+      }
+    } else {
+      console.warn("Función initializeTxtRotate no está disponible");
     }
   }
 

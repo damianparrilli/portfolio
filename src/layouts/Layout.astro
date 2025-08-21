@@ -167,60 +167,151 @@ const { title, description, keywords } = Astro.props;
     document.body.appendChild(script);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {});
-  updateText(savedLang);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Solo ejecutar updateText cuando el DOM esté completamente cargado
+    const savedLang = localStorage.getItem("lang") || "en";
+    
+    // Verificar que el idioma sea válido antes de ejecutar
+    if (savedLang && (savedLang === "es" || savedLang === "en")) {
+      updateText(savedLang);
+    } else {
+      console.warn("Idioma no válido en localStorage:", savedLang);
+      // Establecer un idioma por defecto
+      const defaultLang = "en";
+      localStorage.setItem("lang", defaultLang);
+      updateText(defaultLang);
+    }
+  });
+  
   function updateText(lang) {
+    // Verificar que el idioma sea válido
+    if (!lang || (lang !== "es" && lang !== "en")) {
+      console.warn("Idioma no válido:", lang);
+      return;
+    }
+    
+    // Verificar que el DOM esté listo
+    if (document.readyState !== 'complete' && document.readyState !== 'interactive') {
+      console.warn("DOM no está listo, esperando...");
+      setTimeout(() => updateText(lang), 100);
+      return;
+    }
+    
     fetch("/data/translations.json")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.getAttribute("data-i18n");
-          if (key === "role" || key === "aboutMeTitle") return;
-          const translation = data[lang][key];
+        // Verificar que data y data[lang] existan
+        if (!data || !data[lang]) {
+          console.error("Datos de traducción no encontrados para:", lang);
+          return;
+        }
+        
+        // Verificar que haya elementos con data-i18n antes de procesar
+        const elements = document.querySelectorAll("[data-i18n]");
+        if (elements.length === 0) {
+          console.warn("No se encontraron elementos con data-i18n");
+          return;
+        }
+        
+        elements.forEach((el) => {
+          try {
+            const key = el.getAttribute("data-i18n");
+            if (!key || key === "role" || key === "aboutMeTitle") return;
+            
+            const translation = data[lang][key];
+            if (!translation) {
+              console.warn(`Traducción no encontrada para la clave: ${key}`);
+              return;
+            }
 
-          if (el.querySelector("svg")) {
-            const svgElement = el.querySelector("svg");
-            el.innerHTML = svgElement.outerHTML + translation;
-          } else {
-            el.textContent = translation;
+            if (el.querySelector("svg")) {
+              const svgElement = el.querySelector("svg");
+              if (svgElement) {
+                el.innerHTML = svgElement.outerHTML + translation;
+              }
+            } else {
+              el.textContent = translation;
+            }
+          } catch (error) {
+            console.error(`Error procesando elemento con clave ${el.getAttribute("data-i18n")}:`, error);
           }
         });
 
         const roleElement = document.querySelector("[data-i18n='role']");
-        if (roleElement) {
-          const translation = data[lang]["role"];
-          const parts = translation.split(",");
-          const firstPartWords = parts[0].trim().split(" ");
-          const prefix = firstPartWords.slice(0, -1).join(" ");
-          const rotateWords = [
-            firstPartWords[firstPartWords.length - 1],
-            ...parts.slice(1).map((p) => p.trim()),
-          ];
-          roleElement.innerHTML = `${prefix} <span class="txt-rotate" data-period="2000" data-rotate='${JSON.stringify(
-            rotateWords
-          )}'></span>`;
+        if (roleElement && data[lang]["role"]) {
+          try {
+            const translation = data[lang]["role"];
+            const parts = translation.split(",");
+            const firstPartWords = parts[0].trim().split(" ");
+            const prefix = firstPartWords.slice(0, -1).join(" ");
+            const rotateWords = [
+              firstPartWords[firstPartWords.length - 1],
+              ...parts.slice(1).map((p) => p.trim()),
+            ];
+            roleElement.innerHTML = `${prefix} <span class="txt-rotate" data-period="2000" data-rotate='${JSON.stringify(
+              rotateWords
+            )}'></span>`;
+          } catch (error) {
+            console.error("Error procesando role element:", error);
+          }
         }
 
         const aboutMeTitle = document.querySelector("[data-i18n='aboutMeTitle']");
-        if (aboutMeTitle) {
-          const translation = data[lang]["aboutMeTitle"];
-          const words = translation.split(" ");
-          const highlighted = words.splice(-2).join(" ");
-          aboutMeTitle.innerHTML = `${words.join(" ")} <span class='text-[#055a97] dark:text-[#3D7AFF]'>${highlighted}</span>`;
+        if (aboutMeTitle && data[lang]["aboutMeTitle"]) {
+          try {
+            const translation = data[lang]["aboutMeTitle"];
+            const words = translation.split(" ");
+            const highlighted = words.splice(-2).join(" ");
+            aboutMeTitle.innerHTML = `${words.join(" ")} <span class='text-[#055a97] dark:text-[#3D7AFF]'>${highlighted}</span>`;
+          } catch (error) {
+            console.error("Error procesando aboutMeTitle element:", error);
+          }
         }
 
-        initializeTxtRotate();
+        // Solo inicializar txt-rotate si la función existe y hay elementos
+        if (typeof initializeTxtRotate === 'function') {
+          try {
+            initializeTxtRotate();
+          } catch (error) {
+            console.error("Error inicializando txt-rotate:", error);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error al cargar traducciones:", error);
       });
   }
 
   function initializeTxtRotate() {
-    var elements = document.getElementsByClassName("txt-rotate");
-    for (var i = 0; i < elements.length; i++) {
-      var toRotate = elements[i].getAttribute("data-rotate");
-      var period = elements[i].getAttribute("data-period");
-      if (toRotate) {
-        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    try {
+      var elements = document.getElementsByClassName("txt-rotate");
+      if (elements.length === 0) {
+        console.warn("No se encontraron elementos txt-rotate");
+        return;
       }
+      
+      for (var i = 0; i < elements.length; i++) {
+        try {
+          var toRotate = elements[i].getAttribute("data-rotate");
+          var period = elements[i].getAttribute("data-period");
+          if (toRotate && typeof TxtRotate !== 'undefined') {
+            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+          } else if (!toRotate) {
+            console.warn("Elemento txt-rotate sin atributo data-rotate");
+          } else if (typeof TxtRotate === 'undefined') {
+            console.warn("Función TxtRotate no está definida");
+          }
+        } catch (error) {
+          console.error(`Error procesando elemento txt-rotate ${i}:`, error);
+        }
+      }
+    } catch (error) {
+      console.error("Error en initializeTxtRotate:", error);
     }
   }
 

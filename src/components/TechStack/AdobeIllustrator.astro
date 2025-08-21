@@ -1,0 +1,67 @@
+---
+interface Props {
+  class?: string;
+  variant?: "project" | "skill";
+}
+
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#33000020]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#33000020] hover:bg-[#96565650] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
+---
+
+<span class={finalClasses}>
+  <svg
+    class="w-4 h-auto"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clip-path="url(#clip0_191_117)">
+      <path
+        d="M2.8375 0.199951H13.175C14.7375 0.199951 16.0125 1.46245 16.0125 3.03745V12.975C16.0125 14.5375 14.75 15.8125 13.175 15.8125H2.8375C1.2625 15.8 0 14.5375 0 12.9625V3.03745C0 1.46245 1.2625 0.199951 2.8375 0.199951Z"
+        fill="#330000"
+      ></path>
+      <path
+        d="M7.7375 9.5376H5.25L4.75 11.1001C4.7375 11.1626 4.6875 11.2001 4.625 11.1876H3.375C3.3 11.1876 3.2875 11.1501 3.3 11.0626L5.45 4.8876C5.475 4.8251 5.4875 4.7501 5.5125 4.6626C5.5375 4.5251 5.55 4.3751 5.55 4.2251C5.5375 4.1876 5.575 4.1626 5.6 4.1501H7.325C7.375 4.1501 7.4 4.1751 7.4125 4.2001L9.85 11.0626C9.875 11.1376 9.85 11.1751 9.7875 11.1751H8.3875C8.3375 11.1876 8.3 11.1501 8.275 11.1001L7.7375 9.5376ZM5.6375 8.1751H7.325C7.2875 8.0376 7.2375 7.8626 7.175 7.7001C7.1125 7.5251 7.05 7.3251 7 7.1251C6.9375 6.9126 6.875 6.7126 6.8125 6.5126C6.75 6.3001 6.6875 6.1126 6.6375 5.9251C6.5875 5.7376 6.5375 5.5626 6.4875 5.4001H6.475C6.4125 5.6876 6.3375 5.9751 6.25 6.2626C6.15 6.5876 6.05 6.9126 5.9375 7.2501C5.8375 7.5876 5.7375 7.9001 5.6375 8.1751ZM11.3375 5.3376C11.1125 5.3501 10.9 5.2626 10.75 5.1001C10.6 4.9376 10.5125 4.7126 10.525 4.4876C10.5125 4.2626 10.6 4.0501 10.7625 3.9001C10.925 3.7501 11.1375 3.6626 11.35 3.6626C11.6125 3.6626 11.8125 3.7376 11.9625 3.9001C12.1125 4.0626 12.1875 4.2751 12.1875 4.4876C12.2 4.7126 12.1125 4.9376 11.95 5.1001C11.7875 5.2626 11.5625 5.3501 11.3375 5.3376ZM10.5875 11.1251V5.9876C10.5875 5.9251 10.6125 5.9001 10.675 5.9001H12C12.0625 5.9001 12.0875 5.9376 12.0875 5.9876V11.1251C12.0875 11.2001 12.0625 11.2376 12 11.2376H10.6875C10.625 11.2251 10.5875 11.1876 10.5875 11.1251Z"
+        fill="#FF9A00"
+      ></path>
+    </g>
+    <defs>
+      <clipPath id="clip0_191_117">
+        <rect width="16" height="16" fill="white"></rect>
+      </clipPath>
+    </defs>
+  </svg>
+
+  Adobe Illustrator
+</span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>

@@ -1,14 +1,22 @@
 ---
 interface Props {
   class?: string;
+  variant?: "project" | "skill";
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#43a3cc40]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#43a3cc40] hover:bg-[#43a3cc60] dark:bg-[#38BDF830] hover:dark:bg-[#38BDF860] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
 ---
 
-<span
-  class={`text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#38BDF830] px-3 py-1 ${className}`}
->
+<span class={finalClasses}>
   <svg
     width="13"
     height="8"
@@ -18,7 +26,32 @@ const { class: className = "" } = Astro.props;
   >
     <path
       d="M6.33325 0C4.64435 0 3.58917 0.844103 3.16662 2.533C3.79975 1.6888 4.53886 1.37224 5.38306 1.58331C5.86508 1.70345 6.20955 2.05296 6.59103 2.44028C7.21189 3.07034 7.93051 3.79975 9.49987 3.79975C11.1887 3.79975 12.2439 2.95555 12.6665 1.26625C12.0332 2.11088 11.2943 2.42761 10.45 2.21644C9.96804 2.09621 9.62396 1.74679 9.24199 1.35947C8.62153 0.729412 7.9031 0 6.33325 0ZM3.16662 3.79975C1.47782 3.79975 0.422546 4.64395 0 6.33325C0.633259 5.48862 1.37207 5.17189 2.21644 5.38306C2.69846 5.50329 3.04293 5.85271 3.42441 6.24003C4.04526 6.87009 4.76389 7.5995 6.33325 7.5995C8.02205 7.5995 9.07732 6.7554 9.49987 5.0665C8.86655 5.91073 8.1277 6.2273 7.28333 6.01619C6.80141 5.89606 6.45734 5.54654 6.07536 5.15922C5.4549 4.52916 4.73648 3.79975 3.16662 3.79975Z"
-      fill="#38BDF8"></path>
+      fill="#38BDF8"
+    ></path>
   </svg>
+
   TailwindCSS
 </span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>

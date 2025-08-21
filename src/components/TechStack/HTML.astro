@@ -1,14 +1,22 @@
 ---
 interface Props {
   class?: string;
+  variant?: "project" | "skill";
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#E34F2620]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#F1662A20] hover:bg-[#F1662A50] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
 ---
 
-<span
-  class={`text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#F1662A20] px-3 py-1 ${className}`}
->
+<span class={finalClasses}>
   <svg class="w-4 h-auto" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.39771 11.0504L1.48486 0.8125H11.5152L10.6011 11.0488L6.49393 12.1875L2.39771 11.0504Z" fill="#E44F26"/>
     <path d="M6.5 11.3172L9.81906 10.397L10.5999 1.64966H6.5V11.3172Z" fill="#F1662A"/>
@@ -17,3 +25,26 @@ const { class: className = "" } = Astro.props;
   </svg>
   HTML
 </span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>

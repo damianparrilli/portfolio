@@ -1,14 +1,22 @@
 ---
 interface Props {
   class?: string;
+  variant?: "project" | "skill";
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#f9f9f910]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#f9f9f930] hover:bg-[#f9f9f960] hover:dark:bg-[#f9f9f940] dark:bg-[#f9f9f910] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
 ---
 
-<span
-  class={`text-xs sm:text-sm text-[#f9f9f9] flex items-center gap-1 rounded-2xl bg-[#f9f9f910] px-3 py-1 ${className}`}
->
+<span class={finalClasses}>
   <svg
     width="9"
     height="11"
@@ -17,9 +25,33 @@ const { class: className = "" } = Astro.props;
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      class="fill-[#272727] dark:fill-[#F9F9F9]"
       d="M2.827 9.36925C2.33145 8.91495 2.1868 7.9607 2.39305 7.2688C2.75055 7.70495 3.24665 7.843 3.76035 7.9211C4.55235 8.041 5.33115 7.99645 6.0676 7.6329C6.15175 7.5911 6.22985 7.53555 6.3217 7.48C6.391 7.68075 6.40915 7.8837 6.38495 8.0905C6.3261 8.59375 6.07695 8.9826 5.6793 9.2774C5.52035 9.39565 5.3526 9.5007 5.1887 9.6118C4.6849 9.9539 4.5485 10.3543 4.7377 10.9373L4.7564 11C4.51411 10.8944 4.3091 10.7185 4.1679 10.4951C4.0203 10.2652 3.94167 9.99777 3.9413 9.72455C3.93965 9.58815 3.93965 9.4512 3.9215 9.31755C3.87695 8.9903 3.7235 8.84455 3.43585 8.83575C3.29777 8.82793 3.16158 8.87069 3.05275 8.95603C2.94392 9.04137 2.86992 9.16344 2.8446 9.2994C2.83983 9.32067 2.83378 9.34377 2.82645 9.3687M0 7.15385C0 7.15385 1.4663 6.4372 2.937 6.4372L4.0458 2.9942C4.08705 2.827 4.2086 2.7137 4.345 2.7137C4.4825 2.7137 4.6035 2.827 4.64475 2.9942L5.75355 6.4372C7.4954 6.4372 8.69055 7.15385 8.69055 7.15385L6.19465 0.3311C6.12315 0.1298 6.00215 0 5.8399 0H2.85065C2.68785 0 2.57235 0.1298 2.4959 0.3311C2.4904 0.3443 0 7.15385 0 7.15385Z"
-      fill="#F9F9F9"></path>
+    ></path>
   </svg>
   Astro
 </span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>
 

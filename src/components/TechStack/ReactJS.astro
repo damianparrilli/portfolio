@@ -1,0 +1,82 @@
+---
+interface Props {
+  class?: string;
+  variant?: "project" | "skill";
+}
+
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#001E3630]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#001E3630] hover:bg-[#37526857] hover:dark:bg-[#3d586e40] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
+---
+
+<span class={finalClasses}>
+  <svg
+    class="w-4 h-auto"
+    viewBox="0 0 10 10"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clip-path="url(#clip0_191_30)">
+      <path
+        d="M7.65625 0H2.34375C1.04933 0 0 1.04933 0 2.34375V7.65625C0 8.95067 1.04933 10 2.34375 10H7.65625C8.95067 10 10 8.95067 10 7.65625V2.34375C10 1.04933 8.95067 0 7.65625 0Z"
+        fill="#242938"
+      ></path>
+      <path
+        d="M5.00004 5.74022C5.40254 5.74022 5.72879 5.41393 5.72879 5.01146C5.72879 4.609 5.40254 4.28271 5.00004 4.28271C4.59754 4.28271 4.27129 4.609 4.27129 5.01146C4.27129 5.41393 4.59758 5.74022 5.00004 5.74022Z"
+        fill="#00D8FF"
+      ></path>
+      <path
+        d="M5.00008 3.52979C5.97852 3.52979 6.88746 3.67018 7.57281 3.90615C8.39855 4.19041 8.90625 4.62131 8.90625 5.0115C8.90625 5.41811 8.3682 5.87588 7.48145 6.16967C6.81105 6.39178 5.92887 6.50772 5.00008 6.50772C4.04781 6.50772 3.14605 6.39889 2.46809 6.16721C1.61035 5.87404 1.09375 5.41037 1.09375 5.0115C1.09375 4.62447 1.57852 4.19689 2.39266 3.91307C3.08055 3.67322 4.01191 3.52979 4.99992 3.52979H5.00008Z"
+        stroke="#00D8FF"
+        stroke-width="0.348086"
+      ></path>
+      <path
+        d="M3.71019 4.27492C4.19902 3.42734 4.77469 2.71008 5.32148 2.2343C5.98023 1.66098 6.60719 1.43644 6.94516 1.63133C7.29738 1.83445 7.42516 2.5293 7.23668 3.44422C7.0943 4.1359 6.7539 4.95801 6.28988 5.76262C5.81414 6.58754 5.26941 7.31434 4.73008 7.78574C4.04762 8.3823 3.38781 8.5982 3.0423 8.39894C2.70703 8.20574 2.57883 7.57211 2.73969 6.72504C2.87558 6.0093 3.21664 5.13082 3.71004 4.27492H3.71019Z"
+        stroke="#00D8FF"
+        stroke-width="0.348086"
+      ></path>
+      <path
+        d="M3.7114 5.76467C3.22121 4.91803 2.88746 4.06092 2.74816 3.34959C2.58046 2.49252 2.69902 1.83724 3.03672 1.64178C3.38863 1.43803 4.05437 1.67435 4.75289 2.29459C5.28101 2.76349 5.82332 3.46885 6.28867 4.27267C6.76578 5.09681 7.12336 5.93177 7.26246 6.63443C7.43847 7.52365 7.29601 8.20306 6.95082 8.40287C6.61589 8.59677 6.00297 8.3915 5.34941 7.82908C4.79722 7.35392 4.20644 6.61974 3.7114 5.76467Z"
+        stroke="#00D8FF"
+        stroke-width="0.348086"
+      ></path>
+    </g>
+    <defs>
+      <clipPath id="clip0_191_30">
+        <rect width="10" height="10" fill="white"></rect>
+      </clipPath>
+    </defs>
+  </svg>
+
+  ReactJS
+</span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>
