@@ -8,53 +8,62 @@ interface Props {
   loading?: 'lazy' | 'eager';
   sizes?: string;
   'data-image-src'?: string;
+  project?: boolean;
 }
 
-const { name, alt, class: className, loading = 'lazy', sizes = '100vw', 'data-image-src': dataImageSrc } = Astro.props;
+const { name, alt, class: className, loading = 'lazy', sizes = '100vw', 'data-image-src': dataImageSrc, project } = Astro.props;
 const image = getResponsiveImage(name);
 
 if (!image) {
   console.warn(`Imagen responsive no encontrada: ${name}`);
 }
+
+const containerClasses = project 
+  ? "md:contents shrink-0 overflow-hidden md:overflow-auto" 
+  : "contents";
 ---
 
 {image && (
-  <picture data-image-src={dataImageSrc} class="shrink-0">
-    <source 
-      media="(min-width: 1025px)" 
-      srcset={image.desktop}
-      type="image/webp"
-    />
-    
-    <source 
-      media="(min-width: 769px) and (max-width: 1024px)" 
-      srcset={image.tablet}
-      type="image/webp"
-    />
-    
-    <source 
-      media="(max-width: 768px)" 
-      srcset={image.mobile}
-      type="image/webp"
-    />
-    
-    <img 
-      src={image.fallback || image.desktop} 
-      alt={alt || image.alt}
-      loading={loading}
-      sizes={sizes}
-      class={className}
-      data-image-src={dataImageSrc}
-    />
-  </picture>
+  <div class={containerClasses} data-image-src={dataImageSrc}>
+    <picture>
+      <source 
+        media="(min-width: 1025px)" 
+        srcset={image.desktop}
+        type="image/webp"
+      />
+      
+      <source 
+        media="(min-width: 769px) and (max-width: 1024px)" 
+        srcset={image.tablet}
+        type="image/webp"
+      />
+      
+      <source 
+        media="(max-width: 768px)" 
+        srcset={image.mobile}
+        type="image/webp"
+      />
+      
+      <img 
+        src={image.fallback || image.desktop} 
+        alt={alt || image.alt}
+        loading={loading}
+        sizes={sizes}
+        class={className}
+        data-image-src={dataImageSrc}
+      />
+    </picture>
+  </div>
 )}
 
 {!image && (
-  <img 
-    src={`/${name}.webp`} 
-    alt={alt || name}
-    loading={loading}
-    class={className}
-    data-image-src={dataImageSrc}
-  />
+  <div class={containerClasses} data-image-src={dataImageSrc}>
+    <img 
+      src={`/${name}.webp`} 
+      alt={alt || name}
+      loading={loading}
+      class={className}
+      data-image-src={dataImageSrc}
+    />
+  </div>
 )}

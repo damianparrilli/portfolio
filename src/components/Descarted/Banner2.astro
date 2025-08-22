@@ -543,7 +543,6 @@
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    // Si es la última palabra, aplicar clase especial
     let spanClass = i === this.toRotate.length - 1 ? "final-word" : "";
 
     this.el.innerHTML = `<span class="wrap ${spanClass}">${this.txt}</span>`;
@@ -557,7 +556,7 @@
 
     if (!this.isDeleting && this.txt === fullTxt) {
       if (i === this.toRotate.length - 1) {
-        return; // 🚀 Se detiene en la última palabra
+        return;
       }
       delta = this.period;
       this.isDeleting = true;

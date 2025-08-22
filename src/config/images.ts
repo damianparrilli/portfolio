@@ -160,6 +160,125 @@ export const responsiveImages: Record<string, ResponsiveImage> = {
     desktop: "/images/responsive/desktop/diploma-unlp.webp",
     alt: "Diploma UNLP",
     fallback: "/diploma-unlp.webp"
+  },
+  "kzgroup-main": {
+    mobile: "/images/responsive/mobile/kzgroup-main.webp",
+    tablet: "/images/responsive/tablet/kzgroup-main.webp",
+    desktop: "/images/responsive/desktop/kzgroup-main.webp",
+    alt: "KZ Group Imagen Principal",
+    fallback: "/kzgroup-main.webp"
+  },
+  "kzgroup-1": {
+    mobile: "/images/responsive/mobile/kzgroup-1.webp",
+    tablet: "/images/responsive/tablet/kzgroup-1.webp",
+    desktop: "/images/responsive/desktop/kzgroup-1.webp",
+    alt: "KZ Group Imagen 1",
+    fallback: "/kzgroup-1.webp"
+  },
+  "kzgroup-2": {
+    mobile: "/images/responsive/mobile/kzgroup-2.webp",
+    tablet: "/images/responsive/tablet/kzgroup-2.webp",
+    desktop: "/images/responsive/desktop/kzgroup-2.webp",
+    alt: "KZ Group Imagen 2",
+    fallback: "/kzgroup-2.webp"
+  },
+  "kzgroup-3": {
+    mobile: "/images/responsive/mobile/kzgroup-3.webp",
+    tablet: "/images/responsive/tablet/kzgroup-3.webp",
+    desktop: "/images/responsive/desktop/kzgroup-3.webp",
+    alt: "KZ Group Imagen 3",
+    fallback: "/kzgroup-3.webp"
+  },
+  "kzgroup-4": {
+    mobile: "/images/responsive/mobile/kzgroup-4.webp",
+    tablet: "/images/responsive/tablet/kzgroup-4.webp",
+    desktop: "/images/responsive/desktop/kzgroup-4.webp",
+    alt: "KZ Group Imagen 4",
+    fallback: "/kzgroup-4.webp"
+  },
+  "kzgroup-5": {
+    mobile: "/images/responsive/mobile/kzgroup-5.webp",
+    tablet: "/images/responsive/tablet/kzgroup-5.webp",
+    desktop: "/images/responsive/desktop/kzgroup-5.webp",
+    alt: "KZ Group Imagen 5",
+    fallback: "/kzgroup-5.webp"
+  },
+  "bonte-deco": {
+    mobile: "/images/responsive/mobile/bonte-deco.webp",
+    tablet: "/images/responsive/tablet/bonte-deco.webp",
+    desktop: "/images/responsive/desktop/bonte-deco.webp",
+    alt: "Bonte Deco Imagen Principal",
+    fallback: "/bonte-deco.webp"
+  },
+  "axelfauth-main": {
+    mobile: "/images/responsive/mobile/axelfauth-main.webp",
+    tablet: "/images/responsive/tablet/axelfauth-main.webp",
+    desktop: "/images/responsive/desktop/axelfauth-main.webp",
+    alt: "Axel Fauth Imagen Principal",
+    fallback: "/axelfauth-main.webp"
+  },
+  "axelfauth-1": {
+    mobile: "/images/responsive/mobile/axelfauth-1.webp",
+    tablet: "/images/responsive/tablet/axelfauth-1.webp",
+    desktop: "/images/responsive/desktop/axelfauth-1.webp",
+    alt: "Axel Fauth Imagen 1",
+    fallback: "/axelfauth-1.webp"
+  },
+  "axelfauth-2": {
+    mobile: "/images/responsive/mobile/axelfauth-2.webp",
+    tablet: "/images/responsive/tablet/axelfauth-2.webp",
+    desktop: "/images/responsive/desktop/axelfauth-2.webp",
+    alt: "Axel Fauth Imagen 2",
+    fallback: "/axelfauth-2.webp"
+  },
+  "axelfauth-3": {
+    mobile: "/images/responsive/mobile/axelfauth-3.webp",
+    tablet: "/images/responsive/tablet/axelfauth-3.webp",
+    desktop: "/images/responsive/desktop/axelfauth-3.webp",
+    alt: "Axel Fauth Imagen 3",
+    fallback: "/axelfauth-3.webp"
+  },
+  "axelfauth-4": {
+    mobile: "/images/responsive/mobile/axelfauth-4.webp",
+    tablet: "/images/responsive/tablet/axelfauth-4.webp",
+    desktop: "/images/responsive/desktop/axelfauth-4.webp",
+    alt: "Axel Fauth Imagen 4",
+    fallback: "/axelfauth-4.webp"
+  },
+  "dobleg-main": {
+    mobile: "/images/responsive/mobile/dobleg-main.webp",
+    tablet: "/images/responsive/tablet/dobleg-main.webp",
+    desktop: "/images/responsive/desktop/dobleg-main.webp",
+    alt: "Dobleg Imagen Principal",
+    fallback: "/dobleg-main.webp"
+  },
+  "dobleg-1": {
+    mobile: "/images/responsive/mobile/dobleg-1.webp",
+    tablet: "/images/responsive/tablet/dobleg-1.webp",
+    desktop: "/images/responsive/desktop/dobleg-1.webp",
+    alt: "Dobleg Imagen 1",
+    fallback: "/dobleg-1.webp"
+  },
+  "dobleg-2": {
+    mobile: "/images/responsive/mobile/dobleg-2.webp",
+    tablet: "/images/responsive/tablet/dobleg-2.webp",
+    desktop: "/images/responsive/desktop/dobleg-2.webp",
+    alt: "Dobleg Imagen 2",
+    fallback: "/dobleg-2.webp"
+  },
+  "dobleg-3": {
+    mobile: "/images/responsive/mobile/dobleg-3.webp",
+    tablet: "/images/responsive/tablet/dobleg-3.webp",
+    desktop: "/images/responsive/desktop/dobleg-3.webp",
+    alt: "Dobleg Imagen 3",
+    fallback: "/dobleg-3.webp"
+  },
+  "dobleg-4": {
+    mobile: "/images/responsive/mobile/dobleg-4.webp",
+    tablet: "/images/responsive/tablet/dobleg-4.webp",
+    desktop: "/images/responsive/desktop/dobleg-4.webp",
+    alt: "Dobleg Imagen 4",
+    fallback: "/dobleg-4.webp"
   }
 };
 

@@ -125,17 +125,15 @@
   const optionsDiv = document.getElementById("language-options");
   const selectButtons = optionsDiv.querySelectorAll("button");
   
-  // Variables para controlar el estado y evitar múltiples requests
   let isProcessing = false;
   let lastClickTime = 0;
-  const CLICK_DELAY = 300; // 300ms entre clics
+  const CLICK_DELAY = 300;
   let translationsCache = null;
   let currentLang = null;
 
   selectorButton.addEventListener("click", (event) => {
     event.stopPropagation();
     
-    // Debouncing: evitar múltiples clics rápidos
     const now = Date.now();
     if (now - lastClickTime < CLICK_DELAY) {
       return;
@@ -147,14 +145,12 @@
 
   selectButtons.forEach((button) => {
     button.addEventListener("click", async (event) => {
-      // Evitar múltiples clics simultáneos
       if (isProcessing) {
         return;
       }
       
       const lang = event.target.getAttribute("data-lang");
       
-      // Si ya estamos en el idioma seleccionado, no hacer nada
       if (lang === currentLang) {
         optionsDiv.classList.add("hidden");
         return;
@@ -167,7 +163,6 @@
         document.documentElement.setAttribute("lang", lang);
         currentLang = lang;
         
-        // Actualizar el texto del botón
         if (window.innerWidth > 640) {
           selectorButton.innerHTML = event.target.innerHTML;
         } else {
@@ -177,7 +172,6 @@
           selectorButton.appendChild(clonedSvg);
         }
         
-        // Actualizar traducciones solo si es necesario
         await updateText(lang);
         
         optionsDiv.classList.add("hidden");
@@ -198,15 +192,12 @@
     }
   });
 
-  // Función mejorada de updateText con cache y control de estado
   async function updateText(lang) {
-    // Verificar que el idioma sea válido
     if (!lang || (lang !== "es" && lang !== "en")) {
       console.warn("Idioma no válido:", lang);
       return;
     }
     
-    // Si ya tenemos las traducciones en cache y es el mismo idioma, no hacer fetch
     if (translationsCache && translationsCache.lang === lang) {
       applyTranslations(translationsCache.data, lang);
       return;
@@ -219,13 +210,11 @@
       }
       const data = await response.json();
       
-      // Verificar que data y data[lang] existan
       if (!data || !data[lang]) {
         console.error("Datos de traducción no encontrados para:", lang);
         return;
       }
       
-      // Guardar en cache
       translationsCache = { lang, data };
       
       applyTranslations(data, lang);
@@ -234,15 +223,12 @@
     }
   }
   
-  // Función separada para aplicar traducciones
   function applyTranslations(data, lang) {
-    // Verificar que data y data[lang] existan
     if (!data || !data[lang]) {
       console.error("Datos de traducción no encontrados para:", lang);
       return;
     }
     
-    // Verificar que haya elementos con data-i18n antes de procesar
     const elements = document.querySelectorAll("[data-i18n]");
     if (elements.length === 0) {
       console.warn("No se encontraron elementos con data-i18n");
@@ -304,7 +290,6 @@
       }
     }
 
-    // Solo inicializar txt-rotate si la función existe
     if (typeof initializeTxtRotate === 'function') {
       try {
         initializeTxtRotate();
@@ -377,7 +362,6 @@ English`;
 </svg>`;
     }
     
-    // Cargar traducciones iniciales
     await updateText(storedLang);
 
     window.addEventListener("resize", () => {

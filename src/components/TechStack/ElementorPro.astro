@@ -1,0 +1,46 @@
+---
+interface Props {
+  class?: string;
+  variant?: "project" | "skill";
+}
+
+const { class: className = "", variant = "project" } = Astro.props;
+
+const isProject = variant === "project";
+const isSkill = variant === "skill";
+
+const baseClasses = "text-xs sm:text-sm flex items-center gap-1 rounded-2xl px-3 py-1";
+const projectClasses = "text-[#f9f9f9] bg-[#FF7BE510]";
+const skillClasses = "text-[#272727] dark:text-[#F9F9F9] bg-[#FF7BE530] hover:bg-[#FF7BE560] hover:dark:bg-[#FF7BE540] dark:bg-[#FF7BE510] transition-all duration-300 ease-in-out skill-variant";
+
+const finalClasses = `${baseClasses} ${isProject ? projectClasses : skillClasses} ${className}`;
+---
+
+<span class={finalClasses}>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-auto" viewBox="0 0 400 400" fill="none"><g clip-path="url(#clip0)"><path class={isProject ? "fill-[#F9F9F9]" : "fill-[#272727] dark:fill-[#F9F9F9]"} d="M200 -1.52588e-05C89.5321 -1.52588e-05 0 89.5321 0 200C0 310.431 89.5321 400 200 400C310.468 400 400 310.468 400 200C399.964 89.5321 310.431 -1.52588e-05 200 -1.52588e-05ZM150.009 283.306H116.694V116.658H150.009V283.306ZM283.306 283.306H183.324V249.991H283.306V283.306ZM283.306 216.639H183.324V183.324H283.306V216.639ZM283.306 149.973H183.324V116.658H283.306V149.973Z" fill="black"></path></g><defs><clipPath id="clip0"><rect width="400" height="400"></rect></clipPath></defs></svg>
+
+  Elementor Pro
+</span>
+
+<style>
+  .skill-variant {
+    font-size: 1.05rem;
+    user-select: none;
+  }
+  
+  .skill-variant svg {
+    scale: 1.1;
+    margin-right: 2px;
+  }
+  
+  @media (width < 640px) {
+    .skill-variant {
+      font-size: 0.875rem;
+    }
+    
+    .skill-variant svg {
+      scale: 1;
+      margin-right: 0;
+    }
+  }
+</style>

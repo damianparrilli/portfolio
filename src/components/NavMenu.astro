@@ -148,7 +148,7 @@
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    if (!supportsScrollDrivenAnimation) {
+    
       const contactLink = document.querySelector("a[href='#contacto']");
       if (contactLink) {
         contactLink.addEventListener("click", (e) => {
@@ -156,17 +156,7 @@
           window.scrollTo({ top: document.documentElement.scrollHeight });
         });
       }
-    } else {
-      const expLink = document.querySelector("a[href='#experiencia']");
-      expLink?.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = document.querySelector(".arriba");
-        if (!target) return;
-        const alturaDiv = target.offsetHeight;
-        const posicionFinal = target.offsetTop - alturaDiv * 0.45;
-        window.scrollTo({ top: posicionFinal });
-      });
-    }
+    
 
     const html = document.documentElement;
     const button = document.getElementById("toggle-dark");

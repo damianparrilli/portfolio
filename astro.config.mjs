@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['varying-elsewhere-hack-lonely.trycloudflare.com'],
+      allowedHosts: ['nutritional-scholars-protecting-closure.trycloudflare.com'],
     }
   }
 });

@@ -1,6 +1,7 @@
 ---
 import ResponsiveImage from '../ResponsiveImage.astro';
 import { TechStackContainer, HTML, SASS, JavaScript } from '../TechStack/index.ts';
+import ProjectButtons from '../ProjectButtons.astro';
 ---
 
 <div
@@ -33,50 +34,11 @@ import { TechStackContainer, HTML, SASS, JavaScript } from '../TechStack/index.t
           Este es un proyecto personal. Una simulación de una nota, en este caso de una entrevista, en donde hay elementos interactivos como el poder guardar una nota, poder valorar la nota y comentar en ella.
           </p>
         </div>
-        <div class="gap-2 items-center flex order-3 md:order-2 div-principal-botones">
-          <a
-            href="https://github.com/damianparrilli/old-portfolio-web" target="_blank"
-            class="group w-max h-full px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base  text-[#F9F9F9] hover:bg-[#f9f9f9] rounded-4xl bg-[#F9F9F910] hover:text-[#353535] border-1 border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out"
-            aria-label="Código Portfolio v1"
-            ><svg
-              class="group w-7 h-auto"
-              viewBox="0 0 31 31"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                class="fill-[#F9F9F9] group-hover:fill-[#272727] transition-all duration-300 ease-in-out"
-                d="M16.0004 5C13.3883 4.99994 10.8615 5.90959 8.87205 7.56615C6.88261 9.22272 5.5604 11.5181 5.14204 14.0415C4.72367 16.5649 5.23645 19.1517 6.58862 21.3389C7.94078 23.5262 10.0441 25.1711 12.5221 25.9794C13.0721 26.0741 13.2778 25.7512 13.2778 25.468C13.2778 25.2129 13.2646 24.3645 13.2646 23.4634C10.5003 23.9608 9.78531 22.8035 9.56531 22.1984C9.32111 21.6094 8.93414 21.0873 8.4378 20.6772C8.0528 20.4759 7.50279 19.9774 8.4235 19.9645C8.7754 20.0017 9.11294 20.1214 9.40746 20.3135C9.70199 20.5056 9.94481 20.7645 10.1153 21.068C10.2657 21.3325 10.468 21.5654 10.7105 21.7532C10.953 21.9411 11.231 22.0802 11.5286 22.1628C11.8262 22.2453 12.1374 22.2695 12.4446 22.234C12.7517 22.1986 13.0487 22.1042 13.3185 21.9562C13.3658 21.4085 13.6153 20.8964 14.0203 20.5157C11.5728 20.2466 9.0153 19.3186 9.0153 15.2006C9.00061 14.1306 9.40392 13.0955 10.1428 12.3068C9.80722 11.3767 9.84656 10.3565 10.2528 9.45383C10.2528 9.45383 11.1735 9.17177 13.2778 10.5573C15.0778 10.073 16.9779 10.073 18.7779 10.5573C20.8811 9.15777 21.8029 9.45383 21.8029 9.45383C22.2092 10.3565 22.2485 11.3767 21.9129 12.3068C22.6547 13.0938 23.0585 14.1301 23.0404 15.2006C23.0404 19.3315 20.4686 20.2466 18.0222 20.5157C18.2844 20.7763 18.4863 21.089 18.6142 21.4327C18.7421 21.7763 18.7931 22.1428 18.7636 22.5074C18.7636 23.9479 18.7504 25.1052 18.7504 25.468C18.7504 25.7512 18.9561 26.0871 19.5061 25.9794C21.9796 25.1644 24.0766 23.5155 25.4229 21.3272C26.7691 19.1389 27.2769 16.5536 26.8557 14.0327C26.4344 11.5119 25.1115 9.2196 23.1232 7.56505C21.1348 5.9105 18.6103 5.00139 16.0004 5Z"
-              ></path>
-            </svg>
-
-            Source Code</a
-          >
-          <a
-            href="https://old-damianparrilli.netlify.app/" target="_blank"
-            class="group w-max h-full px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#F9F9F9] hover:bg-[#f9f9f9] rounded-4xl bg-[#F9F9F910] hover:text-[#353535] border-1 border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out"
-            aria-label="Sitio web Portfolio v1"
-            ><svg
-              class="w-5"
-              viewBox="0 0 17 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                class="fill-[#F9F9F9] group-hover:fill-[#272727] transition-all duration-300 ease-in-out"
-                d="M10.625 1.0625V7.4375L15.9375 4.25L10.625 1.0625Z"></path>
-              <path
-                class=" fill-[#F9F9F9] group-hover:fill-[#272727] transition-all duration-300 ease-in-out"
-                d="M14.875 7.4375V11.6875H2.125V3.1875H7.4375V2.125H2.125C1.84321 2.125 1.57296 2.23694 1.3737 2.4362C1.17444 2.63546 1.0625 2.90571 1.0625 3.1875V11.6875C1.0625 11.9693 1.17444 12.2395 1.3737 12.4388C1.57296 12.6381 1.84321 12.75 2.125 12.75H6.375V14.875H4.25V15.9375H12.75V14.875H10.625V12.75H14.875C15.1568 12.75 15.427 12.6381 15.6263 12.4388C15.8256 12.2395 15.9375 11.9693 15.9375 11.6875V7.4375H14.875ZM9.5625 14.875H7.4375V12.75H9.5625V14.875Z"
-              ></path>
-            </svg>
-
-            Preview</a
-          >
-          
-        </div>
+        <ProjectButtons
+          projectName="Portfolio v1"
+          sourceCodeUrl="https://github.com/damianparrilli/old-portfolio-web"
+          previewUrl="https://old-damianparrilli.netlify.app/"
+        />
         <div class="order-1 md:order-3 md:mt-auto w-full overflow-hidden">
           <div
             class="flex gap-4 md:flex-wrap overflow-auto"
@@ -87,24 +49,28 @@ import { TechStackContainer, HTML, SASS, JavaScript } from '../TechStack/index.t
               alt="Vista principal del Portfolio v1 mostrando la página de inicio"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 border-[#3D7AFF] border-2 cursor-pointer"
               data-image-src="/dp-1.webp"
+              project={true}
             />
             <ResponsiveImage
               name="dp-2"
               alt="Imagen de la sección de proyectos del Portfolio v1"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
               data-image-src="/dp-2.webp"
+              project={true}
             />
             <ResponsiveImage
               name="dp-3"
               alt="Vista de la sección de habilidades del Portfolio v1"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
               data-image-src="/dp-3.webp"
+              project={true}
             />
             <ResponsiveImage
               name="dp-4"
               alt="Imagen de la sección de contacto del Portfolio v1"
               class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
               data-image-src="/dp-4.webp"
+              project={true}
             />
           </div>
         </div>

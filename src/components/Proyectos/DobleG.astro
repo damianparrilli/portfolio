@@ -1,0 +1,281 @@
+---
+import ResponsiveImage from "../ResponsiveImage.astro";
+import { TechStackContainer, Wordpress, ElementorPro, WooCommerce } from "../TechStack/index.ts";
+import ProjectButtons from "../ProjectButtons.astro";
+---
+
+<div
+  class="pin-item max-w-[1200px] w-screen min-[1200px]:w-full flex shrink-0 grow-0 px-2 pt-2 overflow-hidden"
+  data-aos="fade-left"
+  data-aos-duration="500"
+  data-aos-anchor-placement="center-bottom"
+>
+  <div
+    class="bg-[#553535] rounded-3xl w-full h-full flex py-4 md:p-4 flex-col gap-2 md:gap-7"
+    data-component="bontedeco"
+  >
+    <div
+      class="w-full h-full flex flex-col md:flex-row px-4 md:px-0 image-container"
+    >
+      <div
+        id="backgroundDiv"
+        class="backgroundDiv flex w-full shrink-0 md:shrink grow-0 md:grow md:h-full flex-auto bg-[url(/dobleg-main.webp)] rounded-2xl bg-cover bg-top bg-no-repeat aspect-video md:aspect-auto"
+      >
+      </div>
+      <div class="flex flex-col py-2 w-full md:px-4 gap-4 div-principal">
+        <div class="flex flex-col gap-1 order-2 md:order-1">
+          <h3 class="font-bold text-[#F9F9F9] text-2xl sm:text-3xl">
+            DobleG Estudio
+          </h3>
+          <TechStackContainer>
+            <Wordpress />
+            <ElementorPro />
+            <WooCommerce />
+          </TechStackContainer>
+
+          <p
+            class="text-[#F9F9F9] w-full text-sm sm:text-base mt-4"
+            data-i18n="dobleGDesc"
+          >
+            Realizada con Nexium Solutions y DiTiero, DobleG es una empresa de diseño de interiores. Me dedique a estructurar la página con
+            Elementor Pro; implementar el mini-resumen
+            de compra con JavaScript; integrar con WooCommerce y PHP para
+            el pago.
+          </p>
+        </div>
+        <ProjectButtons
+          projectName="DobleG"
+          previewUrl="https://dobleg-estudio.com.ar/"
+        />
+        <div class="order-1 md:order-3 md:mt-auto w-full overflow-hidden">
+          <div class="flex gap-4 md:flex-wrap overflow-auto">
+            <ResponsiveImage
+              name="dobleg-main"
+              alt="Vista principal del proyecto DobleG"
+              class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 border-[#3D7AFF] border-2 cursor-pointer"
+              data-image-src="/dobleg-main.webp"
+              project={true}
+            />
+            <ResponsiveImage
+              name="dobleg-1"
+              alt="Primera vista del proyecto DobleG"
+              class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/dobleg-1.webp"
+              project={true}
+            />
+            <ResponsiveImage
+              name="dobleg-2"
+              alt="Segunda vista del proyecto DobleG"
+              class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/dobleg-2.webp"
+              project={true}
+            />
+            <ResponsiveImage
+              name="dobleg-3"
+              alt="Tercera vista del proyecto DobleG"
+              class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/dobleg-3.webp"
+              project={true}
+            />
+            <ResponsiveImage
+              name="dobleg-4"
+              alt="Cuarta vista del proyecto DobleG"
+              class="object-cover rounded-xl aspect-square w-18 md:w-24 lg:w-28 h-18 md:h-24 lg:h-28 cursor-pointer"
+              data-image-src="/dobleg-4.webp"
+              project={true}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full h-max p-4 justify-between gap-12 div-adicional">
+      <div class="h-full flex flex-col gap-4 div-adicional-fonts">
+        <h4
+          class="font-semibold text-[#F9F9F9] text-xl sm:text-2xl"
+          data-i18n="font"
+        >
+          Tipografía
+        </h4>
+        <div class="flex gap-4 md:gap-4">
+          <div class="flex flex-col">
+            <span
+              class="text-[#F9F9F9] font-[Figtree] font-medium text-5xl md:text-7xl lg:text-8xl"
+              >Aa</span
+            >
+            <span
+              class="text-[#F9F9F9] font-[Figtree] text-xs sm:text-lg font-medium"
+              >Figtree</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="h-full flex flex-col gap-4 md:min-w-1/2">
+        <h4
+          class="font-semibold text-[#F9F9F9] text-xl sm:text-2xl"
+          data-i18n="colors"
+        >
+          Colores
+        </h4>
+        <div
+          class="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap div-adicional-color"
+        >
+          <div class="flex flex-col gap-2 items-center">
+            <div
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#B71C1C]"
+            >
+            </div>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]"
+              >#B71C1C</span
+            >
+          </div>
+          <div class="flex flex-col gap-2 items-center">
+            <div
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#FFFFFF]"
+            >
+            </div>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]"
+              >#FFFFFF</span
+            >
+          </div>
+          <div class="flex flex-col gap-2 items-center">
+            <div
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#212121]"
+            >
+            </div>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]"
+              >#212121</span
+            >
+          </div>
+          <div class="flex flex-col gap-2 items-center">
+            <div
+              class="w-14 sm:w-18 md:w-20 lg:w-24 border-[#F9F9F9] border-2 h-14 sm:h-18 md:h-20 lg:h-24 bg-[#4F4F4F]"
+            >
+            </div>
+            <span class="font-medium text-xs sm:text-base text-[#F9F9F9]"
+              >#4F4F4F</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentComponent = document.querySelector(
+      '[data-component="bontedeco"]'
+    );
+    if (!currentComponent) return;
+
+    const backgroundDiv = currentComponent.querySelector("#backgroundDiv");
+    if (!backgroundDiv) return;
+
+    const allImages = currentComponent.querySelectorAll(
+      ".image-container img, .image-container picture"
+    );
+
+    allImages.forEach((element) => {
+      element.addEventListener("click", () => {
+        let imageSrc;
+
+        if (element.tagName === "PICTURE") {
+          imageSrc = element.getAttribute("data-image-src");
+        } else {
+          imageSrc =
+            element.getAttribute("data-image-src") ||
+            element.getAttribute("src");
+        }
+
+        if (!imageSrc) {
+          console.warn("No se pudo obtener la URL de la imagen:", element);
+          return;
+        }
+
+        allImages.forEach((img) => {
+          if (img.classList.contains("border-[#3D7AFF]")) {
+            img.classList.remove("border-[#3D7AFF]", "border-2");
+          }
+        });
+
+        if (element.tagName === "PICTURE") {
+          const imgInside = element.querySelector("img");
+          if (imgInside) {
+            imgInside.classList.add("border-[#3D7AFF]", "border-2");
+          }
+        } else {
+          element.classList.add("border-[#3D7AFF]", "border-2");
+        }
+
+        (backgroundDiv as HTMLElement).style.backgroundImage =
+          `url(${imageSrc})`;
+      });
+    });
+  });
+</script>
+
+<style>
+  .italiana-stroke {
+    -webkit-text-stroke: 0.5px #f9f9f9;
+  }
+
+  @media (width >= 768px) and (height < 850px) {
+    .div-adicional {
+      display: none;
+    }
+  }
+
+  @media (width < 768px) and (height < 880px) and (height > 820px) {
+    .div-adicional-color > * > :nth-child(1) {
+      width: 45px;
+      height: 45px;
+    }
+
+    .div-adicional-color > * > :nth-child(2) {
+      display: none;
+    }
+    .div-adicional {
+      gap: 40px;
+    }
+  }
+
+  @media (width < 768px) and (height >= 800px) and (height <= 820px) {
+    .div-adicional-color {
+      gap: 8px;
+    }
+
+    .div-adicional-fonts {
+      gap: 8px;
+    }
+    .div-adicional-color > * > :nth-child(1) {
+      width: 45px;
+      height: 45px;
+    }
+
+    .div-adicional-color > * > :nth-child(2) {
+      display: none;
+    }
+    .div-adicional {
+      padding: 0 16px;
+      gap: 40px;
+    }
+  }
+
+  @media (width < 768px) and (height < 800px) {
+    .div-adicional {
+      display: none;
+    }
+    .div-principal {
+      height: 100%;
+      justify-content: flex-start;
+    }
+
+    .div-principal-botones {
+      margin-top: auto;
+    }
+
+    .backgroundDiv {
+      height: clamp(11.5rem, -19.917rem + 77.333vh, 18.75rem);
+    }
+  }
+</style>

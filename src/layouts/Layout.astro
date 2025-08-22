@@ -56,11 +56,11 @@ const { title, description, keywords } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Italiana&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      as="style"
-      onload="this.rel='stylesheet'"
-    />
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Italiana&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Figtree:ital,wght@0,300..900;1,300..900"
+    as="style"
+    onload="this.rel='stylesheet'"
+  />
     <link
       rel="preload"
       href="/assets/logoAnim/animacion.webm"
@@ -99,7 +99,6 @@ const { title, description, keywords } = Astro.props;
       localStorage.setItem("lang", savedLang);
       document.documentElement.setAttribute("lang", savedLang);
       
-      // Precargar el video con máxima prioridad
       const videoPreload = document.createElement('video');
       videoPreload.preload = 'auto';
       videoPreload.src = '/assets/logoAnim/animacion.webm';
@@ -107,7 +106,7 @@ const { title, description, keywords } = Astro.props;
     </script>
   </head>
 
-  <body class="bg-[#E0E0E0] dark:bg-[#1f1f1f]">
+  <body class="bg-[#f7f7f7] dark:bg-[#303030]">
          <div class="overlayTotal">
        <svg
          class="w-24 sm:w-36 h-auto svg-animation"
@@ -168,15 +167,12 @@ const { title, description, keywords } = Astro.props;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Solo ejecutar updateText cuando el DOM esté completamente cargado
     const savedLang = localStorage.getItem("lang") || "en";
     
-    // Verificar que el idioma sea válido antes de ejecutar
     if (savedLang && (savedLang === "es" || savedLang === "en")) {
       updateText(savedLang);
     } else {
       console.warn("Idioma no válido en localStorage:", savedLang);
-      // Establecer un idioma por defecto
       const defaultLang = "en";
       localStorage.setItem("lang", defaultLang);
       updateText(defaultLang);
@@ -184,13 +180,11 @@ const { title, description, keywords } = Astro.props;
   });
   
   function updateText(lang) {
-    // Verificar que el idioma sea válido
     if (!lang || (lang !== "es" && lang !== "en")) {
       console.warn("Idioma no válido:", lang);
       return;
     }
     
-    // Verificar que el DOM esté listo
     if (document.readyState !== 'complete' && document.readyState !== 'interactive') {
       console.warn("DOM no está listo, esperando...");
       setTimeout(() => updateText(lang), 100);
@@ -205,13 +199,11 @@ const { title, description, keywords } = Astro.props;
         return response.json();
       })
       .then((data) => {
-        // Verificar que data y data[lang] existan
         if (!data || !data[lang]) {
           console.error("Datos de traducción no encontrados para:", lang);
           return;
         }
         
-        // Verificar que haya elementos con data-i18n antes de procesar
         const elements = document.querySelectorAll("[data-i18n]");
         if (elements.length === 0) {
           console.warn("No se encontraron elementos con data-i18n");
@@ -273,7 +265,6 @@ const { title, description, keywords } = Astro.props;
           }
         }
 
-        // Solo inicializar txt-rotate si la función existe y hay elementos
         if (typeof initializeTxtRotate === 'function') {
           try {
             initializeTxtRotate();
@@ -316,24 +307,26 @@ const { title, description, keywords } = Astro.props;
   }
 
   function ajustarViewport() {
-   
-    if (window.matchMedia("(orientation: landscape)").matches) {
-      document
-        .querySelector("meta[name=viewport]")
-        .setAttribute("content", "width=1280, initial-scale=0.6");
-    } else {
-      document
-        .querySelector("meta[name=viewport]")
-        .setAttribute("content", "width=device-width, initial-scale=1");
+    if (window.innerWidth <= 768) {
+      if (window.matchMedia("(orientation: landscape)").matches) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute("content", "width=1280, initial-scale=0.6");
+      } else {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute("content", "width=device-width, initial-scale=1");
+      }
     }
-    
   }
 
-  ajustarViewport();
-
-  window
-    .matchMedia("(orientation: landscape)")
-    .addEventListener("change", ajustarViewport);
+  if (window.innerWidth <= 768) {
+    ajustarViewport();
+    
+    window
+      .matchMedia("(orientation: landscape)")
+      .addEventListener("change", ajustarViewport);
+  }
 
   function markImage(clickedImage) {
     const parentContainer = clickedImage.closest(".image-container");

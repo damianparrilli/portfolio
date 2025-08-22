@@ -209,7 +209,7 @@ import ResponsiveImage from './ResponsiveImage.astro';
             Tengo 25 años. Soy licenciado en Diseño Multimedial, recibido en la
             Universidad Nacional de La Plata. Resido en Quilmes, Buenos Aires,
             Argentina. Me especializo en el área web, utilizando herramientas de
-            diseño como también de lenguajes de programación para el desarrollo
+            diseño como también lenguajes de programación para el desarrollo
             de páginas.
           </p>
         </div>
@@ -427,30 +427,23 @@ import ResponsiveImage from './ResponsiveImage.astro';
 </style>
 
 <script is:inline>
-  // El overlay se marca como completado cuando el video se carga
   document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("animacion");
     const overlay = document.querySelector(".overlayTotal");
     
     if (video && overlay) {
-      // Función para ocultar el overlay
       const hideOverlay = () => {
         overlay.classList.add("completado");
       };
       
-      // Forzar la carga del video inmediatamente
       video.load();
       
-      // Ocultar el overlay cuando el video tenga datos
       video.addEventListener("loadeddata", hideOverlay);
       
-      // También cuando se haya cargado la metadata
       video.addEventListener("loadedmetadata", hideOverlay);
       
-      // Y cuando esté listo para reproducir
       video.addEventListener("canplay", hideOverlay);
       
-      // Verificar si el video ya está cargado
       if (video.readyState >= 2) {
         hideOverlay();
       }
@@ -530,7 +523,6 @@ import ResponsiveImage from './ResponsiveImage.astro';
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleScroll);
       
-      // Ejecutar handleScroll al cargar para verificar la posición inicial
       handleScroll();
     } else {
       const parent = document.querySelector(".imagen-banner");
@@ -587,7 +579,6 @@ import ResponsiveImage from './ResponsiveImage.astro';
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleScroll);
       
-      // Ejecutar handleScroll al cargar para verificar la posición inicial
       handleScroll();
     }
   });

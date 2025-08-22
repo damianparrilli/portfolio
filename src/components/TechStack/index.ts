@@ -15,4 +15,6 @@ export { default as Divi } from './Divi.astro';
 export { default as ReactJS } from './ReactJS.astro';
 export { default as NodeJS } from './NodeJS.astro';
 export { default as MySQL } from './MySQL.astro';
+export { default as ElementorPro } from './ElementorPro.astro';
+export { default as WooCommerce } from './WooCommerce.astro';
 export { default as TechStackContainer } from './TechStackContainer.astro';

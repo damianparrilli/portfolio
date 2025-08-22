@@ -97,7 +97,7 @@
         </div>
       </div>
         <div class="flex justify-end items-start h-max">
-            <span class="font-medium text-[#525252] dark:text-[#afafaf] text-sm transition-all duration-300 ease-in-out">Copyright 2025 © Damián Parrilli</span>
+            <span class="font-medium text-[#525252] dark:text-[#afafaf] text-sm transition-all duration-300 ease-in-out">Copyright <span id="currentYear">2025</span> © Damián Parrilli</span>
         </div>
       
     </div>
@@ -165,8 +165,13 @@
 
 <script is:inline>
 document.addEventListener("DOMContentLoaded", () => {
+  const currentYearElement = document.getElementById("currentYear");
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
+
   const overlay = document.querySelector(".overlay");
-  const target = document.querySelector(".hola"); // Elemento que activa el overlay
+  const target = document.querySelector(".hola");
 
   const observer = new IntersectionObserver(
     ([entry]) => {
@@ -176,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.opacity = "0";
       }
     },
-    { threshold: 0.5 } // Se activa cuando el 30% del elemento es visible
+    { threshold: 0.5 }
   );
 
   observer.observe(target);
