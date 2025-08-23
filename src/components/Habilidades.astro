@@ -1,30 +1,14 @@
 ---
-import ResponsiveImage from "./ResponsiveImage.astro";
-import { 
-  Figma, 
-  AdobePhotoshop, 
-  AdobeIllustrator, 
-  AdobePremierePro, 
-  AdobeAfterEffects,
-  Wordpress,
-  Divi,
-  HTML,
-  CSS,
-  SASS,
-  TailwindCSS,
-  JavaScript,
-  AstroComponent,
-  ReactJS,
-  NodeJS,
-  MySQL,
-  ElementorPro,
-  WooCommerce
-} from "./TechStack/index.ts";
+
+import Diseño from "./Habilidades/Diseño.astro";
+import Desarrollo from "./Habilidades/Desarrollo.astro";
+// import WordpressSkills from "./Habilidades/WordpressSkills.astro";
+import Certificados from "./Habilidades/Certificados.astro";
 ---
 
 <section id="habilidades" class="min-h-[100dvh] flex  bg-[#f3f3f3] dark:bg-[#2A2A2A]  minicontainer">
   <div
-    class="max-w-[750px] mx-auto flex flex-col justify-evenly items-center gap-24 py-28  px-4 sm:px-7"  
+    class="contenedor flex flex-col justify-evenly items-center gap-24 py-28  px-4 sm:px-7"  
   >
     <div
       class="flex h-max flex-col justify-center items-center gap-7 px-4 sm:px-7" data-aos="fade-down"
@@ -35,42 +19,12 @@ import {
       >
         Mis habilidades
       </h2>
-      <div class="flex flex-col gap-3 w-full justify-center items-center">
-        <h3
-          class="font-medium text-[#272727] dark:text-[#F9F9F9] text-xl sm:text-2xl" data-i18n="mySkillsDesign"
-        >
-          De diseño
-        </h3>
-        <div class="flex gap-x-2 gap-y-3 flex-wrap items-center justify-center">
-          <Figma variant="skill" />
-          <AdobePhotoshop variant="skill" />
-          <AdobeIllustrator variant="skill" />
-          <AdobePremierePro variant="skill" />
-          <AdobeAfterEffects variant="skill" />
-          <Wordpress variant="skill" />
-          <Divi variant="skill" />
-          <ElementorPro variant="skill" />
-          <WooCommerce variant="skill" />
-        </div>
+      <div class="flex gap-x-5 gap-y-7 w-full flex-wrap md:flex-nowrap">
+        <Diseño/>
+        <Desarrollo/>
       </div>
-      <div class="flex flex-col gap-3 w-full justify-center items-center">
-        <h3
-          class="font-medium text-[#272727] dark:text-[#F9F9F9] text-xl sm:text-2xl" data-i18n="mySkillsDev"
-        >
-          De desarrollo
-        </h3>
-        <div class="flex gap-x-2 gap-y-3 flex-wrap items-center justify-center">
-          <HTML variant="skill" />
-          <CSS variant="skill" />
-          <SASS variant="skill" />
-          <TailwindCSS variant="skill" />
-          <JavaScript variant="skill" />
-          <AstroComponent variant="skill" />
-          <ReactJS variant="skill" />
-          <NodeJS variant="skill" />
-          <MySQL variant="skill" />
-        </div>
-      </div>
+        <!-- <WordpressSkills /> -->
+   
     </div>
     <div class="flex flex-col justify-center items-center gap-7 px-4 sm:px-7" data-aos="fade-down"
     data-aos-duration="500">
@@ -79,93 +33,23 @@ import {
       >
         Mis certificados
       </h2>
-      <div class="flex flex-col min-[500px]:flex-row items-center justify-center gap-4">
-        <div
-          class="rounded-3xl flex flex-col justify-start items-center gap-2 p-4 max-h-[400px] max-w-[300px] h-full bg-[#2c2c2c10] dark:bg-[#F9F9F910] w-full"
-        >
-          <ResponsiveImage
-            name="diploma-unlp"
-            alt=""
-            class="aspect-video object-cover w-full rounded-2xl"
-          />
-          <div
-            class="flex flex-col gap-5 items-center justify-between w-full h-full px-1"
-          >
-            <div class="flex flex-col w-full">
-              <h3
-                class="font-medium text-[#272727] dark:text-[#F9F9F9] text-lg w-full" data-i18n="certName1"
-              >
-                Licenciatura en Diseño Multimedial
-              </h3>
-              <p
-                class="font-light text-[#272727] dark:text-[#F9F9F9] text-xs w-full"
-              >
-                Universidad Nacional de La Plata
-              </p>
-            </div>
-            <a
-              href="https://drive.google.com/file/d/1go7FVlLRiP2DpFFjB2de7JFpod_aYlTn/view?usp=sharing" target="_blank"
-              target="_blank"
-              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-1 border-[#272727] dark:border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out" data-i18n="viewCert"
-              ><svg
-                class="w-4 h-auto"
-                viewBox="0 0 9 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  class="fill-[#272727] group-hover:fill-[#F9F9F9] dark:fill-[#F9F9F9] group-hover:dark:fill-[#272727] transition-all duration-300 ease-in-out"
-                  d="M4 1.5C4.13261 1.5 4.25979 1.55268 4.35355 1.64645C4.44732 1.74021 4.5 1.86739 4.5 2C4.5 2.13261 4.44732 2.25979 4.35355 2.35355C4.25979 2.44732 4.13261 2.5 4 2.5H1V8H6.5V5C6.5 4.86739 6.55268 4.74021 6.64645 4.64645C6.74021 4.55268 6.86739 4.5 7 4.5C7.13261 4.5 7.25979 4.55268 7.35355 4.64645C7.44732 4.74021 7.5 4.86739 7.5 5V8C7.5 8.26522 7.39464 8.51957 7.20711 8.70711C7.01957 8.89464 6.76522 9 6.5 9H1C0.734784 9 0.48043 8.89464 0.292893 8.70711C0.105357 8.51957 0 8.26522 0 8V2.5C0 2.23478 0.105357 1.98043 0.292893 1.79289C0.48043 1.60536 0.734784 1.5 1 1.5H4ZM8.5 0C8.63261 0 8.75979 0.0526784 8.85355 0.146447C8.94732 0.240215 9 0.367392 9 0.5V3C9 3.13261 8.94732 3.25979 8.85355 3.35355C8.75979 3.44732 8.63261 3.5 8.5 3.5C8.36739 3.5 8.24021 3.44732 8.14645 3.35355C8.05268 3.25979 8 3.13261 8 3V1.707L3.8535 5.8535C3.7592 5.94458 3.6329 5.99498 3.5018 5.99384C3.3707 5.9927 3.24529 5.94011 3.15259 5.84741C3.05989 5.75471 3.0073 5.6293 3.00616 5.4982C3.00502 5.3671 3.05542 5.2408 3.1465 5.1465L7.293 1H6C5.86739 1 5.74021 0.947321 5.64645 0.853553C5.55268 0.759785 5.5 0.632608 5.5 0.5C5.5 0.367392 5.55268 0.240215 5.64645 0.146447C5.74021 0.0526784 5.86739 0 6 0H8.5Z"
-                ></path>
-              </svg>
-
-              Ver certificado</a
-            >
-          </div>
-        </div>
-        <div
-          class="rounded-3xl flex flex-col justify-start items-center gap-2 p-4 max-h-[400px] max-w-[300px] h-full bg-[#2c2c2c10] dark:bg-[#F9F9F910] w-full"
-        >
-          <ResponsiveImage
-            name="diploma-cac"
-            alt=""
-            class="aspect-video object-cover w-full rounded-2xl"
-          />
-          <div
-            class="flex flex-col gap-5 items-center justify-between w-full h-full px-1"
-          >
-            <div class="flex flex-col w-full">
-              <h3
-                class="font-medium text-[#272727] dark:text-[#F9F9F9] text-lg w-full" data-i18n="certName2"
-              >
-                Curso Full-Stack Node.js
-              </h3>
-              <p
-                class="font-light text-[#272727] dark:text-[#F9F9F9] text-xs w-full"
-              >
-                Codo a Codo 4.0
-              </p>
-            </div>
-            <a
-              href="https://drive.google.com/file/d/1xW-VXOoICHjnelmanJma_eU9xO9kIXiL/view?usp=sharing" target="_blank"
-              target="_blank"
-              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-1 border-[#272727] dark:border-[#f9f9f9] flex items-center gap-2 transition-all duration-300 ease-in-out" data-i18n="viewCert"
-              ><svg
-                class="w-4 h-auto"
-                viewBox="0 0 9 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  class="fill-[#272727] group-hover:fill-[#F9F9F9] dark:fill-[#F9F9F9] group-hover:dark:fill-[#272727] transition-all duration-300 ease-in-out"
-                  d="M4 1.5C4.13261 1.5 4.25979 1.55268 4.35355 1.64645C4.44732 1.74021 4.5 1.86739 4.5 2C4.5 2.13261 4.44732 2.25979 4.35355 2.35355C4.25979 2.44732 4.13261 2.5 4 2.5H1V8H6.5V5C6.5 4.86739 6.55268 4.74021 6.64645 4.64645C6.74021 4.55268 6.86739 4.5 7 4.5C7.13261 4.5 7.25979 4.55268 7.35355 4.64645C7.44732 4.74021 7.5 4.86739 7.5 5V8C7.5 8.26522 7.39464 8.51957 7.20711 8.70711C7.01957 8.89464 6.76522 9 6.5 9H1C0.734784 9 0.48043 8.89464 0.292893 8.70711C0.105357 8.51957 0 8.26522 0 8V2.5C0 2.23478 0.105357 1.98043 0.292893 1.79289C0.48043 1.60536 0.734784 1.5 1 1.5H4ZM8.5 0C8.63261 0 8.75979 0.0526784 8.85355 0.146447C8.94732 0.240215 9 0.367392 9 0.5V3C9 3.13261 8.94732 3.25979 8.85355 3.35355C8.75979 3.44732 8.63261 3.5 8.5 3.5C8.36739 3.5 8.24021 3.44732 8.14645 3.35355C8.05268 3.25979 8 3.13261 8 3V1.707L3.8535 5.8535C3.7592 5.94458 3.6329 5.99498 3.5018 5.99384C3.3707 5.9927 3.24529 5.94011 3.15259 5.84741C3.05989 5.75471 3.0073 5.6293 3.00616 5.4982C3.00502 5.3671 3.05542 5.2408 3.1465 5.1465L7.293 1H6C5.86739 1 5.74021 0.947321 5.64645 0.853553C5.55268 0.759785 5.5 0.632608 5.5 0.5C5.5 0.367392 5.55268 0.240215 5.64645 0.146447C5.74021 0.0526784 5.86739 0 6 0H8.5Z"
-                ></path>
-              </svg>
-
-              Ver certificado</a
-            >
-          </div>
-        </div>
+      <div class="flex max-[1200px]:flex-col items-center justify-center gap-4">
+        <Certificados
+          imagename="diploma-unlp"
+          imagealt="Diploma de la Universidad Nacional de La Plata"
+          href="https://drive.google.com/file/d/1H-tI7zgqbC9kbS326jn96WSHmdv7kq47/view?usp=sharing"
+          title="Licenciatura en Diseño Multimedial"
+          description="Universidad Nacional de La Plata"
+          traductionname="certName1"
+        />
+        <Certificados
+          imagename="diploma-cac"
+          imagealt="Diploma de Codo a Codo 4.0"
+          href="https://drive.google.com/file/d/1AAV-QNQO5RCbmhzrHYKuBBhaa9ljv5ID/view?usp=sharing"
+          title="Curso Full-Stack Node.js"
+          description="Codo a Codo 4.0"
+          traductionname="certName2"
+        />
       </div>
     </div>
   </div>

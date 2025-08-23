@@ -198,6 +198,21 @@
     const menuMobile = document.querySelector(".menusvg");
     const closeMobile = document.querySelector(".closesvg");
 
+    const handleMobileMenuState = () => {
+      if (window.innerWidth < 1450) {
+        menuList.classList.remove("max-[1450px]:pointer-events-auto", "max-[1450px]:opacity-100");
+        menuMobile.classList.remove("opacity-0");
+        closeMobile.classList.add("opacity-0");
+      } else {
+        menuList.classList.add("min-[1450px]:pointer-events-auto", "min-[1450px]:opacity-100");
+        menuList.classList.remove("max-[1450px]:pointer-events-auto", "max-[1450px]:opacity-100");
+      }
+    };
+
+    handleMobileMenuState();
+
+    window.addEventListener("resize", handleMobileMenuState);
+
     menuButton.addEventListener("click", () => {
       menuButton.querySelector("svg").classList.toggle("min-[1450px]:rotate-90");
       menuButton.querySelector("svg").classList.toggle("min-[1450px]:rotate-270");
@@ -210,16 +225,27 @@
       closeMobile.classList.toggle("opacity-0");
     });
 
-    if (window.innerWidth < 1450) {
-      const anchors = menuList.querySelectorAll("a");
-      anchors.forEach((a) => {
-        a.addEventListener("click", () => {
-          menuMobile.classList.toggle("opacity-0");
-          closeMobile.classList.toggle("opacity-0");
-          menuList.classList.toggle("max-[1450px]:pointer-events-auto");
-          menuList.classList.toggle("max-[1450px]:opacity-100");
+    const addMobileLinkListeners = () => {
+      if (window.innerWidth < 1450) {
+        const anchors = menuList.querySelectorAll("a");
+        anchors.forEach((a) => {
+          a.removeEventListener("click", handleMobileLinkClick);
+          a.addEventListener("click", handleMobileLinkClick);
         });
-      });
-    }
+      }
+    };
+
+    const handleMobileLinkClick = () => {
+      if (window.innerWidth < 1450) {
+        menuMobile.classList.toggle("opacity-0");
+        closeMobile.classList.toggle("opacity-0");
+        menuList.classList.toggle("max-[1450px]:pointer-events-auto");
+        menuList.classList.toggle("max-[1450px]:opacity-100");
+      }
+    };
+
+    addMobileLinkListeners();
+
+    window.addEventListener("resize", addMobileLinkListeners);
   });
 </script>

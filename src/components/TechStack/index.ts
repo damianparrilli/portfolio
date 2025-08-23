@@ -8,7 +8,7 @@ export { default as AdobePremierePro } from './AdobePremierePro.astro';
 export { default as AdobeAfterEffects } from './AdobeAfterEffects.astro';
 export { default as AstroComponent } from './AstroComponent.astro';
 export { default as TailwindCSS } from './TailwindCSS.astro';
-export { default as PrelineUI } from './PrelineUI.astro';
+export { default as Bootstrap } from './Bootstrap.astro';
 export { default as SASS } from './SASS.astro';
 export { default as Wordpress } from './Wordpress.astro';
 export { default as Divi } from './Divi.astro';
