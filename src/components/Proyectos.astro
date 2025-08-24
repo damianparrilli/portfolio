@@ -93,8 +93,13 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
       gap: 20px;
       padding-bottom: 9rem;
     }
+    @media (width < 768px){
+      .pin-wrap {
+        gap: 0;
+        padding-bottom: 0;
+      }
+    }
 
-    
   }
 
   media
@@ -114,11 +119,18 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
 
       .pin-item {
         min-height: 650px;
+        height: auto;
     }
 
-    span{
+    .pin-item .source-code{
+        width: 1.375rem !important;
+    }
+
+
+    .pin-wrap span{
       height: 100%;
     }
+    
       .div-adicional{
         display: none;
       }

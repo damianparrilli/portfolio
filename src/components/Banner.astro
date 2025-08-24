@@ -220,12 +220,10 @@ import ResponsiveImage from './ResponsiveImage.astro';
 
 <style is:global>
   .video-animacion {
-    /* Modo oscuro por defecto - filtro para que se vea en blanco */
     filter: brightness(0) invert(1) contrast(1.2);
     transition: filter 0.3s ease-in-out;
   }
 
-  /* Modo claro - sin filtros para mantener colores originales */
   html:not(.dark) .video-animacion {
     filter: none;
   }
@@ -245,6 +243,7 @@ import ResponsiveImage from './ResponsiveImage.astro';
       pointer-events: none;
       margin-top: clamp(1.25rem, -2.756rem + 12.821vh, 10.625rem);
       top: 5%;
+      padding-bottom: 25%;
       transition: transform 0.5s ease-in-out;
       z-index: 90;
       margin-bottom: 50dvh;
@@ -260,6 +259,17 @@ import ResponsiveImage from './ResponsiveImage.astro';
 
     .texto-2 {
       transition: opacity 0.5s ease-in-out;
+    }
+
+    @media (width < 768px) {
+      .banner{
+        height: 200dvh !important;
+      }
+
+      .text-banner{
+        height: 145dvh !important;
+      }
+      
     }
   }
 
@@ -546,7 +556,11 @@ import ResponsiveImage from './ResponsiveImage.astro';
           if (window.innerWidth >= 430) {
             img.style.transform = `translateX(-${totalDistance}px)`;
           }
-          parent.style.transform = `translateY(25dvh)`;
+          if (window.innerWidth >= 768) {
+            parent.style.transform = `translateY(25dvh)`;
+          } else {
+            parent.style.transform = `translateY(30dvh)`;
+          }
 
           parent.style.pointerEvents = "auto";
           if (document.documentElement.classList.contains("dark")) {
