@@ -1,9 +1,5 @@
----
-import ResponsiveImage from "./ResponsiveImage.astro";
----
-
 <section
-  class="banner w-full h-[170dvh] min-[430px]:h-[200dvh] flex flex-col bg-gradient-to-b from-[#f3f3f3] from-0% to-[#f0f0f0] to-25% dark:from-[#040404] dark:to-[#313131] relative"
+  class="banner w-full h-[170dvh] min-[430px]:h-[200dvh] flex flex-col bg-gradient-to-b from-[#FBFBFB] from-0% to-[#CECECE] to-25% dark:from-[#040404] dark:to-[#313131] relative"
 >
   <div
     id="sobre-mi"
@@ -13,23 +9,10 @@ import ResponsiveImage from "./ResponsiveImage.astro";
   <div
     class="logo w-full h-[55dvh] min-[430px]:h-[70dvh] max-h-[650px]:h-[60dvh] py-3"
   >
-    <video
-      id="animacion"
-      class="w-full h-full object-contain video-animacion"
-      autoplay
-      loop
-      muted
-      playsinline
-      preload="auto"
-      aria-label="Animación del logo de Damián Parrilli"
-    >
-      <source src="/assets/logoAnim/animacion.webm" type="video/webm" />
-      <img src="/logo-dp.webp" alt="Logo de Damián Parrilli" class="w-full h-full object-contain" />
-    </video>
-    <div id="lottie-container" style="display:none; width:100%; height:100%"></div>
+    <div id="animacion" class="w-full h-full px-1 sm:px-0"></div>
   </div>
   <div
-    class="text-banner w-full flex h-[115dvh] min-[430px]:h-[130dvh] bg-[#F8F8F8] dark:bg-[#1f1f1f]"
+    class="text-banner w-full flex h-[115dvh] min-[430px]:h-[130dvh] bg-[#E0E0E0] dark:bg-[#1f1f1f]"
   >
     <div
       class="contenedor relative px-4 sm:px-7 w-full flex gap-2 flex-col min-[430px]:flex-row justify-start"
@@ -37,21 +20,27 @@ import ResponsiveImage from "./ResponsiveImage.astro";
       <div
         class="flex flex-col gap-4 order-2 min-[430px]:order-1 absolute h-[45dvh] min-[430px]:h-[30dvh] justify-center texto-banner z-10"
       >
-        <ResponsiveImage
-          name="foto-mia"
-          alt="Foto de Damián Parrilli"
+        <img
+          src="/foto-mia.webp"
+          alt=""
+          id="invisible"
           class="invisible w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full min-[430px]:hidden"
         />
         <h1
           class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl"
           data-i18n="role"
         >
-          Soy diseñador, desarrollador, devsigner
+          Soy <span
+            class="txt-rotate"
+            data-period="2000"
+            data-rotate='["diseñador", "desarrollador", "devsigner"]'
+          >
+          </span>
         </h1>
         <div class="botones w-max flex gap-1 sm:gap-3">
           <a
             href="mailto:damiparrilli@gmail.com"
-            class="group px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#f1f1f1] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
+            class="group px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
             data-i18n="contactMe"
           >
             <svg
@@ -59,7 +48,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               viewBox="0 0 17 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
             >
               <path
                 class="fill-[#272727] group-hover:fill-[#F9F9F9] dark:fill-[#F9F9F9] group-hover:dark:fill-[#353535] transition-all duration-300 ease-in-out"
@@ -78,7 +66,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               viewBox="0 0 15 15"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
             >
               <path
                 class="fill-[#09830D] group-hover:fill-[#F9F9F9] dark:fill-[#5FD663] group-hover:dark:fill-[#353535] transition-all duration-300 ease-in-out"
@@ -89,16 +76,12 @@ import ResponsiveImage from "./ResponsiveImage.astro";
           >
         </div>
         <div class="redes flex items-center gap-5">
-          <a
-            href="https://www.behance.net/damianparrilli"
-            target="_blank"
-            aria-label="Ver perfil de Damián Parrilli en Behance"
+          <a href="https://www.behance.net/damianparrilli" target="_blank"
             ><svg
               class="group w-7 sm:w-8 h-auto"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
             >
               <path
                 class="fill-[#4e4e4e] group-hover:fill-[#272727] dark:fill-[#C7C7C7] group-hover:dark:fill-[#F9F9F9] transition-all duration-300 ease-in-out"
@@ -106,16 +89,12 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               ></path>
             </svg>
           </a>
-          <a
-            href="https://www.linkedin.com/in/damianparrilli/"
-            target="_blank"
-            aria-label="Ver perfil de Damián Parrilli en LinkedIn"
+          <a href="https://www.linkedin.com/in/damianparrilli/" target="_blank"
             ><svg
               class="group w-7 sm:w-8 h-auto"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
             >
               <path
                 class="fill-[#4e4e4e] group-hover:fill-[#272727] dark:fill-[#C7C7C7] group-hover:dark:fill-[#F9F9F9] transition-all duration-300 ease-in-out"
@@ -123,16 +102,12 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               ></path>
             </svg>
           </a>
-          <a
-            href="https://github.com/damianparrilli"
-            target="_blank"
-            aria-label="Ver perfil de Damián Parrilli en GitHub"
+          <a href="https://github.com/damianparrilli" target="_blank"
             ><svg
               class="group w-7 sm:w-8 h-auto"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
             >
               <path
                 class="fill-[#4e4e4e] group-hover:fill-[#272727] dark:fill-[#C7C7C7] group-hover:dark:fill-[#F9F9F9] transition-all duration-300 ease-in-out"
@@ -143,26 +118,27 @@ import ResponsiveImage from "./ResponsiveImage.astro";
         </div>
       </div>
       <div
-        class="min-[430px]:my-0 flex min-[430px]:justify-end order-1 min-[430px]:order-2 sticky imagen-banner pointer-events-none w-full h-0"
+        class="min-[430px]:my-0 min-[430px]:h-[40%] sm:h-[25%] flex min-[430px]:justify-end order-1 min-[430px]:order-2 sticky imagen-banner pointer-events-none w-full"
       >
-        <ResponsiveImage
-          name="foto-mia"
-          alt="Foto de Damián Parrilli"
+        <img
+          src="/foto-mia.webp"
+          alt=""
           class="w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full imagen-banner-img z-20"
+          style="--move-distance: 0px;"
         />
         <div
           class="absolute justify-start w-full flex flex-col gap-4 texto-2 opacity-0"
         >
           <div class="flex gap-4 items-center w-full">
-            <ResponsiveImage
-              name="foto-mia"
-              alt="Foto de Damián Parrilli"
+            <img
+              src="/foto-mia.webp"
+              alt=""
               class="invisible w-20 min-[430px]:w-32 h-20 min-[430px]:h-32 rounded-full"
             />
             <a
               href="https://drive.google.com/file/d/1zmaLM61esZ7PXP0E0kmiO99Xc3q8hsTI/view?usp=sharing"
               target="_blank"
-              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#f1f1f1] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
+              class="group w-max h-max px-3 sm:px-[18px] py-2 font-medium text-sm sm:text-base text-[#272727] hover:bg-[#272727] hover:text-[#F9F9F9] bg-[#e4e4e4] dark:text-[#F9F9F9] dark:hover:bg-[#f9f9f9] rounded-4xl dark:bg-[#353535] dark:hover:text-[#353535] border-button flex items-center gap-2 transition-all duration-300 ease-in-out"
               data-i18n="myCv"
             >
               <svg
@@ -170,7 +146,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
                 viewBox="0 0 14 17"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
               >
                 <path
                   d="M3.30554 10.8611C3.18029 10.8611 3.06018 10.8114 2.97162 10.7228C2.88306 10.6343 2.83331 10.5142 2.83331 10.3889C2.83331 10.2637 2.88306 10.1436 2.97162 10.055C3.06018 9.96644 3.18029 9.91669 3.30554 9.91669H9.91665C10.0419 9.91669 10.162 9.96644 10.2506 10.055C10.3391 10.1436 10.3889 10.2637 10.3889 10.3889C10.3889 10.5142 10.3391 10.6343 10.2506 10.7228C10.162 10.8114 10.0419 10.8611 9.91665 10.8611H3.30554ZM3.30554 13.2222C3.18029 13.2222 3.06018 13.1725 2.97162 13.0839C2.88306 12.9954 2.83331 12.8753 2.83331 12.75C2.83331 12.6248 2.88306 12.5047 2.97162 12.4161C3.06018 12.3275 3.18029 12.2778 3.30554 12.2778H9.91665C10.0419 12.2778 10.162 12.3275 10.2506 12.4161C10.3391 12.5047 10.3889 12.6248 10.3889 12.75C10.3889 12.8753 10.3391 12.9954 10.2506 13.0839C10.162 13.1725 10.0419 13.2222 9.91665 13.2222H3.30554Z"
@@ -207,7 +182,9 @@ import ResponsiveImage from "./ResponsiveImage.astro";
             class="font-bold text-[#272727] dark:text-[#F9F9F9] w-max text-3xl sm:text-4xl"
             data-i18n="aboutMeTitle"
           >
-            Un poco sobre mi
+            Un poco <span class="text-[#055a97] dark:text-[#3D7AFF]"
+              >sobre mi</span
+            >
           </h2>
           <p
             class="text-[#272727] dark:text-[#F9F9F9] w-full text-sm sm:text-lg"
@@ -216,8 +193,8 @@ import ResponsiveImage from "./ResponsiveImage.astro";
             Tengo 25 años. Soy licenciado en Diseño Multimedial, recibido en la
             Universidad Nacional de La Plata. Resido en Quilmes, Buenos Aires,
             Argentina. Me especializo en el área web, utilizando herramientas de
-            diseño como también lenguajes de programación para el desarrollo de
-            páginas.
+            diseño como también de lenguajes de programación para el desarrollo
+            de páginas.
           </p>
         </div>
       </div>
@@ -226,15 +203,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 </section>
 
 <style is:global>
-  .video-animacion {
-    filter: brightness(0) invert(1) contrast(1.2);
-    transition: filter 0.3s ease-in-out;
-  }
-
-  html:not(.dark) .video-animacion {
-    filter: none;
-  }
-
   @supports not (animation-timeline: view()) {
     .text-banner {
       clip-path: polygon(0 0, 100% 20px, 100% 100%, 0% 100%);
@@ -250,7 +218,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
       pointer-events: none;
       margin-top: clamp(1.25rem, -2.756rem + 12.821vh, 10.625rem);
       top: 5%;
-      padding-bottom: 25%;
       transition: transform 0.5s ease-in-out;
       z-index: 90;
       margin-bottom: 50dvh;
@@ -266,16 +233,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 
     .texto-2 {
       transition: opacity 0.5s ease-in-out;
-    }
-
-    @media (width < 768px) {
-      .banner {
-        height: 200dvh !important;
-      }
-
-      .text-banner {
-        height: 145dvh !important;
-      }
     }
   }
 
@@ -347,10 +304,10 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 
     @keyframes to-sobre-mi-light {
       0% {
-        background-color: #f8f8f8;
+        background-color: #e0e0e0;
       }
       100% {
-        background-color: #f7f7f7;
+        background-color: #d0d0d0;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
       }
     }
@@ -443,89 +400,39 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 </style>
 
 <script is:inline>
-  // Solo mostrar Lottie en Safari, video en el resto
-  document.addEventListener("DOMContentLoaded", () => {
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    const video = document.getElementById("animacion");
-    const lottieContainer = document.getElementById("lottie-container");
-    if (isSafari) {
-      if (video) video.style.display = "none";
-      if (lottieContainer) lottieContainer.style.display = "block";
-      if (window.lottie) {
-        window.lottie.loadAnimation({
-          container: lottieContainer,
-          renderer: "svg",
-          loop: true,
-          autoplay: true,
-          path: "/assets/logoAnim/animacion.json",
-          rendererSettings: {
-            preserveAspectRatio: "xMidYMid meet"
-          }
-        });
-      } else {
-        const script = document.createElement("script");
-        script.src = "/assets/logoAnim/lottie.js";
-        script.onload = () => {
-          window.lottie.loadAnimation({
-            container: lottieContainer,
-            renderer: "svg",
-            loop: true,
-            autoplay: true,
-            path: "/assets/logoAnim/animacion.json",
-            rendererSettings: {
-              preserveAspectRatio: "xMidYMid meet"
-            }
-          });
-        };
-        document.body.appendChild(script);
-      }
+  function loadLottieScript(callback) {
+    if (window.bodymovin) {
+      callback();
     } else {
-      if (video) video.style.display = "block";
-      if (lottieContainer) lottieContainer.style.display = "none";
+      let script = document.createElement("script");
+      script.src = "/assets/logoAnim/lottie.js";
+      script.onload = callback;
+      script.onerror = () => console.error("Error al cargar Lottie.js");
+      document.body.appendChild(script);
     }
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-    const video = document.getElementById("animacion");
-    const overlay = document.querySelector(".overlayTotal");
-    let overlayHidden = false;
+  }
 
-    if (video && overlay) {
-      const hideOverlay = () => {
-        if (!overlayHidden) {
-          overlay.classList.add("completado");
-          overlayHidden = true;
-        }
-      };
-
-      setTimeout(hideOverlay, 4000);
-
-      video.load();
-
-      video.addEventListener("loadeddata", hideOverlay);
-      video.addEventListener("loadedmetadata", hideOverlay);
-      video.addEventListener("canplay", hideOverlay);
-
-      if (video.readyState >= 2) {
-        hideOverlay();
-      }
-
-      // Fallback automático a la imagen si el video no puede reproducirse
-      const fallbackImg = video.querySelector("img");
-      if (fallbackImg) {
-        fallbackImg.style.display = "none";
-        video.addEventListener("error", () => {
-          video.style.display = "none";
-          fallbackImg.style.display = "block";
-        });
-        // Si después de 4s no puede reproducirse, mostrar imagen
-        setTimeout(() => {
-          if (video.readyState < 2) {
-            video.style.display = "none";
-            fallbackImg.style.display = "block";
-          }
-        }, 4000);
-      }
+  loadLottieScript(() => {
+    let animContainer = document.getElementById("animacion");
+    let overlay = document.querySelector(".overlayTotal");
+    if (!animContainer) {
+      console.error("No se encontró el div con ID 'animacion'");
+      return;
     }
+
+    let animation = window.bodymovin.loadAnimation({
+      container: animContainer,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "/assets/logoAnim/animacion.json",
+    });
+
+    animation.addEventListener("DOMLoaded", () => {
+      if (overlay) {
+        overlay.classList.add("completado");
+      }
+    });
   });
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -566,7 +473,7 @@ import ResponsiveImage from "./ResponsiveImage.astro";
           parent.style.transform = `translateY(0)`;
 
           const progress =
-            textoBanner.getBoundingClientRect().top / window.innerHeight - 0.1;
+            (textoBanner.getBoundingClientRect().top / window.innerHeight) - 0.1;
 
           if (progress <= 0) {
             parent.classList.remove(`pointer-events-none`);
@@ -574,6 +481,8 @@ import ResponsiveImage from "./ResponsiveImage.astro";
           } else {
             parent.classList.add(`pointer-events-none`);
             textoBanner.classList.remove(`pointer-events-none`);
+
+
           }
         }
       }
@@ -593,17 +502,14 @@ import ResponsiveImage from "./ResponsiveImage.astro";
         parent.classList.add(`pointer-events-none`);
         animatedDiv.classList.remove("opacity-100");
         textoBanner.classList.remove(`pointer-events-none`);
+
       }
 
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleScroll);
-
-      handleScroll();
     } else {
       const parent = document.querySelector(".imagen-banner");
       const img = document.querySelector(".imagen-banner-img");
-      parent.classList.remove(`h-0`);
-      parent.classList.add(`h-max`);
 
       const animatedDiv = document.querySelector(".texto-2");
       const triggerPosition = window.innerHeight * 0.5;
@@ -621,11 +527,7 @@ import ResponsiveImage from "./ResponsiveImage.astro";
           if (window.innerWidth >= 430) {
             img.style.transform = `translateX(-${totalDistance}px)`;
           }
-          if (window.innerWidth >= 768) {
-            parent.style.transform = `translateY(25dvh)`;
-          } else {
-            parent.style.transform = `translateY(30dvh)`;
-          }
+          parent.style.transform = `translateY(25dvh)`;
 
           parent.style.pointerEvents = "auto";
           if (document.documentElement.classList.contains("dark")) {
@@ -633,7 +535,7 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               "#2f2f2f";
           } else {
             document.querySelector(".text-banner").style.backgroundColor =
-              "#f7f7f7";
+              "#d0d0d0";
           }
           document.querySelector(".texto-banner").style.opacity = "0";
           document.querySelector(".text-banner").classList.add("cambiado");
@@ -646,7 +548,7 @@ import ResponsiveImage from "./ResponsiveImage.astro";
               "#1f1f1f";
           } else {
             document.querySelector(".text-banner").style.backgroundColor =
-              "#F8F8F8";
+              "#e0e0e0";
           }
           parent.style.pointerEvents = "none";
           document.querySelector(".texto-banner").style.opacity = "1";
@@ -657,8 +559,6 @@ import ResponsiveImage from "./ResponsiveImage.astro";
 
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("resize", handleScroll);
-
-      handleScroll();
     }
   });
 

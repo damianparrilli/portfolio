@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-.dark #animacion {
+.dark #lottie-container {
   filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(7419%) hue-rotate(47deg) brightness(105%) contrast(90%);
 }
 
