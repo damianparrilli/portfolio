@@ -12,7 +12,7 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
   class="w-full bg-[#f7f7f7] dark:bg-[#303030] relative -z-20 pb-12"
 >
   <div
-    class="contenedor min-h-[20dvh] bg-[#f7f7f7] dark:bg-[#303030] flex items-center justify-center px-4 sm:px-7"
+    class="contenedor min-h-[20svh] bg-[#f7f7f7] dark:bg-[#303030] flex items-center justify-center px-4 sm:px-7"
   >
     <h2
       class="font-bold text-[#272727] dark:text-[#F9F9F9] text-3xl sm:text-4xl" data-i18n="myProjects"
@@ -46,14 +46,14 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
     }
 
     #sectionPin {
-      height: 500vh;
+      height: 500svh;
       overflow: visible;
       view-timeline-name: --section-pin-tl;
       view-timeline-axis: block;
     }
 
     .pin-wrap-sticky {
-      height: 99vh;
+      height: 99svh;
       width: 100vw;
       position: sticky;
       top: 0;
@@ -61,7 +61,7 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
     }
 
     .pin-wrap {
-      height: 99dvh;
+      height: 99svh;
       width: calc(min(1200px, 100vw) * 5);
       will-change: transform;
       animation: linear move forwards;
@@ -108,7 +108,7 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
 <style is:global>
   @supports not (animation-timeline: view()) {
     .pin-item {
-      height: 90dvh;
+      height: 90svh;
     }
 
     .backgroundDiv {
@@ -151,8 +151,8 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
   @supports (animation-timeline: view()) {
     @media (width < 768px){
     .pin-item {
-      padding-top: 2dvh;
-      height: 96dvh;
+      padding-top: 2svh;
+      height: 96svh;
     }
   }
 

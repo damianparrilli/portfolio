@@ -1,4 +1,4 @@
-<section class="bg-[#F8F8F8] dark:bg-[#1f1f1f] h-[60dvh] w-full relative hola z-90">  
+<section class="bg-[#F8F8F8] dark:bg-[#1f1f1f] h-[60svh] w-full relative hola z-90">  
   <div
     class="contenedor otros flex z-50 py-5 h-full w-full px-4 sm:px-7"
   >
@@ -103,7 +103,7 @@
     </div>
   </div>
 </section>
-<div id="contacto"  class="relative -mt-[125dvh] left-0 h-[101.2dvh] w-full bg-[#F8F8F8] dark:bg-[#1f1f1f] pointer-events-none -z-10"></div>
+<div id="contacto"  class="relative -mt-[125svh] left-0 h-[101.2svh] w-full bg-[#F8F8F8] dark:bg-[#1f1f1f] pointer-events-none -z-10"></div>
 
 <style is:global>
  
@@ -122,7 +122,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   background-color: #27272770;
   pointer-events: none;
   z-index: 80;
@@ -135,7 +135,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   background-color: #cccccc70;
   pointer-events: none;
   z-index: 80;
@@ -149,15 +149,17 @@
       transform: translateY(0);
     }
     100% {
-      transform: translateY(-55dvh);
+      transform: translateY(-27svh);
     }
   }
   .hola {
     view-timeline-name: --hola;
-    animation: mover-hacia-arriba linear forwards;
-    
+    animation: mover-hacia-arriba linear;
     animation-timeline: --hola;
-    animation-range: entry 30% entry 100%;
+    animation-range: entry 0% entry 80%;
+    animation-fill-mode: both;
+    will-change: transform;
+    backface-visibility: hidden;
     clip-path: polygon(0 20px, 100% 0, 100% 100%, 0% 100%);
   }
 }

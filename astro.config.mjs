@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['nutritional-scholars-protecting-closure.trycloudflare.com'],
+      allowedHosts: ['fairy-vehicles-pounds-claire.trycloudflare.com'],
     }
   }
 });
