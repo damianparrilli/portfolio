@@ -9,7 +9,7 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
 
 <section
   id="proyectos"
-  class="w-full bg-[#f7f7f7] dark:bg-[#303030] relative -z-20 pb-12"
+  class="w-full bg-[#f7f7f7] dark:bg-[#303030] relative -z-20 pb-12 max-lg:overflow-x-hidden"
 >
   <div
     class="contenedor min-h-[20svh] bg-[#f7f7f7] dark:bg-[#303030] flex items-center justify-center px-4 sm:px-7"
@@ -21,8 +21,8 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
     </h2>
   </div>
 
-  <section id="sectionPin">
-    <div class="pin-wrap-sticky contenedor overflow-x-hidden">
+  <section id="sectionPin" >
+    <div class="pin-wrap-sticky contenedor overflow-x-hidden max-lg:!w-full max-lg:!max-w-full">
       <div class="pin-wrap flex">
         <KZGroup />
         <BonteDeco />
@@ -38,49 +38,43 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
 </section>
 
 <style>
-  @supports (animation-timeline: view()) {
-    @keyframes move {
-      to {
-        transform: translateX(calc(-100% + min(1200px, 100vw)));
+  @media (min-width: 1025px) {
+    @supports (animation-timeline: view()) {
+      @keyframes move {
+        to {
+          transform: translateX(calc(-100% + min(1200px, 100vw)));
+        }
       }
-    }
 
-    #sectionPin {
-      height: 500svh;
-      overflow: visible;
-      view-timeline-name: --section-pin-tl;
-      view-timeline-axis: block;
-    }
-
-    .pin-wrap-sticky {
-      height: 99svh;
-      width: 100vw;
-      position: sticky;
-      top: 0;
-      width: 100vw;
-    }
-
-    .pin-wrap {
-      height: 99svh;
-      width: calc(min(1200px, 100vw) * 5);
-      will-change: transform;
-      animation: linear move forwards;
-      animation-timeline: --section-pin-tl;
-      animation-range: contain 0% contain 100%;
-    }
-
-    @media (width < 1200px) {
-      .pin-wrap-sticky {
-        overflow-x: hidden;
-      }
-    }
-
-    @media (width < 768px) {
       #sectionPin {
-      height: 500vw;
-    }
-    }
+        height: 500svh;
+        overflow: visible;
+        view-timeline-name: --section-pin-tl;
+        view-timeline-axis: block;
+      }
 
+      .pin-wrap-sticky {
+        height: 99svh;
+        width: 100vw;
+        position: sticky;
+        top: 0;
+      }
+
+      .pin-wrap {
+        height: 99svh;
+        width: calc(min(1200px, 100vw) * 5);
+        will-change: transform;
+        animation: linear move forwards;
+        animation-timeline: --section-pin-tl;
+        animation-range: contain 0% contain 100%;
+      }
+
+      @media (width < 1200px) {
+        .pin-wrap-sticky {
+          overflow-x: hidden;
+        }
+      }
+    }
   }
 
   @supports not (animation-timeline: view()) {
@@ -92,69 +86,144 @@ import BoxedCat from "./Proyectos/BoxedCat.astro";
       flex-direction: column;
       gap: 20px;
       padding-bottom: 9rem;
+      width: 100% !important;
+      max-width: 100% !important;
     }
-    @media (width < 768px){
+    @media (width < 768px) {
       .pin-wrap {
-        gap: 0;
-        padding-bottom: 0;
+        gap: 1rem !important;
+        padding-bottom: 2rem !important;
       }
     }
-
   }
 
-  media
+  @media (max-width: 1024px) {
+    #sectionPin {
+      height: auto !important;
+      view-timeline-name: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .pin-wrap-sticky {
+      position: static !important;
+      height: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .carousel-indicator {
+      display: none;
+    }
+    .pin-wrap {
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 9rem;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    @media (width < 768px) {
+      .pin-wrap {
+        gap: 1rem !important;
+        padding-bottom: 2rem !important;
+      }
+    }
+  }
 </style>
 
 <style is:global>
   @supports not (animation-timeline: view()) {
     .pin-item {
-      height: 90svh;
+      height: auto !important;
+      min-height: fit-content !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
     }
 
     .backgroundDiv {
-      height: auto;
+      height: auto !important;
+      max-height: 50vh !important;
     }
 
-    @media (width < 768px){
-
+    @media (width < 768px) {
       .pin-item {
-        min-height: 650px;
-        height: auto;
-    }
+        min-height: auto !important;
+        height: auto !important;
+        max-height: 85vh !important;
+      }
 
-    .pin-item .source-code{
+      .pin-item .source-code {
         width: 1.375rem !important;
-    }
+      }
 
+      .pin-wrap span {
+        height: auto !important;
+      }
 
-    .pin-wrap span{
-      height: 100%;
-    }
-    
-      .div-adicional{
-        display: none;
+      .div-adicional {
+        display: none !important;
       }
 
       .image-container {
-        justify-content: space-evenly;
+        justify-content: space-evenly !important;
       }
     }
 
     @media (width >= 768px) and (height < 650px) {
-      .div-adicional{
-        display: none;
+      .div-adicional {
+        display: none !important;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .pin-item {
+      height: auto !important;
+      min-height: fit-content !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    .backgroundDiv {
+      height: auto !important;
+      max-height: 50vh !important;
+    }
+
+    @media (width < 768px) {
+      .pin-item {
+        min-height: auto !important;
+        height: auto !important;
+        max-height: 85vh !important;
+      }
+
+      .pin-item .source-code {
+        width: 1.375rem !important;
+      }
+
+      .pin-wrap span {
+        height: auto !important;
+      }
+
+      .div-adicional {
+        display: none !important;
+      }
+
+      .image-container {
+        justify-content: space-evenly !important;
       }
     }
 
-  }
-
-  @supports (animation-timeline: view()) {
-    @media (width < 768px){
-    .pin-item {
-      padding-top: 2svh;
-      height: 96svh;
+    @media (width >= 768px) and (height < 650px) {
+      .div-adicional {
+        display: none !important;
+      }
     }
-  }
-
   }
 </style>

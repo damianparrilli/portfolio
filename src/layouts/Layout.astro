@@ -152,19 +152,41 @@ const { title, description, keywords } = Astro.props;
     "animation-timeline: view()"
   );
 
-  if (!supportsScrollDrivenAnimation) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
-    document.head.appendChild(link);
+  function checkAndInitAOS() {
+    const isDesktopWithSupport = supportsScrollDrivenAnimation && window.innerWidth > 1024;
 
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
-    script.onload = () => {
-      AOS.init();
-    };
-    document.body.appendChild(script);
+    if (!isDesktopWithSupport) {
+      if (!document.getElementById("aos-css")) {
+        const link = document.createElement("link");
+        link.id = "aos-css";
+        link.rel = "stylesheet";
+        link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+        document.head.appendChild(link);
+      }
+
+      if (typeof AOS !== "undefined") {
+        AOS.init();
+      } else if (!document.getElementById("aos-js")) {
+        const script = document.createElement("script");
+        script.id = "aos-js";
+        script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+        script.onload = () => {
+          AOS.init();
+        };
+        document.body.appendChild(script);
+      }
+    } else if (typeof AOS !== "undefined") {
+      AOS.refreshHard();
+    }
   }
+
+  checkAndInitAOS();
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkAndInitAOS, 200);
+  });
 
   document.addEventListener("DOMContentLoaded", () => {
     const savedLang = localStorage.getItem("lang") || "en";
@@ -206,7 +228,7 @@ const { title, description, keywords } = Astro.props;
         
         const elements = document.querySelectorAll("[data-i18n]");
         if (elements.length === 0) {
-          console.warn("No se encontraron elementos con data-i18n");
+          console.warn("No se encontraron elements con data-i18n");
           return;
         }
         
@@ -282,7 +304,7 @@ const { title, description, keywords } = Astro.props;
     try {
       var elements = document.getElementsByClassName("txt-rotate");
       if (elements.length === 0) {
-        console.warn("No se encontraron elementos txt-rotate");
+        console.warn("No se encontraron elements txt-rotate");
         return;
       }
       
